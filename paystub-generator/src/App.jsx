@@ -1,5 +1,7 @@
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import PayStubForm from './components/PayStubForm'
+import PaycheckCalc from './components/PaycheckCalc'
+import HourlyToSalaryCalc from './components/HourlyToSalaryCalc'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsOfService from './components/TermsOfService'
 import About from './components/About'
@@ -33,6 +35,26 @@ function HomePage() {
         <PayStubForm />
 
         <div className="mt-12 space-y-6 text-sm text-gray-600">
+          {/* Free Tools cross-links */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-3">More Free Tools</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
+                { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
+              ].map(({ path, icon, title, desc }) => (
+                <Link key={path} to={path}
+                  className="flex items-start gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 transition-colors group">
+                  <span className="text-2xl">{icon}</span>
+                  <div>
+                    <p className="text-sm font-bold text-gray-800 group-hover:text-blue-600">{title}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{desc}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">How to Generate a Free Pay Stub</h2>
             <ol className="space-y-2 list-decimal list-inside text-gray-600">
@@ -154,9 +176,10 @@ function Layout({ children }) {
             <span className="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full font-semibold">100% Free</span>
           </Link>
           <nav className="flex items-center gap-4 text-xs text-gray-500">
+            <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors hidden sm:block">Paycheck</Link>
+            <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors hidden sm:block">Hourly→Salary</Link>
             <Link to="/guides" className="hover:text-blue-500 transition-colors hidden sm:block">Guides</Link>
             <Link to="/about" className="hover:text-blue-500 transition-colors hidden sm:block">About</Link>
-            <Link to="/contact" className="hover:text-blue-500 transition-colors hidden sm:block">Contact</Link>
           </nav>
         </div>
       </header>
@@ -178,6 +201,8 @@ function Layout({ children }) {
           </div>
           <div className="text-center text-xs text-gray-400 space-y-2">
             <div className="flex justify-center gap-4 flex-wrap">
+              <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck Calculator</Link>
+              <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
               <Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link>
@@ -207,6 +232,8 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/paycheck-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PaycheckCalc /></SubPage>} />
+          <Route path="/hourly-to-salary-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><HourlyToSalaryCalc /></SubPage>} />
           <Route path="/about" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><About /></SubPage>} />
           <Route path="/contact" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Contact /></SubPage>} />
           <Route path="/guides" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Blog /></SubPage>} />
