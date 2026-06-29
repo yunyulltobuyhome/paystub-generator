@@ -150,9 +150,20 @@ export default function MultiPayStub() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Multiple Pay Stubs Generator with YTD",
+        "url": "https://myfreepaystub.com/multiple-paystubs",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Free tool to generate multiple consecutive pay stubs at once with automatic year-to-date (YTD) totals for weekly, bi-weekly, semi-monthly and monthly pay periods."
+      })}} />
+
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Multi Pay Stub Generator with YTD</h1>
-        <p className="text-sm text-gray-500">Generate several pay stubs at once with automatic year-to-date totals. Free, no sign-up.</p>
+        <h1 className="text-2xl font-black text-gray-800 mb-1">Multiple Pay Stubs Generator with YTD</h1>
+        <p className="text-sm text-gray-500">Generate several consecutive pay stubs at once with automatic year-to-date totals. Free, no sign-up.</p>
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">

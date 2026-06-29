@@ -184,7 +184,7 @@ function Layout({ children }) {
           <nav className="hidden sm:flex items-center gap-4 text-xs text-gray-700 font-medium">
             <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck</Link>
             <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
-            <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors">YTD Generator</Link>
+            <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors">Multiple Pay Stubs</Link>
             <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
             <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
           </nav>
@@ -204,7 +204,7 @@ function Layout({ children }) {
             <div className="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
               <Link to="/paycheck-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Paycheck</Link>
               <Link to="/hourly-to-salary-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Hourly to Salary</Link>
-              <Link to="/multiple-paystubs" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>YTD Generator</Link>
+              <Link to="/multiple-paystubs" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Multiple Pay Stubs</Link>
               <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link to="/about" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>About</Link>
             </div>
@@ -231,6 +231,7 @@ function Layout({ children }) {
             <div className="flex justify-center gap-4 flex-wrap">
               <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck Calculator</Link>
               <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
+              <Link to="/multiple-paystubs" className="hover:text-blue-500 transition-colors">Multiple Pay Stubs</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
               <Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link>

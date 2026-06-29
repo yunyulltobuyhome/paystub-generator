@@ -83,20 +83,22 @@ export default function PayStubForm() {
   return (
     <div className="max-w-2xl mx-auto">
       {/* Progress */}
-      <div className="flex items-center gap-2 mb-8">
+      <div className="flex items-center mb-8">
         {['Employer & Employee', 'Pay & Tax Details', 'Preview & Download'].map((s, i) => (
-          <div key={i} className="flex items-center gap-2 flex-1">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
-              step > i + 1 ? 'bg-green-500 text-white' :
-              step === i + 1 ? 'bg-blue-600 text-white' :
-              'bg-gray-200 text-gray-400'
-            }`}>
-              {step > i + 1 ? '✓' : i + 1}
+          <div key={i} className="contents">
+            <div className="flex items-center gap-2 shrink-0">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
+                step > i + 1 ? 'bg-green-500 text-white' :
+                step === i + 1 ? 'bg-blue-600 text-white' :
+                'bg-gray-200 text-gray-400'
+              }`}>
+                {step > i + 1 ? '✓' : i + 1}
+              </div>
+              <span className={`text-xs hidden sm:block ${step === i + 1 ? 'text-blue-600 font-semibold' : 'text-gray-400'}`}>
+                {s}
+              </span>
             </div>
-            <span className={`text-xs hidden sm:block ${step === i + 1 ? 'text-blue-600 font-semibold' : 'text-gray-400'}`}>
-              {s}
-            </span>
-            {i < 2 && <div className="flex-1 h-px bg-gray-200" />}
+            {i < 2 && <div className="flex-1 h-px bg-gray-200 mx-2" />}
           </div>
         ))}
       </div>
