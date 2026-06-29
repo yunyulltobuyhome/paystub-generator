@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { useState } from 'react'
 import PayStubForm from './components/PayStubForm'
 import PaycheckCalc from './components/PaycheckCalc'
 import HourlyToSalaryCalc from './components/HourlyToSalaryCalc'
@@ -167,6 +168,8 @@ function SubPage({ backTo = '/', backLabel = '← Back', children }) {
 }
 
 function Layout({ children }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
@@ -176,14 +179,37 @@ function Layout({ children }) {
             <span className="text-xl font-black text-gray-700">Free</span>
             <span className="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full font-semibold">100% Free</span>
           </Link>
-          <nav className="flex items-center gap-4 text-xs text-gray-700 font-medium">
-            <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors hidden sm:block">Paycheck</Link>
-            <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors hidden sm:block">Hourly→Salary</Link>
-            <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors hidden sm:block">YTD Generator</Link>
-            <Link to="/guides" className="hover:text-blue-500 transition-colors hidden sm:block">Guides</Link>
-            <Link to="/about" className="hover:text-blue-500 transition-colors hidden sm:block">About</Link>
+
+          {/* 데스크톱 메뉴 */}
+          <nav className="hidden sm:flex items-center gap-4 text-xs text-gray-700 font-medium">
+            <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck</Link>
+            <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
+            <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors">YTD Generator</Link>
+            <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
+            <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
           </nav>
+
+          {/* 모바일 햄버거 버튼 */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="sm:hidden text-2xl text-gray-700"
+          >
+            {mobileMenuOpen ? '✕' : '☰'}
+          </button>
         </div>
+
+        {/* 모바일 메뉴 */}
+        {mobileMenuOpen && (
+          <nav className="sm:hidden border-t border-gray-200">
+            <div className="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
+              <Link to="/paycheck-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Paycheck</Link>
+              <Link to="/hourly-to-salary-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Hourly to Salary</Link>
+              <Link to="/multiple-paystubs" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>YTD Generator</Link>
+              <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
+              <Link to="/about" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>About</Link>
+            </div>
+          </nav>
+        )}
       </header>
 
       {children}
