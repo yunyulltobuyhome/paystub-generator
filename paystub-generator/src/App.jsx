@@ -12,6 +12,7 @@ import WhatIsFICA from './components/blog/WhatIsFICA'
 import FederalVsStateTax from './components/blog/FederalVsStateTax'
 import PayStubVsW2 from './components/blog/PayStubVsW2'
 import HowToCalculateOvertime from './components/blog/HowToCalculateOvertime'
+import MultiPayStub from './components/MultiPayStub'
 
 function HomePage() {
   return (
@@ -175,9 +176,10 @@ function Layout({ children }) {
             <span className="text-xl font-black text-gray-700">Free</span>
             <span className="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full font-semibold">100% Free</span>
           </Link>
-          <nav className="flex items-center gap-4 text-xs text-gray-500">
+          <nav className="flex items-center gap-4 text-xs text-gray-700 font-medium">
             <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors hidden sm:block">Paycheck</Link>
             <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors hidden sm:block">Hourly→Salary</Link>
+            <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors hidden sm:block">YTD Generator</Link>
             <Link to="/guides" className="hover:text-blue-500 transition-colors hidden sm:block">Guides</Link>
             <Link to="/about" className="hover:text-blue-500 transition-colors hidden sm:block">About</Link>
           </nav>
@@ -245,6 +247,7 @@ export default function App() {
           <Route path="/privacy" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PrivacyPolicy /></SubPage>} />
           <Route path="/terms" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TermsOfService /></SubPage>} />
           <Route path="*" element={<HomePage />} />
+          <Route path="/multiple-paystubs" element={<MultiPayStub />} />
         </Routes>
       </Layout>
     </BrowserRouter>
