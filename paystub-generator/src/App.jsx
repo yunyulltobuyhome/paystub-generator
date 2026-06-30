@@ -15,6 +15,8 @@ import WhatIsFICA from './components/blog/WhatIsFICA'
 import FederalVsStateTax from './components/blog/FederalVsStateTax'
 import PayStubVsW2 from './components/blog/PayStubVsW2'
 import HowToCalculateOvertime from './components/blog/HowToCalculateOvertime'
+import WhatIsYtd from './components/blog/WhatIsYtd'
+import PayStubsForApartment from './components/blog/PayStubsForApartment'
 import MultiPayStub from './components/MultiPayStub'
 import CookieConsent, { openCookieSettings } from './components/CookieConsent'
 
@@ -146,6 +148,8 @@ function HomePage() {
             <div className="space-y-2">
               {[
                 { path: '/guides/how-to-read-your-pay-stub', title: 'How to Read Your Pay Stub' },
+                { path: '/guides/what-is-ytd-on-a-paycheck', title: 'What is YTD on a Paycheck? Year-to-Date Explained' },
+                { path: '/guides/how-many-pay-stubs-for-apartment', title: 'How Many Pay Stubs Do You Need to Rent an Apartment?' },
                 { path: '/guides/what-is-fica-tax', title: 'What is FICA Tax? Social Security & Medicare Explained' },
                 { path: '/guides/federal-vs-state-income-tax', title: 'Federal vs State Income Tax: What\'s the Difference?' },
                 { path: '/guides/pay-stub-vs-w2', title: 'Pay Stub vs W-2: What\'s the Difference?' },
@@ -292,6 +296,8 @@ export default function App() {
           <Route path="/guides/federal-vs-state-income-tax" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><FederalVsStateTax /></SubPage>} />
           <Route path="/guides/pay-stub-vs-w2" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><PayStubVsW2 /></SubPage>} />
           <Route path="/guides/how-to-calculate-overtime" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><HowToCalculateOvertime /></SubPage>} />
+          <Route path="/guides/what-is-ytd-on-a-paycheck" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><WhatIsYtd /></SubPage>} />
+          <Route path="/guides/how-many-pay-stubs-for-apartment" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><PayStubsForApartment /></SubPage>} />
           <Route path="/privacy" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PrivacyPolicy /></SubPage>} />
           <Route path="/terms" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TermsOfService /></SubPage>} />
           <Route path="*" element={<HomePage />} />

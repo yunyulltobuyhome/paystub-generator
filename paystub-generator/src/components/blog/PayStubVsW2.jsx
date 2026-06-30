@@ -1,6 +1,25 @@
+import { usePageMeta } from '../../hooks/usePageMeta'
+import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+
+const FAQ = [
+  { q: 'What is the difference between a pay stub and a W-2?', a: 'A pay stub shows earnings and deductions for a single pay period and comes with each paycheck. A W-2 is an annual summary your employer issues once a year for filing taxes.' },
+  { q: 'Can I use a pay stub instead of a W-2?', a: 'They serve different purposes. A pay stub proves recent income (e.g. for renting), while a W-2 is required to file your tax return. A self-generated pay stub is not a substitute for an official W-2.' },
+]
+
 export default function PayStubVsW2() {
+  usePageMeta({
+    title: 'Pay Stub vs W-2: What\'s the Difference? | MyFreePayStub',
+    description: 'Pay stubs and W-2s both relate to your earnings but serve different purposes. Learn when you need each one and how they differ.',
+    canonicalPath: '/guides/pay-stub-vs-w2',
+  })
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      <ArticleJsonLd
+        headline="Pay Stub vs W-2: What's the Difference?"
+        description="When you need a pay stub versus a W-2, and how the two documents differ."
+        slug="/guides/pay-stub-vs-w2"
+        faq={FAQ}
+      />
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
@@ -110,22 +129,20 @@ export default function PayStubVsW2() {
           </p>
         </section>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mt-6">
-          <p className="font-bold text-blue-800 mb-1">Generate a Pay Stub for Free</p>
-          <p className="text-blue-700 text-xs mb-3">
-            Need a pay stub for record-keeping? Our free generator creates professional
-            pay stubs with automatic 2026 tax calculations — no sign-up required.
-          </p>
-          <a href="/" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-            Create Free Pay Stub →
-          </a>
-        </div>
+        <ToolCTA
+          to="/"
+          title="Generate a Pay Stub for Free"
+          desc="Need a pay stub for record-keeping? Our free generator creates professional pay stubs with automatic 2026 tax calculations — no sign-up required."
+          label="Create Free Pay Stub →"
+        />
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
-          ⚠️ This article is for informational purposes only and does not constitute
-          tax or legal advice. Consult a qualified tax professional for guidance specific
-          to your situation.
-        </div>
+        <RelatedGuides items={[
+          { to: '/guides/how-many-pay-stubs-for-apartment', label: 'How Many Pay Stubs Do You Need to Rent an Apartment?' },
+          { to: '/guides/how-to-read-your-pay-stub', label: 'How to Read Your Pay Stub' },
+          { to: '/multiple-paystubs', label: 'Generate Multiple Pay Stubs with YTD' },
+        ]} />
+
+        <ArticleDisclaimer />
       </div>
     </div>
   )

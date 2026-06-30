@@ -1,6 +1,25 @@
+import { usePageMeta } from '../../hooks/usePageMeta'
+import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+
+const FAQ = [
+  { q: 'How is overtime pay calculated?', a: 'Under the federal FLSA, non-exempt employees earn 1.5× their regular hourly rate for hours worked over 40 in a workweek. For example, a $20/hour worker earns $30/hour for overtime.' },
+  { q: 'Who is exempt from overtime?', a: 'Certain salaried executive, administrative, and professional employees who meet the FLSA salary threshold and duties tests are exempt. Most hourly workers are non-exempt and entitled to overtime.' },
+]
+
 export default function HowToCalculateOvertime() {
+  usePageMeta({
+    title: 'How to Calculate Overtime Pay (2026 FLSA Rules) | MyFreePayStub',
+    description: 'Federal overtime rules for 2026: how to calculate time-and-a-half, who is exempt, the FLSA 40-hour rule, and how state overtime laws differ.',
+    canonicalPath: '/guides/how-to-calculate-overtime',
+  })
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      <ArticleJsonLd
+        headline="How to Calculate Overtime Pay (2026 FLSA Rules)"
+        description="Federal overtime rules, how to calculate time-and-a-half, who is exempt, and state overtime laws."
+        slug="/guides/how-to-calculate-overtime"
+        faq={FAQ}
+      />
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
@@ -133,24 +152,20 @@ export default function HowToCalculateOvertime() {
           </p>
         </section>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mt-6">
-          <p className="font-bold text-blue-800 mb-1">Calculate Your Overtime Pay Stub</p>
-          <p className="text-blue-700 text-xs mb-3">
-            Our free pay stub generator automatically calculates overtime at 1.5× for
-            hourly workers who work over 80 hours in a biweekly period.
-          </p>
-          <a href="/" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-            Create Free Pay Stub →
-          </a>
-        </div>
+        <ToolCTA
+          to="/"
+          title="Calculate Your Overtime Pay Stub"
+          desc="Our free pay stub generator automatically calculates overtime at 1.5× for hourly workers who work over 80 hours in a biweekly period."
+          label="Create Free Pay Stub →"
+        />
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
-          ⚠️ This article summarises general FLSA rules for informational purposes only.
-          Overtime laws are complex and vary by state, industry, and employment classification.
-          Consult the <a href="https://www.dol.gov/agencies/whd/overtime" target="_blank"
-          rel="noopener noreferrer" className="underline">US Department of Labor</a> or
-          an employment attorney for guidance specific to your situation.
-        </div>
+        <RelatedGuides items={[
+          { to: '/guides/how-to-read-your-pay-stub', label: 'How to Read Your Pay Stub' },
+          { to: '/guides/what-is-fica-tax', label: 'What Is FICA Tax?' },
+          { to: '/hourly-to-salary-calculator', label: 'Hourly to Salary Calculator' },
+        ]} />
+
+        <ArticleDisclaimer />
       </div>
     </div>
   )

@@ -1,6 +1,25 @@
+import { usePageMeta } from '../../hooks/usePageMeta'
+import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+
+const FAQ = [
+  { q: 'What is the difference between federal and state income tax?', a: 'Federal income tax is set by the IRS and applies nationwide using progressive brackets (10%–37%). State income tax is set by each state — some have no income tax, others use flat or progressive rates up to about 13.3%.' },
+  { q: 'Which states have no income tax?', a: 'Nine states have no state income tax: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, and Wyoming.' },
+]
+
 export default function FederalVsStateTax() {
+  usePageMeta({
+    title: 'Federal vs State Income Tax: What\'s the Difference? (2026) | MyFreePayStub',
+    description: '2026 federal tax brackets, state income tax rates for all 50 states, and a side-by-side comparison of living in a no-tax vs high-tax state.',
+    canonicalPath: '/guides/federal-vs-state-income-tax',
+  })
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      <ArticleJsonLd
+        headline="Federal vs State Income Tax: What's the Difference? (2026)"
+        description="2026 federal tax brackets, state rates for all 50 states, and a no-tax vs high-tax state comparison."
+        slug="/guides/federal-vs-state-income-tax"
+        faq={FAQ}
+      />
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
@@ -169,23 +188,20 @@ export default function FederalVsStateTax() {
           </p>
         </section>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mt-6">
-          <p className="font-bold text-blue-800 mb-1">Calculate Your Exact Withholding</p>
-          <p className="text-blue-700 text-xs mb-3">
-            Use our free pay stub generator to see federal and state tax withholding
-            calculated automatically for your salary and state.
-          </p>
-          <a href="/" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-            Create Free Pay Stub →
-          </a>
-        </div>
+        <ToolCTA
+          to="/paycheck-calculator"
+          title="Calculate Your Exact Withholding"
+          desc="Use our free paycheck calculator to see federal and state tax withholding calculated automatically for your salary and state."
+          label="Open Paycheck Calculator →"
+        />
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
-          ⚠️ This article is for general informational purposes only and does not constitute
-          tax advice. Tax laws change annually. Always consult a qualified tax professional
-          or visit <a href="https://www.irs.gov" target="_blank" rel="noopener noreferrer"
-          className="underline">irs.gov</a> for official guidance.
-        </div>
+        <RelatedGuides items={[
+          { to: '/guides/what-is-fica-tax', label: 'What Is FICA Tax? Social Security & Medicare' },
+          { to: '/guides/how-to-read-your-pay-stub', label: 'How to Read Your Pay Stub' },
+          { to: '/paycheck-calculator', label: 'Paycheck Calculator — all 50 states' },
+        ]} />
+
+        <ArticleDisclaimer />
       </div>
     </div>
   )

@@ -1,6 +1,26 @@
+import { usePageMeta } from '../../hooks/usePageMeta'
+import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+
+const FAQ = [
+  { q: 'What does YTD mean on a pay stub?', a: 'YTD (year-to-date) totals show your cumulative gross pay, taxes, and deductions from January 1st through the current pay period. They are essential for verifying your W-2 at tax time.' },
+  { q: 'What is the difference between gross pay and net pay?', a: 'Gross pay is your total earnings before any deductions. Net pay is your take-home amount after federal, state, and FICA taxes plus any pre-tax deductions are subtracted.' },
+  { q: 'Why is Social Security not on my later pay stubs?', a: 'Social Security tax (6.2%) only applies up to the annual wage base ($184,500 in 2026). Once your year-to-date earnings exceed it, Social Security withholding stops for the rest of the year.' },
+]
+
 export default function HowToReadPayStub() {
+  usePageMeta({
+    title: 'How to Read Your Pay Stub: A Complete 2026 Guide | MyFreePayStub',
+    description: 'Understand every line on your pay stub — gross pay, federal & state tax, Social Security, Medicare, pre-tax deductions, net pay, and YTD totals — explained for 2026.',
+    canonicalPath: '/guides/how-to-read-your-pay-stub',
+  })
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      <ArticleJsonLd
+        headline="How to Read Your Pay Stub: A Complete Guide (2026)"
+        description="Understand every line on your pay stub — gross pay, federal & state tax, FICA, deductions, net pay, and YTD totals."
+        slug="/guides/how-to-read-your-pay-stub"
+        faq={FAQ}
+      />
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
@@ -104,22 +124,21 @@ export default function HowToReadPayStub() {
           </p>
         </section>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mt-6">
-          <p className="font-bold text-blue-800 mb-1">Generate Your Own Pay Stub</p>
-          <p className="text-blue-700 text-xs mb-3">
-            Need a pay stub for record-keeping? Our free generator calculates all the above
-            automatically using 2026 IRS tax tables and your state's rates.
-          </p>
-          <a href="/" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-            Create Free Pay Stub →
-          </a>
-        </div>
+        <ToolCTA
+          to="/"
+          title="Generate Your Own Pay Stub"
+          desc="Need a pay stub for record-keeping? Our free generator calculates all the above automatically using 2026 IRS tax tables and your state's rates."
+          label="Create Free Pay Stub →"
+        />
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
-          ⚠️ This guide is for informational purposes only and does not constitute tax or legal advice.
-          Tax rules are complex and vary by individual situation. Always consult a qualified tax
-          professional or CPA for personalised tax guidance.
-        </div>
+        <RelatedGuides items={[
+          { to: '/guides/what-is-ytd-on-a-paycheck', label: 'What Is YTD on a Paycheck?' },
+          { to: '/guides/what-is-fica-tax', label: 'What Is FICA Tax? Social Security & Medicare Explained' },
+          { to: '/guides/how-many-pay-stubs-for-apartment', label: 'How Many Pay Stubs Do You Need to Rent an Apartment?' },
+          { to: '/paycheck-calculator', label: 'Paycheck Calculator — estimate your take-home pay' },
+        ]} />
+
+        <ArticleDisclaimer />
       </div>
     </div>
   )

@@ -1,6 +1,26 @@
+import { usePageMeta } from '../../hooks/usePageMeta'
+import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+
+const FAQ = [
+  { q: 'What is FICA tax?', a: 'FICA (Federal Insurance Contributions Act) is a US payroll tax that funds Social Security and Medicare. Most workers pay 7.65% — 6.2% Social Security plus 1.45% Medicare — and employers match it.' },
+  { q: 'What is the 2026 Social Security wage base?', a: 'In 2026, Social Security tax applies to wages up to $184,500. Above that, Social Security withholding stops for the year. Medicare has no wage limit.' },
+  { q: 'Do self-employed people pay FICA?', a: 'Yes. Self-employed workers pay both halves — 15.3% self-employment tax (12.4% Social Security + 2.9% Medicare) on net earnings — but can deduct half of it on their federal return.' },
+]
+
 export default function WhatIsFICA() {
+  usePageMeta({
+    title: 'What Is FICA Tax? Social Security & Medicare Explained (2026) | MyFreePayStub',
+    description: 'FICA is 7.65% of every paycheck. Learn what Social Security and Medicare taxes fund, the 2026 rates and $184,500 wage base, and how FICA works for the self-employed.',
+    canonicalPath: '/guides/what-is-fica-tax',
+  })
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      <ArticleJsonLd
+        headline="What is FICA Tax? Social Security & Medicare Explained (2026)"
+        description="What Social Security and Medicare taxes fund, how they're calculated, and the 2026 wage base."
+        slug="/guides/what-is-fica-tax"
+        faq={FAQ}
+      />
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
@@ -119,22 +139,21 @@ export default function WhatIsFICA() {
           </p>
         </section>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mt-6">
-          <p className="font-bold text-blue-800 mb-1">See FICA on Your Pay Stub</p>
-          <p className="text-blue-700 text-xs mb-3">
-            Generate a free pay stub to see exactly how Social Security and Medicare are
-            calculated for your salary and state.
-          </p>
-          <a href="/" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-            Create Free Pay Stub →
-          </a>
-        </div>
+        <ToolCTA
+          to="/"
+          title="See FICA on Your Pay Stub"
+          desc="Generate a free pay stub to see exactly how Social Security and Medicare are calculated for your salary and state."
+          label="Create Free Pay Stub →"
+        />
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
-          ⚠️ This article is for general informational purposes only. Tax rules change annually.
-          Always verify current rates at <a href="https://www.irs.gov" target="_blank" rel="noopener noreferrer"
-          className="underline">irs.gov</a> or consult a qualified tax professional.
-        </div>
+        <RelatedGuides items={[
+          { to: '/guides/how-to-read-your-pay-stub', label: 'How to Read Your Pay Stub' },
+          { to: '/guides/federal-vs-state-income-tax', label: 'Federal vs State Income Tax' },
+          { to: '/self-employment-tax-calculator', label: 'Self-Employment Tax Calculator (1099)' },
+          { to: '/paycheck-calculator', label: 'Paycheck Calculator — take-home pay' },
+        ]} />
+
+        <ArticleDisclaimer />
       </div>
     </div>
   )

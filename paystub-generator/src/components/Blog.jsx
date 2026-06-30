@@ -9,6 +9,20 @@ const POSTS = [
     category: 'Guide',
   },
   {
+    slug: 'what-is-ytd-on-a-paycheck',
+    title: 'What Is YTD on a Paycheck? Year-to-Date Explained',
+    desc: 'YTD means year-to-date — the running total of your gross pay, taxes, and deductions. Here\'s what each YTD figure means and why it matters.',
+    readTime: '4 min read',
+    category: 'Guide',
+  },
+  {
+    slug: 'how-many-pay-stubs-for-apartment',
+    title: 'How Many Pay Stubs Do You Need to Rent an Apartment?',
+    desc: 'How many pay stubs landlords require, the 3× rent income rule, and proof-of-income alternatives for renters and the self-employed.',
+    readTime: '4 min read',
+    category: 'Guide',
+  },
+  {
     slug: 'what-is-fica-tax',
     title: 'What is FICA Tax? Social Security & Medicare Explained (2026)',
     desc: 'FICA is 7.65% of every paycheck. Here\'s what Social Security and Medicare taxes fund, how they\'re calculated, and the 2026 wage base.',
