@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { STATE_TAXES, FICA } from '../data/stateTaxRates'
 import { calcFederalTax, calcStateTax } from '../utils/taxCalculator'
 import { usePageMeta } from '../hooks/usePageMeta'
+import AdSlot from './AdSlot'
+import { AD_SLOTS } from '../config/ads'
 
 // Self-employment tax constants (2026)
 const SE_BASE_FACTOR = 0.9235          // net earnings subject to SE tax
@@ -270,6 +272,7 @@ export default function SelfEmploymentTaxCalc() {
             verify with the <strong>IRS</strong> and a <strong>qualified CPA or tax professional</strong>
             before making payments or filing.
           </div>
+          <AdSlot slot={AD_SLOTS.result} />
         </div>
       )}
 

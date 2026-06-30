@@ -20,8 +20,21 @@ import PayStubsForApartment from './components/blog/PayStubsForApartment'
 import MultiPayStub from './components/MultiPayStub'
 import CookieConsent, { openCookieSettings } from './components/CookieConsent'
 import OvertimeCalc from './components/OvertimeCalc'
+import BonusTaxCalc from './components/BonusTaxCalc'
 import StatesIndex from './components/StatesIndex'
 import StatePayStub from './components/StatePayStub'
+
+// Shared tool list — used by the desktop "Tools" dropdown and the mobile menu.
+const TOOLS = [
+  { path: '/', label: 'Pay Stub Generator' },
+  { path: '/paycheck-calculator', label: 'Paycheck Calculator' },
+  { path: '/hourly-to-salary-calculator', label: 'Hourly to Salary' },
+  { path: '/overtime-calculator', label: 'Overtime Calculator' },
+  { path: '/bonus-tax-calculator', label: 'Bonus Tax Calculator' },
+  { path: '/self-employment-tax-calculator', label: 'Self-Employment Tax (1099)' },
+  { path: '/multiple-paystubs', label: 'Multiple Pay Stubs' },
+  { path: '/invoice-generator', label: 'Invoice Generator' },
+]
 
 function HomePage() {
   return (
@@ -55,6 +68,7 @@ function HomePage() {
                 { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
                 { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
                 { path: '/overtime-calculator', icon: '⏱️', title: 'Overtime Pay Calculator', desc: 'Time-and-a-half & double-time pay' },
+                { path: '/bonus-tax-calculator', icon: '🎁', title: 'Bonus Tax Calculator', desc: 'How much tax comes out of your bonus' },
                 { path: '/multiple-paystubs', icon: '📄', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
               ].map(({ path, icon, title, desc }) => (
                 <Link key={path} to={path}
@@ -221,15 +235,29 @@ function Layout({ children }) {
           </Link>
 
           {/* 데스크톱 메뉴 */}
-          <nav className="hidden sm:flex items-center gap-4 text-xs text-gray-700 font-medium">
-            <Link to="/invoice-generator" className="hover:text-blue-500 transition-colors">Invoice</Link>
-            <Link to="/self-employment-tax-calculator" className="hover:text-blue-500 transition-colors">1099 Tax</Link>
-            <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck</Link>
-            <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
-            <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors">Multiple Pay Stubs</Link>
-            <Link to="/states" className="hover:text-blue-500 transition-colors">States</Link>
-            <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
-            <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
+          <nav className="hidden sm:flex items-center gap-6 text-sm text-gray-700 font-medium">
+            <div className="relative group">
+              <button className="flex items-center gap-1 hover:text-blue-600 transition-colors py-2">
+                Tools
+                <svg className="w-3 h-3 mt-0.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <path d="M3 4.5L6 7.5L9 4.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              {/* pt-2 bridges the hover gap so the menu stays open */}
+              <div className="absolute left-0 top-full pt-2 hidden group-hover:block z-30">
+                <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-2 w-60">
+                  {TOOLS.map(({ path, label }) => (
+                    <Link key={path} to={path}
+                      className="block px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <Link to="/states" className="hover:text-blue-600 transition-colors">States</Link>
+            <Link to="/guides" className="hover:text-blue-600 transition-colors">Guides</Link>
+            <Link to="/about" className="hover:text-blue-600 transition-colors">About</Link>
           </nav>
 
           {/* 모바일 햄버거 버튼 */}
@@ -245,12 +273,11 @@ function Layout({ children }) {
         {mobileMenuOpen && (
           <nav className="sm:hidden border-t border-gray-200">
             <div className="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
-              <Link to="/invoice-generator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Invoice Generator</Link>
-              <Link to="/self-employment-tax-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>1099 / Self-Employment Tax</Link>
-              <Link to="/paycheck-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Paycheck</Link>
-              <Link to="/hourly-to-salary-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Hourly to Salary</Link>
-              <Link to="/overtime-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Overtime Calculator</Link>
-              <Link to="/multiple-paystubs" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Multiple Pay Stubs</Link>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-1 pb-1">Tools</p>
+              {TOOLS.map(({ path, label }) => (
+                <Link key={path} to={path} className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>{label}</Link>
+              ))}
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-3 pb-1">Explore</p>
               <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
               <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link to="/about" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>About</Link>
@@ -283,6 +310,7 @@ function Layout({ children }) {
               <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck Calculator</Link>
               <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
               <Link to="/overtime-calculator" className="hover:text-blue-500 transition-colors">Overtime Calculator</Link>
+              <Link to="/bonus-tax-calculator" className="hover:text-blue-500 transition-colors">Bonus Tax Calculator</Link>
               <Link to="/multiple-paystubs" className="hover:text-blue-500 transition-colors">Multiple Pay Stubs</Link>
               <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
@@ -323,6 +351,7 @@ export default function App() {
           <Route path="/1099-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/invoice-generator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><InvoiceGenerator /></SubPage>} />
           <Route path="/overtime-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><OvertimeCalc /></SubPage>} />
+          <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />
           <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
           <Route path="/about" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><About /></SubPage>} />

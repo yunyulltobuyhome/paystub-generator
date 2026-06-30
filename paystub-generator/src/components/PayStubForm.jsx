@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { STATE_TAXES } from '../data/stateTaxRates'
 import { calcPayStub, getPayPeriods } from '../utils/taxCalculator'
 import PayStubPreview, { TEMPLATES } from './PayStubPreview'
+import AdSlot from './AdSlot'
+import { AD_SLOTS } from '../config/ads'
 
 export default function PayStubForm() {
   const [step, setStep] = useState(1)
@@ -413,6 +415,8 @@ export default function PayStubForm() {
             Always consult a qualified payroll professional or CPA for official payroll processing.
             The user is solely responsible for the accuracy of information entered.
           </div>
+
+          <AdSlot slot={AD_SLOTS.result} />
         </div>
       )}
     </div>

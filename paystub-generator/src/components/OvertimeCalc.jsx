@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { usePageMeta } from '../hooks/usePageMeta'
+import AdSlot from './AdSlot'
+import { AD_SLOTS } from '../config/ads'
 
 export default function OvertimeCalc() {
   usePageMeta({
@@ -122,6 +124,7 @@ export default function OvertimeCalc() {
             <a href="/paycheck-calculator" className="underline font-semibold">Paycheck Calculator</a>,
             or create a full <a href="/" className="underline font-semibold">pay stub</a>.
           </div>
+          <AdSlot slot={AD_SLOTS.result} />
         </div>
       )}
 

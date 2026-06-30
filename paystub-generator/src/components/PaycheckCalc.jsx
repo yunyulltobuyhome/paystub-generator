@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { STATE_TAXES } from '../data/stateTaxRates'
 import { calcPayStub, getPayPeriods } from '../utils/taxCalculator'
 import { usePageMeta } from '../hooks/usePageMeta'
+import AdSlot from './AdSlot'
+import { AD_SLOTS } from '../config/ads'
 
 export default function PaycheckCalc() {
   usePageMeta({
@@ -222,6 +224,8 @@ export default function PaycheckCalc() {
               Create Free Pay Stub →
             </a>
           </div>
+
+          <AdSlot slot={AD_SLOTS.result} />
         </div>
       )}
 
