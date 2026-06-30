@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { calcFederalTax } from '../utils/taxCalculator'
 import { FICA } from '../data/stateTaxRates'
-import { getStateBySlug, STATE_LIST } from '../utils/states'
+import { getStateBySlug, STATE_LIST, STATE_MIN_WAGE, FEDERAL_MIN_WAGE } from '../utils/states'
 import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blog/blogShared'
 
 const SAMPLE_SALARY = 60000
@@ -48,6 +48,8 @@ export default function StatePayStub() {
 
   const hasTax = state.rate > 0
   const s = sampleTakeHome(state.rate)
+  const minWage = STATE_MIN_WAGE[state.code] || FEDERAL_MIN_WAGE
+  const aboveFederal = minWage > FEDERAL_MIN_WAGE
 
   const FAQ = [
     {
@@ -59,6 +61,10 @@ export default function StatePayStub() {
     {
       q: `How much is take-home pay on $60,000 in ${state.name}?`,
       a: `On a $60,000 salary (single filer, 2026), the estimated take-home pay in ${state.name} is about ${fmt(s.net)} per year after federal tax, Social Security, Medicare${hasTax ? `, and ${state.name} state tax` : ''}.`,
+    },
+    {
+      q: `What is the minimum wage in ${state.name} in 2026?`,
+      a: `${state.name}'s minimum wage is approximately $${minWage.toFixed(2)} per hour in 2026${aboveFederal ? ', above the $7.25 federal minimum' : ', the same as the federal minimum'}. Some cities set higher local rates — verify with the state labor department.`,
     },
     {
       q: `Are employers in ${state.name} required to provide pay stubs?`,
@@ -161,6 +167,27 @@ export default function StatePayStub() {
               and local taxes. Use our calculator for your own numbers.
             </p>
           </div>
+        </section>
+
+        <section>
+          <h2 className="text-base font-bold text-gray-800 mb-3">Minimum Wage in {state.name} (2026)</h2>
+          <div className="rounded-xl border border-gray-200 p-4 flex items-center justify-between">
+            <div>
+              <p className="text-2xl font-black text-gray-800">${minWage.toFixed(2)}<span className="text-sm font-medium text-gray-400">/hour</span></p>
+              <p className="text-xs text-gray-500 mt-0.5">
+                {aboveFederal
+                  ? `Higher than the federal minimum of $${FEDERAL_MIN_WAGE.toFixed(2)}/hour.`
+                  : `Same as the federal minimum of $${FEDERAL_MIN_WAGE.toFixed(2)}/hour.`}
+              </p>
+            </div>
+            <div className="text-right text-xs text-gray-400">
+              <p>Full-time (40 hrs/wk)</p>
+              <p className="font-semibold text-gray-600">≈ {fmt(minWage * 40 * 52)}/yr</p>
+            </div>
+          </div>
+          <p className="text-xs text-gray-400 mt-2">
+            Approximate 2026 figure. Some cities set higher local minimums — verify with the {state.name} Department of Labor.
+          </p>
         </section>
 
         <section>

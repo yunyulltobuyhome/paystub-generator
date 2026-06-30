@@ -18,11 +18,12 @@ export default function AdSlot({ slot, format = 'auto', className = '' }) {
   if (!slot) return null
 
   return (
-    <div className={`my-6 text-center print:hidden ${className}`}>
+    // min-height reserves space so the ad loading in doesn't shift layout (CLS).
+    <div className={`my-6 text-center print:hidden ${className}`} style={{ minHeight: 280 }}>
       <p className="text-[10px] uppercase tracking-wide text-gray-300 mb-1">Advertisement</p>
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{ display: 'block', minHeight: 250 }}
         data-ad-client={AD_CLIENT}
         data-ad-slot={slot}
         data-ad-format={format}

@@ -14,6 +14,7 @@ import http from 'node:http'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { execSync } from 'node:child_process'
 import { STATE_TAXES } from '../src/data/stateTaxRates.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -24,6 +25,7 @@ const slugify = (n) => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|
 
 const GUIDES = [
   'how-to-read-your-pay-stub', 'what-is-ytd-on-a-paycheck', 'how-many-pay-stubs-for-apartment',
+  'gross-vs-net-pay', 'pay-stub-abbreviations',
   'what-is-fica-tax', 'federal-vs-state-income-tax', 'pay-stub-vs-w2', 'how-to-calculate-overtime',
 ]
 
@@ -80,10 +82,17 @@ async function run() {
   let browser
   try {
     browser = await chromium.launch(launchOpts)
-  } catch (e) {
-    console.warn('[prerender] Could not launch Chromium — skipping prerender (SPA build kept).', e.message)
-    server.close()
-    return
+  } catch {
+    // Browser not present (e.g. fresh CI). Try to install it once, then retry.
+    try {
+      console.log('[prerender] Chromium missing — installing via Playwright...')
+      execSync('npx --yes playwright install chromium', { stdio: 'inherit' })
+      browser = await chromium.launch(launchOpts)
+    } catch (e2) {
+      console.warn('[prerender] Could not launch Chromium — skipping prerender (SPA build kept).', e2.message)
+      server.close()
+      return
+    }
   }
 
   const page = await browser.newPage()

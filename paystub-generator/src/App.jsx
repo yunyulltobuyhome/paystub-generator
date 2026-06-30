@@ -17,10 +17,13 @@ import PayStubVsW2 from './components/blog/PayStubVsW2'
 import HowToCalculateOvertime from './components/blog/HowToCalculateOvertime'
 import WhatIsYtd from './components/blog/WhatIsYtd'
 import PayStubsForApartment from './components/blog/PayStubsForApartment'
+import GrossVsNetPay from './components/blog/GrossVsNetPay'
+import PayStubAbbreviations from './components/blog/PayStubAbbreviations'
 import MultiPayStub from './components/MultiPayStub'
 import EmbedFrame from './components/EmbedFrame'
 import NotFound from './components/NotFound'
 import CookieConsent, { openCookieSettings } from './components/CookieConsent'
+import { useAnalytics } from './hooks/useAnalytics'
 import OvertimeCalc from './components/OvertimeCalc'
 import BonusTaxCalc from './components/BonusTaxCalc'
 import StatesIndex from './components/StatesIndex'
@@ -195,6 +198,8 @@ function HomePage() {
                 { path: '/guides/how-to-read-your-pay-stub', title: 'How to Read Your Pay Stub' },
                 { path: '/guides/what-is-ytd-on-a-paycheck', title: 'What is YTD on a Paycheck? Year-to-Date Explained' },
                 { path: '/guides/how-many-pay-stubs-for-apartment', title: 'How Many Pay Stubs Do You Need to Rent an Apartment?' },
+                { path: '/guides/gross-vs-net-pay', title: 'Gross Pay vs Net Pay: What\'s the Difference?' },
+                { path: '/guides/pay-stub-abbreviations', title: 'Pay Stub Abbreviations Explained (Cheat Sheet)' },
                 { path: '/guides/what-is-fica-tax', title: 'What is FICA Tax? Social Security & Medicare Explained' },
                 { path: '/guides/federal-vs-state-income-tax', title: 'Federal vs State Income Tax: What\'s the Difference?' },
                 { path: '/guides/pay-stub-vs-w2', title: 'Pay Stub vs W-2: What\'s the Difference?' },
@@ -365,6 +370,8 @@ function MainApp() {
           <Route path="/guides/how-to-calculate-overtime" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><HowToCalculateOvertime /></SubPage>} />
           <Route path="/guides/what-is-ytd-on-a-paycheck" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><WhatIsYtd /></SubPage>} />
           <Route path="/guides/how-many-pay-stubs-for-apartment" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><PayStubsForApartment /></SubPage>} />
+          <Route path="/guides/gross-vs-net-pay" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><GrossVsNetPay /></SubPage>} />
+          <Route path="/guides/pay-stub-abbreviations" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><PayStubAbbreviations /></SubPage>} />
           <Route path="/privacy" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PrivacyPolicy /></SubPage>} />
           <Route path="/terms" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TermsOfService /></SubPage>} />
           <Route path="/multiple-paystubs" element={<MultiPayStub />} />
@@ -376,6 +383,7 @@ function MainApp() {
 
 function Shell() {
   const { pathname } = useLocation()
+  useAnalytics()
   // Embed pages render chrome-free (no header/footer) for use inside an iframe.
   if (pathname.startsWith('/embed/')) {
     return (

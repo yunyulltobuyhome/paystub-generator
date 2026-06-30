@@ -23,6 +23,20 @@ const POSTS = [
     category: 'Guide',
   },
   {
+    slug: 'gross-vs-net-pay',
+    title: 'Gross Pay vs Net Pay: What\'s the Difference?',
+    desc: 'Gross is before deductions, net is your take-home. How taxes and deductions turn one into the other, with a 2026 example.',
+    readTime: '4 min read',
+    category: 'Guide',
+  },
+  {
+    slug: 'pay-stub-abbreviations',
+    title: 'Pay Stub Abbreviations Explained (Cheat Sheet)',
+    desc: 'A plain-English cheat sheet for YTD, FICA, OASDI, FED, SIT, 401(k) and every common pay stub code.',
+    readTime: '3 min read',
+    category: 'Guide',
+  },
+  {
     slug: 'what-is-fica-tax',
     title: 'What is FICA Tax? Social Security & Medicare Explained (2026)',
     desc: 'FICA is 7.65% of every paycheck. Here\'s what Social Security and Medicare taxes fund, how they\'re calculated, and the 2026 wage base.',

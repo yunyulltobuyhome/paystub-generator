@@ -1,7 +1,6 @@
 // Generates public/og-image.png (1200×630) for social sharing.
 // Run: node scripts/og-image.mjs  (needs Playwright + Chromium available)
 
-import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
