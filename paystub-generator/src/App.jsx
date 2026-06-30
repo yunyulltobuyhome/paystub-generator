@@ -4,6 +4,7 @@ import PayStubForm from './components/PayStubForm'
 import PaycheckCalc from './components/PaycheckCalc'
 import HourlyToSalaryCalc from './components/HourlyToSalaryCalc'
 import SelfEmploymentTaxCalc from './components/SelfEmploymentTaxCalc'
+import InvoiceGenerator from './components/InvoiceGenerator'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsOfService from './components/TermsOfService'
 import About from './components/About'
@@ -43,6 +44,7 @@ function HomePage() {
             <h2 className="text-base font-bold text-gray-800 mb-3">More Free Tools</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
+                { path: '/invoice-generator', icon: '📑', title: 'Invoice Generator', desc: 'Create & download invoices — free, no watermark' },
                 { path: '/self-employment-tax-calculator', icon: '🧾', title: 'Self-Employment Tax Calculator', desc: '1099 & gig tax + quarterly payments' },
                 { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
                 { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
@@ -163,7 +165,7 @@ function HomePage() {
 function SubPage({ backTo = '/', backLabel = '← Back', children }) {
   return (
     <div className="max-w-3xl mx-auto">
-      <div className="px-4 py-4">
+      <div className="px-4 py-4 print:hidden">
         <Link to={backTo} className="text-sm text-blue-600 hover:underline">{backLabel}</Link>
       </div>
       {children}
@@ -186,6 +188,7 @@ function Layout({ children }) {
 
           {/* 데스크톱 메뉴 */}
           <nav className="hidden sm:flex items-center gap-4 text-xs text-gray-700 font-medium">
+            <Link to="/invoice-generator" className="hover:text-blue-500 transition-colors">Invoice</Link>
             <Link to="/self-employment-tax-calculator" className="hover:text-blue-500 transition-colors">1099 Tax</Link>
             <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck</Link>
             <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
@@ -207,6 +210,7 @@ function Layout({ children }) {
         {mobileMenuOpen && (
           <nav className="sm:hidden border-t border-gray-200">
             <div className="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
+              <Link to="/invoice-generator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Invoice Generator</Link>
               <Link to="/self-employment-tax-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>1099 / Self-Employment Tax</Link>
               <Link to="/paycheck-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Paycheck</Link>
               <Link to="/hourly-to-salary-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Hourly to Salary</Link>
@@ -237,6 +241,7 @@ function Layout({ children }) {
           </div>
           <div className="text-center text-xs text-gray-400 space-y-2">
             <div className="flex justify-center gap-4 flex-wrap">
+              <Link to="/invoice-generator" className="hover:text-blue-500 transition-colors">Invoice Generator</Link>
               <Link to="/self-employment-tax-calculator" className="hover:text-blue-500 transition-colors">Self-Employment Tax</Link>
               <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck Calculator</Link>
               <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
@@ -257,7 +262,7 @@ function Layout({ children }) {
         @media print {
           header, footer, button { display: none !important; }
           body { background: white !important; }
-          #paystub-preview { border: 1px solid #ccc !important; }
+          #paystub-preview, #invoice-preview { border: 1px solid #ccc !important; }
         }
       `}</style>
     </div>
@@ -274,6 +279,7 @@ export default function App() {
           <Route path="/hourly-to-salary-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><HourlyToSalaryCalc /></SubPage>} />
           <Route path="/self-employment-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/1099-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
+          <Route path="/invoice-generator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><InvoiceGenerator /></SubPage>} />
           <Route path="/about" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><About /></SubPage>} />
           <Route path="/contact" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Contact /></SubPage>} />
           <Route path="/guides" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Blog /></SubPage>} />
