@@ -27,7 +27,7 @@ function HomePage() {
             for all 50 states. No sign-up, no watermark, no fees.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
-            {['✅ 2026 Tax Tables', '✅ All 50 States', '✅ No Sign-Up', '✅ Instant PDF', '✅ Salary & Hourly'].map(t => (
+            {['✅ 2026 Tax Tables', '✅ All 50 States', '✅ No Sign-Up', '✅ Instant PDF', '✅ 4 Free Templates', '✅ Logo Upload'].map(t => (
               <span key={t} className="bg-blue-500/50 px-3 py-1 rounded-full">{t}</span>
             ))}
           </div>
@@ -124,7 +124,8 @@ function HomePage() {
             <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
             <div className="space-y-3">
               {[
-                { q: 'Is this pay stub generator really free?', a: 'Yes — 100% free with no hidden fees, no watermark, and no sign-up required. Generate as many pay stubs as you need.' },
+                { q: 'Is this pay stub generator really free?', a: 'Yes — 100% free with no hidden fees, no watermark, and no sign-up required. Generate as many pay stubs as you need. Features that other sites charge for — multiple professional templates and company logo upload — are completely free here.' },
+                { q: 'Can I choose a template and add my company logo?', a: 'Yes. Choose from 4 professional pay stub templates (Classic Blue, Modern Slate, Minimal B&W, and Corporate Green) and optionally upload your company logo. Your logo is processed entirely in your browser and never uploaded to a server.' },
                 { q: 'Is it legal to generate your own pay stub?', a: 'Generating pay stubs for legitimate personal record-keeping is legal. However, using a pay stub to misrepresent your income to a lender, landlord, or government agency is fraud and is illegal. Always ensure all information entered is accurate and truthful.' },
                 { q: 'How do I save the pay stub as a PDF?', a: 'Click "Print / Save PDF" after generating your stub. In the print dialog, select "Save as PDF" as the destination. This works on all modern browsers on desktop and mobile.' },
                 { q: 'Will lenders or landlords accept this pay stub?', a: 'This tool generates pay stubs for personal record-keeping only. Whether a lender or landlord accepts it depends on their specific requirements. For official income verification, contact your employer or a licensed payroll provider.' },

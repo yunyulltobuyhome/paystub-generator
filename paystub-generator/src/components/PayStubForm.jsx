@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { STATE_TAXES } from '../data/stateTaxRates'
 import { calcPayStub, getPayPeriods } from '../utils/taxCalculator'
-import PayStubPreview from './PayStubPreview'
+import PayStubPreview, { TEMPLATES } from './PayStubPreview'
 
 export default function PayStubForm() {
   const [step, setStep] = useState(1)
@@ -37,6 +37,21 @@ export default function PayStubForm() {
     ytdGross: '',
   })
   const [result, setResult] = useState(null)
+  const [template, setTemplate] = useState('classic')
+  const [logo, setLogo] = useState(null)
+
+  const handleLogoUpload = (e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    if (!file.type.startsWith('image/')) return
+    if (file.size > 2 * 1024 * 1024) {
+      alert('Please choose an image under 2MB.')
+      return
+    }
+    const reader = new FileReader()
+    reader.onload = () => setLogo(reader.result)
+    reader.readAsDataURL(file)
+  }
 
   const set = (key, val) => setForm(f => ({ ...f, [key]: val }))
   const fmt = (n) => '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -351,7 +366,35 @@ export default function PayStubForm() {
       {/* Step 3 — Preview */}
       {step === 3 && result && (
         <div>
-          <PayStubPreview result={result} />
+          {/* Template + Logo — free here, premium on most competitor sites */}
+          <div className="mb-4 bg-white rounded-2xl border border-gray-200 p-4 print:hidden">
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-sm font-bold text-gray-700">Choose a Template</p>
+              <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Free · No Watermark</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+              {Object.entries(TEMPLATES).map(([key, tpl]) => (
+                <button key={key} onClick={() => setTemplate(key)}
+                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition-all ${
+                    template === key ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                  }`}>
+                  {tpl.label}
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 flex-wrap">
+              <label className="cursor-pointer text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-2 rounded-lg transition-colors">
+                {logo ? '🔄 Change Logo' : '🖼️ Add Company Logo'}
+                <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
+              </label>
+              {logo && (
+                <button onClick={() => setLogo(null)} className="text-xs text-gray-400 hover:text-red-500">Remove logo</button>
+              )}
+              <span className="text-xs text-gray-400">Optional · stays private in your browser</span>
+            </div>
+          </div>
+
+          <PayStubPreview result={result} template={template} logo={logo} />
           <div className="mt-4 flex gap-3">
             <button onClick={() => setStep(2)}
               className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-colors">

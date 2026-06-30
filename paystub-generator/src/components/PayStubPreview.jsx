@@ -1,5 +1,50 @@
-export default function PayStubPreview({ result }) {
+// Professional pay stub templates — free here, paid on most competitor sites.
+export const TEMPLATES = {
+  classic: {
+    label: 'Classic Blue',
+    header: 'bg-blue-600 text-white',
+    headerSub: 'text-blue-200',
+    accent: 'text-blue-600',
+    netBox: 'bg-blue-50',
+    netLabel: 'text-blue-500',
+    netValue: 'text-blue-700',
+    border: 'border-gray-300',
+  },
+  modern: {
+    label: 'Modern Slate',
+    header: 'bg-slate-800 text-white',
+    headerSub: 'text-slate-300',
+    accent: 'text-slate-700',
+    netBox: 'bg-slate-100',
+    netLabel: 'text-slate-500',
+    netValue: 'text-slate-800',
+    border: 'border-slate-400',
+  },
+  minimal: {
+    label: 'Minimal B&W',
+    header: 'bg-white text-gray-900 border-b-2 border-gray-900',
+    headerSub: 'text-gray-500',
+    accent: 'text-gray-900',
+    netBox: 'bg-gray-100',
+    netLabel: 'text-gray-500',
+    netValue: 'text-gray-900',
+    border: 'border-gray-400',
+  },
+  corporate: {
+    label: 'Corporate Green',
+    header: 'bg-emerald-700 text-white',
+    headerSub: 'text-emerald-100',
+    accent: 'text-emerald-700',
+    netBox: 'bg-emerald-50',
+    netLabel: 'text-emerald-600',
+    netValue: 'text-emerald-700',
+    border: 'border-emerald-300',
+  },
+}
+
+export default function PayStubPreview({ result, template = 'classic', logo = null }) {
   const { form } = result
+  const t = TEMPLATES[template] || TEMPLATES.classic
   const fmt = (n) => '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
   const deductions = [
@@ -15,16 +60,21 @@ export default function PayStubPreview({ result }) {
   ]
 
   return (
-    <div id="paystub-preview" className="bg-white border-2 border-gray-300 rounded-2xl overflow-hidden print:border-gray-400">
+    <div id="paystub-preview" className={`bg-white border-2 ${t.border} rounded-2xl overflow-hidden print:border-gray-400`}>
       {/* Header */}
-      <div className="bg-blue-600 text-white px-6 py-4">
-        <div className="flex justify-between items-start">
-          <div>
-            <h1 className="text-xl font-black">{form.companyName || 'Company Name'}</h1>
-            <p className="text-blue-200 text-sm mt-0.5">{form.companyAddress}</p>
+      <div className={`${t.header} px-6 py-4`}>
+        <div className="flex justify-between items-start gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            {logo && (
+              <img src={logo} alt="Company logo" className="h-12 w-12 object-contain rounded bg-white/90 p-1 shrink-0" />
+            )}
+            <div className="min-w-0">
+              <h1 className="text-xl font-black truncate">{form.companyName || 'Company Name'}</h1>
+              <p className={`${t.headerSub} text-sm mt-0.5`}>{form.companyAddress}</p>
+            </div>
           </div>
-          <div className="text-right">
-            <p className="text-blue-200 text-xs">PAY STUB</p>
+          <div className="text-right shrink-0">
+            <p className={`${t.headerSub} text-xs`}>PAY STUB</p>
             {form.checkNumber && <p className="text-sm font-bold">Check #{form.checkNumber}</p>}
           </div>
         </div>
@@ -99,11 +149,11 @@ export default function PayStubPreview({ result }) {
       </div>
 
       {/* Net Pay */}
-      <div className="px-6 py-4 bg-blue-50 border-b border-gray-200">
+      <div className={`px-6 py-4 ${t.netBox} border-b border-gray-200`}>
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-xs text-blue-500 uppercase tracking-wide font-bold">Net Pay</p>
-            <p className="text-3xl font-black text-blue-700">{fmt(result.netPay)}</p>
+            <p className={`text-xs ${t.netLabel} uppercase tracking-wide font-bold`}>Net Pay</p>
+            <p className={`text-3xl font-black ${t.netValue}`}>{fmt(result.netPay)}</p>
           </div>
           <div className="text-right text-xs text-gray-500">
             <p>Gross: {fmt(result.grossPay)}</p>
