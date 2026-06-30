@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export function usePageMeta({ title, description }) {
+export function usePageMeta({ title, description, canonicalPath }) {
   useEffect(() => {
     if (title) document.title = title
 
@@ -14,8 +14,8 @@ export function usePageMeta({ title, description }) {
       tag.setAttribute('content', description)
     }
 
-    // canonical
-    const path = window.location.pathname
+    // canonical — use an explicit canonicalPath when provided (e.g. for alias routes)
+    const path = canonicalPath || window.location.pathname
     let canonical = document.querySelector('link[rel="canonical"]')
     if (!canonical) {
       canonical = document.createElement('link')
@@ -28,5 +28,5 @@ export function usePageMeta({ title, description }) {
       // 홈으로 돌아갈 때 기본값 복원
       document.title = 'Free Pay Stub Generator 2026 — No Sign-Up, Instant PDF | MyFreePayStub'
     }
-  }, [title, description])
+  }, [title, description, canonicalPath])
 }

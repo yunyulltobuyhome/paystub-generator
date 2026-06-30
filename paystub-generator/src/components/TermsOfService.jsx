@@ -20,10 +20,12 @@ export default function TermsOfService() {
         <section>
           <h2 className="text-base font-bold text-gray-800 mb-3">1. Acceptance of Terms</h2>
           <p className="leading-relaxed">
-            By accessing or using this website and the pay stub generation tool ("the Tool"),
-            you agree to be bound by these Terms of Service ("Terms"). If you do not agree to
-            these Terms, you must not use the Tool. These Terms apply to all visitors and users
-            of the website.
+            By accessing or using this website, the pay stub generation tool, and any associated
+            calculators or estimators — including the paycheck calculator, hourly-to-salary
+            calculator, multiple pay stub generator, and self-employment / 1099 tax calculator
+            (collectively, "the Tool") — you agree to be bound by these Terms of Service ("Terms").
+            If you do not agree to these Terms, you must not use the Tool. These Terms apply to all
+            visitors and users of the website.
           </p>
         </section>
 
@@ -51,6 +53,13 @@ export default function TermsOfService() {
             <li>
               This Tool does <strong>not file payroll taxes</strong>, submit withholding to the IRS
               or any state agency, issue W-2 forms, or perform any official payroll function.
+            </li>
+            <li>
+              Our calculators (including the self-employment / 1099 tax calculator and quarterly
+              estimated tax estimates) provide <strong>simplified estimates for general planning only</strong>.
+              They do not account for every credit, deduction, exemption, local tax, or individual
+              circumstance, do not file or pay taxes on your behalf, and are <strong>not a substitute
+              for the IRS Form 1040-ES worksheet or professional tax preparation</strong>.
             </li>
           </ul>
         </section>

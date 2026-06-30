@@ -3,6 +3,7 @@ import { useState } from 'react'
 import PayStubForm from './components/PayStubForm'
 import PaycheckCalc from './components/PaycheckCalc'
 import HourlyToSalaryCalc from './components/HourlyToSalaryCalc'
+import SelfEmploymentTaxCalc from './components/SelfEmploymentTaxCalc'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsOfService from './components/TermsOfService'
 import About from './components/About'
@@ -42,8 +43,10 @@ function HomePage() {
             <h2 className="text-base font-bold text-gray-800 mb-3">More Free Tools</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
+                { path: '/self-employment-tax-calculator', icon: '🧾', title: 'Self-Employment Tax Calculator', desc: '1099 & gig tax + quarterly payments' },
                 { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
                 { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
+                { path: '/multiple-paystubs', icon: '📄', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
               ].map(({ path, icon, title, desc }) => (
                 <Link key={path} to={path}
                   className="flex items-start gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 transition-colors group">
@@ -182,6 +185,7 @@ function Layout({ children }) {
 
           {/* 데스크톱 메뉴 */}
           <nav className="hidden sm:flex items-center gap-4 text-xs text-gray-700 font-medium">
+            <Link to="/self-employment-tax-calculator" className="hover:text-blue-500 transition-colors">1099 Tax</Link>
             <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck</Link>
             <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
             <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors">Multiple Pay Stubs</Link>
@@ -202,6 +206,7 @@ function Layout({ children }) {
         {mobileMenuOpen && (
           <nav className="sm:hidden border-t border-gray-200">
             <div className="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
+              <Link to="/self-employment-tax-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>1099 / Self-Employment Tax</Link>
               <Link to="/paycheck-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Paycheck</Link>
               <Link to="/hourly-to-salary-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Hourly to Salary</Link>
               <Link to="/multiple-paystubs" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Multiple Pay Stubs</Link>
@@ -219,16 +224,19 @@ function Layout({ children }) {
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-xs text-amber-800">
             <p className="font-bold mb-1">⚠️ Important Disclaimer</p>
             <p className="leading-relaxed">
-              PayStubFree is a free tool for <strong>estimation and personal record-keeping purposes only</strong>.
-              It is NOT a licensed payroll service and does not constitute official payroll documentation.
-              Tax calculations are estimates based on 2026 IRS tables and approximate state rates —
-              actual withholding may vary. <strong>Intentionally falsifying income information is illegal
-              and may constitute fraud under federal and state law.</strong> Users are solely responsible
-              for the accuracy of all information entered. Always consult a licensed payroll provider or CPA.
+              PayStubFree provides free tools for <strong>estimation and personal record-keeping purposes only</strong>.
+              It is NOT a licensed payroll service, tax preparer, or financial advisor, and does not constitute
+              official payroll documentation. All pay stubs, tax figures, and calculator results — including
+              self-employment, paycheck, and quarterly tax estimates — are approximations based on 2026 IRS tables
+              and simplified state rates, and <strong>do not constitute tax, legal, or financial advice</strong>.
+              Actual amounts may vary; always verify with the IRS and a qualified CPA or tax professional.
+              <strong> Intentionally falsifying income information is illegal and may constitute fraud under
+              federal and state law.</strong> Users are solely responsible for the accuracy of all information entered.
             </p>
           </div>
           <div className="text-center text-xs text-gray-400 space-y-2">
             <div className="flex justify-center gap-4 flex-wrap">
+              <Link to="/self-employment-tax-calculator" className="hover:text-blue-500 transition-colors">Self-Employment Tax</Link>
               <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck Calculator</Link>
               <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
               <Link to="/multiple-paystubs" className="hover:text-blue-500 transition-colors">Multiple Pay Stubs</Link>
@@ -263,6 +271,8 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/paycheck-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PaycheckCalc /></SubPage>} />
           <Route path="/hourly-to-salary-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><HourlyToSalaryCalc /></SubPage>} />
+          <Route path="/self-employment-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
+          <Route path="/1099-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/about" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><About /></SubPage>} />
           <Route path="/contact" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Contact /></SubPage>} />
           <Route path="/guides" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Blog /></SubPage>} />
