@@ -19,6 +19,7 @@ import WhatIsYtd from './components/blog/WhatIsYtd'
 import PayStubsForApartment from './components/blog/PayStubsForApartment'
 import MultiPayStub from './components/MultiPayStub'
 import EmbedFrame from './components/EmbedFrame'
+import NotFound from './components/NotFound'
 import CookieConsent, { openCookieSettings } from './components/CookieConsent'
 import OvertimeCalc from './components/OvertimeCalc'
 import BonusTaxCalc from './components/BonusTaxCalc'
@@ -366,8 +367,8 @@ function MainApp() {
           <Route path="/guides/how-many-pay-stubs-for-apartment" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><PayStubsForApartment /></SubPage>} />
           <Route path="/privacy" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PrivacyPolicy /></SubPage>} />
           <Route path="/terms" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TermsOfService /></SubPage>} />
-          <Route path="*" element={<HomePage />} />
           <Route path="/multiple-paystubs" element={<MultiPayStub />} />
+          <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   )

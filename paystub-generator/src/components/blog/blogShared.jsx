@@ -21,9 +21,23 @@ export function ArticleJsonLd({ headline, description, slug, datePublished = '20
       logo: { '@type': 'ImageObject', url: `${SITE}/favicon.svg` },
     },
   }
+  // Breadcrumb trail (Home > section > page) — surfaces breadcrumbs in search results.
+  const crumbs = [{ name: 'Home', url: `${SITE}/` }]
+  if (slug.startsWith('/guides/')) crumbs.push({ name: 'Guides', url: `${SITE}/guides` })
+  else if (slug.startsWith('/pay-stub/')) crumbs.push({ name: 'States', url: `${SITE}/states` })
+  crumbs.push({ name: headline, url: `${SITE}${slug}` })
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem', position: i + 1, name: c.name, item: c.url,
+    })),
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {faq && faq.length > 0 && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
