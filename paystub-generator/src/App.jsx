@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import PayStubForm from './components/PayStubForm'
 import PaycheckCalc from './components/PaycheckCalc'
@@ -18,6 +18,7 @@ import HowToCalculateOvertime from './components/blog/HowToCalculateOvertime'
 import WhatIsYtd from './components/blog/WhatIsYtd'
 import PayStubsForApartment from './components/blog/PayStubsForApartment'
 import MultiPayStub from './components/MultiPayStub'
+import EmbedFrame from './components/EmbedFrame'
 import CookieConsent, { openCookieSettings } from './components/CookieConsent'
 import OvertimeCalc from './components/OvertimeCalc'
 import BonusTaxCalc from './components/BonusTaxCalc'
@@ -339,11 +340,10 @@ function Layout({ children }) {
   )
 }
 
-export default function App() {
+function MainApp() {
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
+    <Layout>
+      <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/paycheck-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PaycheckCalc /></SubPage>} />
           <Route path="/hourly-to-salary-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><HourlyToSalaryCalc /></SubPage>} />
@@ -368,8 +368,28 @@ export default function App() {
           <Route path="/terms" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TermsOfService /></SubPage>} />
           <Route path="*" element={<HomePage />} />
           <Route path="/multiple-paystubs" element={<MultiPayStub />} />
-        </Routes>
-      </Layout>
+      </Routes>
+    </Layout>
+  )
+}
+
+function Shell() {
+  const { pathname } = useLocation()
+  // Embed pages render chrome-free (no header/footer) for use inside an iframe.
+  if (pathname.startsWith('/embed/')) {
+    return (
+      <Routes>
+        <Route path="/embed/:tool" element={<EmbedFrame />} />
+      </Routes>
+    )
+  }
+  return <MainApp />
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Shell />
     </BrowserRouter>
   )
 }

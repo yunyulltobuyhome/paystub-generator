@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
+import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
 
 export default function OvertimeCalc() {
@@ -127,6 +128,8 @@ export default function OvertimeCalc() {
           <AdSlot slot={AD_SLOTS.result} />
         </div>
       )}
+
+      <div className="mt-8"><EmbedSnippet tool="overtime-calculator" title="Overtime Pay Calculator" height="640" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
         <div className="bg-white rounded-2xl border border-gray-200 p-6">

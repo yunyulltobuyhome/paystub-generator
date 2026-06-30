@@ -3,6 +3,7 @@ import { STATE_TAXES, FICA } from '../data/stateTaxRates'
 import { calcFederalTax, calcStateTax } from '../utils/taxCalculator'
 import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
+import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
 
 // Self-employment tax constants (2026)
@@ -275,6 +276,8 @@ export default function SelfEmploymentTaxCalc() {
           <AdSlot slot={AD_SLOTS.result} />
         </div>
       )}
+
+      <div className="mt-8"><EmbedSnippet tool="self-employment-tax-calculator" title="Self-Employment Tax Calculator" height="820" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
         <div className="bg-white rounded-2xl border border-gray-200 p-6">

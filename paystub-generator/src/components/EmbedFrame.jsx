@@ -1,0 +1,59 @@
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import PaycheckCalc from './PaycheckCalc'
+import HourlyToSalaryCalc from './HourlyToSalaryCalc'
+import OvertimeCalc from './OvertimeCalc'
+import BonusTaxCalc from './BonusTaxCalc'
+import SelfEmploymentTaxCalc from './SelfEmploymentTaxCalc'
+
+const EMBED_TOOLS = {
+  'paycheck-calculator': { C: PaycheckCalc, title: 'Paycheck Calculator' },
+  'hourly-to-salary-calculator': { C: HourlyToSalaryCalc, title: 'Hourly to Salary Calculator' },
+  'overtime-calculator': { C: OvertimeCalc, title: 'Overtime Pay Calculator' },
+  'bonus-tax-calculator': { C: BonusTaxCalc, title: 'Bonus Tax Calculator' },
+  'self-employment-tax-calculator': { C: SelfEmploymentTaxCalc, title: 'Self-Employment Tax Calculator' },
+}
+
+export default function EmbedFrame() {
+  const { tool } = useParams()
+  const entry = EMBED_TOOLS[tool]
+
+  // Embed pages must not be indexed (avoid duplicate content); the attribution
+  // link points crawlers to the canonical page instead.
+  useEffect(() => {
+    let tag = document.querySelector('meta[name="robots"]')
+    const prev = tag?.getAttribute('content')
+    if (!tag) {
+      tag = document.createElement('meta')
+      tag.setAttribute('name', 'robots')
+      document.head.appendChild(tag)
+    }
+    tag.setAttribute('content', 'noindex, follow')
+    return () => { if (prev) tag.setAttribute('content', prev) }
+  }, [])
+
+  if (!entry) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center p-6 text-center">
+        <a href="https://myfreepaystub.com" className="text-blue-600 font-bold underline">
+          MyFreePayStub — Free Pay Stub & Tax Tools
+        </a>
+      </div>
+    )
+  }
+
+  const C = entry.C
+  const target = `https://myfreepaystub.com/${tool}`
+
+  return (
+    <div className="min-h-screen bg-white">
+      <C />
+      <div className="border-t border-gray-200 py-3 text-center">
+        <a href={target} target="_blank" rel="noopener"
+          className="text-xs font-semibold text-blue-600 hover:underline">
+          ⚡ Powered by MyFreePayStub — Free {entry.title}
+        </a>
+      </div>
+    </div>
+  )
+}
