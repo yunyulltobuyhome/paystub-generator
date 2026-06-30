@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://paystubfree.com/sitemap.xml
+Sitemap: https://myfreepaystub.com/sitemap.xml

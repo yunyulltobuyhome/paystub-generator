@@ -101,7 +101,7 @@ export default function PayStubVsW2() {
           <p className="leading-relaxed">
             If you're self-employed, a freelancer, or your employer doesn't provide pay stubs,
             you can generate your own pay stub for personal record-keeping using a tool like
-            PayStubFree. This can be useful for tracking your income, estimating your taxes,
+            MyFreePayStub. This can be useful for tracking your income, estimating your taxes,
             or providing income documentation for non-official purposes.
           </p>
           <p className="mt-2 text-xs text-gray-500">

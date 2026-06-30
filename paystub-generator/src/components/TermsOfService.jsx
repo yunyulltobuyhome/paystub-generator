@@ -1,4 +1,11 @@
+import { usePageMeta } from '../hooks/usePageMeta'
+
 export default function TermsOfService() {
+  usePageMeta({
+    title: 'Terms of Service — MyFreePayStub',
+    description: 'The terms governing use of MyFreePayStub\'s free pay stub generator, invoice generator, and tax calculators, including acceptable use, disclaimers, and limitation of liability.',
+    canonicalPath: '/terms',
+  })
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-black text-gray-800 mb-2">Terms of Service</h1>
@@ -32,7 +39,7 @@ export default function TermsOfService() {
         <section>
           <h2 className="text-base font-bold text-gray-800 mb-3">2. Nature of the Tool — Not a Payroll Service</h2>
           <p className="leading-relaxed mb-3">
-            PayStubFree is a free online tool that generates pay stub documents based on information
+            MyFreePayStub is a free online tool that generates pay stub documents based on information
             provided by the user. It is provided for <strong>informational and general record-keeping
             purposes only</strong>. Specifically:
           </p>
@@ -171,7 +178,7 @@ export default function TermsOfService() {
         <section>
           <h2 className="text-base font-bold text-gray-800 mb-3">8. Intellectual Property</h2>
           <p className="leading-relaxed">
-            The design, code, and content of this website are owned by PayStubFree and protected
+            The design, code, and content of this website are owned by MyFreePayStub and protected
             by applicable intellectual property laws. You may use the Tool for personal or
             business purposes in accordance with these Terms, but you may not copy, reproduce,
             or redistribute the website's code or content without our permission.
@@ -200,8 +207,8 @@ export default function TermsOfService() {
           <h2 className="text-base font-bold text-gray-800 mb-3">11. Contact</h2>
           <p className="leading-relaxed">
             For questions about these Terms, contact us at{' '}
-            <a href="mailto:hello@paystubfree.com" className="text-blue-500 hover:underline">
-              hello@paystubfree.com
+            <a href="mailto:hello@myfreepaystub.com" className="text-blue-500 hover:underline">
+              hello@myfreepaystub.com
             </a>.
           </p>
         </section>

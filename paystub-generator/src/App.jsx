@@ -16,6 +16,7 @@ import FederalVsStateTax from './components/blog/FederalVsStateTax'
 import PayStubVsW2 from './components/blog/PayStubVsW2'
 import HowToCalculateOvertime from './components/blog/HowToCalculateOvertime'
 import MultiPayStub from './components/MultiPayStub'
+import CookieConsent, { openCookieSettings } from './components/CookieConsent'
 
 function HomePage() {
   return (
@@ -181,8 +182,8 @@ function Layout({ children }) {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-1">
-            <span className="text-xl font-black text-blue-600">PayStub</span>
-            <span className="text-xl font-black text-gray-700">Free</span>
+            <span className="text-xl font-black text-blue-600">MyFree</span>
+            <span className="text-xl font-black text-gray-700">PayStub</span>
             <span className="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full font-semibold">100% Free</span>
           </Link>
 
@@ -229,7 +230,7 @@ function Layout({ children }) {
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-xs text-amber-800">
             <p className="font-bold mb-1">⚠️ Important Disclaimer</p>
             <p className="leading-relaxed">
-              PayStubFree provides free tools for <strong>estimation and personal record-keeping purposes only</strong>.
+              MyFreePayStub provides free tools for <strong>estimation and personal record-keeping purposes only</strong>.
               It is NOT a licensed payroll service, tax preparer, or financial advisor, and does not constitute
               official payroll documentation. All pay stubs, tax figures, and calculator results — including
               self-employment, paycheck, and quarterly tax estimates — are approximations based on 2026 IRS tables
@@ -251,12 +252,15 @@ function Layout({ children }) {
               <Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link>
               <Link to="/privacy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-blue-500 transition-colors">Terms of Service</Link>
+              <button onClick={openCookieSettings} className="hover:text-blue-500 transition-colors">Cookie settings</button>
             </div>
-            <p>© 2026 PayStubFree — Free Pay Stub Generator</p>
+            <p>© 2026 MyFreePayStub — Free Pay Stub Generator</p>
             <p>For informational and record-keeping purposes only. Not a licensed payroll service.</p>
           </div>
         </div>
       </footer>
+
+      <CookieConsent />
 
       <style>{`
         @media print {
