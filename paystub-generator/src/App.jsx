@@ -19,6 +19,9 @@ import WhatIsYtd from './components/blog/WhatIsYtd'
 import PayStubsForApartment from './components/blog/PayStubsForApartment'
 import MultiPayStub from './components/MultiPayStub'
 import CookieConsent, { openCookieSettings } from './components/CookieConsent'
+import OvertimeCalc from './components/OvertimeCalc'
+import StatesIndex from './components/StatesIndex'
+import StatePayStub from './components/StatePayStub'
 
 function HomePage() {
   return (
@@ -51,6 +54,7 @@ function HomePage() {
                 { path: '/self-employment-tax-calculator', icon: '🧾', title: 'Self-Employment Tax Calculator', desc: '1099 & gig tax + quarterly payments' },
                 { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
                 { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
+                { path: '/overtime-calculator', icon: '⏱️', title: 'Overtime Pay Calculator', desc: 'Time-and-a-half & double-time pay' },
                 { path: '/multiple-paystubs', icon: '📄', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
               ].map(({ path, icon, title, desc }) => (
                 <Link key={path} to={path}
@@ -144,6 +148,31 @@ function HomePage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-3">Pay Stub Guides by State</h2>
+            <p className="text-xs text-gray-500 mb-3">
+              See your state's income tax rate, a take-home pay example, and pay stub requirements.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { slug: 'california', name: 'California' },
+                { slug: 'texas', name: 'Texas' },
+                { slug: 'new-york', name: 'New York' },
+                { slug: 'florida', name: 'Florida' },
+                { slug: 'illinois', name: 'Illinois' },
+                { slug: 'pennsylvania', name: 'Pennsylvania' },
+              ].map(({ slug, name }) => (
+                <Link key={slug} to={`/pay-stub/${slug}`}
+                  className="text-xs bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">
+                  {name}
+                </Link>
+              ))}
+              <Link to="/states" className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1.5 font-semibold hover:bg-blue-700 transition-colors">
+                All 50 states →
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Payroll & Tax Guides</h2>
             <div className="space-y-2">
               {[
@@ -198,6 +227,7 @@ function Layout({ children }) {
             <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck</Link>
             <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
             <Link to="/multiple-paystubs" className="hover:text-blue-600 transition-colors">Multiple Pay Stubs</Link>
+            <Link to="/states" className="hover:text-blue-500 transition-colors">States</Link>
             <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
             <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
           </nav>
@@ -219,7 +249,9 @@ function Layout({ children }) {
               <Link to="/self-employment-tax-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>1099 / Self-Employment Tax</Link>
               <Link to="/paycheck-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Paycheck</Link>
               <Link to="/hourly-to-salary-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Hourly to Salary</Link>
+              <Link to="/overtime-calculator" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Overtime Calculator</Link>
               <Link to="/multiple-paystubs" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Multiple Pay Stubs</Link>
+              <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
               <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link to="/about" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>About</Link>
             </div>
@@ -250,7 +282,9 @@ function Layout({ children }) {
               <Link to="/self-employment-tax-calculator" className="hover:text-blue-500 transition-colors">Self-Employment Tax</Link>
               <Link to="/paycheck-calculator" className="hover:text-blue-500 transition-colors">Paycheck Calculator</Link>
               <Link to="/hourly-to-salary-calculator" className="hover:text-blue-500 transition-colors">Hourly to Salary</Link>
+              <Link to="/overtime-calculator" className="hover:text-blue-500 transition-colors">Overtime Calculator</Link>
               <Link to="/multiple-paystubs" className="hover:text-blue-500 transition-colors">Multiple Pay Stubs</Link>
+              <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
               <Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link>
@@ -288,6 +322,9 @@ export default function App() {
           <Route path="/self-employment-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/1099-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/invoice-generator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><InvoiceGenerator /></SubPage>} />
+          <Route path="/overtime-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><OvertimeCalc /></SubPage>} />
+          <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />
+          <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
           <Route path="/about" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><About /></SubPage>} />
           <Route path="/contact" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Contact /></SubPage>} />
           <Route path="/guides" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Blog /></SubPage>} />
