@@ -21,6 +21,7 @@ import GrossVsNetPay from './components/blog/GrossVsNetPay'
 import PayStubAbbreviations from './components/blog/PayStubAbbreviations'
 import MultiPayStub from './components/MultiPayStub'
 import EmbedFrame from './components/EmbedFrame'
+import EmploymentVerificationLetter from './components/EmploymentVerificationLetter'
 import NotFound from './components/NotFound'
 import CookieConsent, { openCookieSettings } from './components/CookieConsent'
 import { useAnalytics } from './hooks/useAnalytics'
@@ -39,6 +40,7 @@ const TOOLS = [
   { path: '/self-employment-tax-calculator', label: 'Self-Employment Tax (1099)' },
   { path: '/multiple-paystubs', label: 'Multiple Pay Stubs' },
   { path: '/invoice-generator', label: 'Invoice Generator' },
+  { path: '/employment-verification-letter', label: 'Employment Verification Letter' },
 ]
 
 function HomePage() {
@@ -75,6 +77,7 @@ function HomePage() {
                 { path: '/overtime-calculator', icon: '⏱️', title: 'Overtime Pay Calculator', desc: 'Time-and-a-half & double-time pay' },
                 { path: '/bonus-tax-calculator', icon: '🎁', title: 'Bonus Tax Calculator', desc: 'How much tax comes out of your bonus' },
                 { path: '/multiple-paystubs', icon: '📄', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
+                { path: '/employment-verification-letter', icon: '📝', title: 'Employment Verification Letter', desc: 'Proof-of-employment letter for rent or loans' },
               ].map(({ path, icon, title, desc }) => (
                 <Link key={path} to={path}
                   className="flex items-start gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 transition-colors group">
@@ -319,6 +322,7 @@ function Layout({ children }) {
               <Link to="/overtime-calculator" className="hover:text-blue-500 transition-colors">Overtime Calculator</Link>
               <Link to="/bonus-tax-calculator" className="hover:text-blue-500 transition-colors">Bonus Tax Calculator</Link>
               <Link to="/multiple-paystubs" className="hover:text-blue-500 transition-colors">Multiple Pay Stubs</Link>
+              <Link to="/employment-verification-letter" className="hover:text-blue-500 transition-colors">Verification Letter</Link>
               <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
@@ -340,6 +344,7 @@ function Layout({ children }) {
           header, footer, button { display: none !important; }
           body { background: white !important; }
           #paystub-preview, #invoice-preview { border: 1px solid #ccc !important; }
+          #letter-preview { border: 0 !important; }
         }
       `}</style>
     </div>
@@ -356,6 +361,7 @@ function MainApp() {
           <Route path="/self-employment-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/1099-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/invoice-generator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><InvoiceGenerator /></SubPage>} />
+          <Route path="/employment-verification-letter" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><EmploymentVerificationLetter /></SubPage>} />
           <Route path="/overtime-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><OvertimeCalc /></SubPage>} />
           <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />

@@ -27,10 +27,12 @@ export default function TermsOfService() {
         <section>
           <h2 className="text-base font-bold text-gray-800 mb-3">1. Acceptance of Terms</h2>
           <p className="leading-relaxed">
-            By accessing or using this website, the pay stub generation tool, and any associated
-            calculators or estimators — including the paycheck calculator, hourly-to-salary
-            calculator, multiple pay stub generator, and self-employment / 1099 tax calculator
-            (collectively, "the Tool") — you agree to be bound by these Terms of Service ("Terms").
+            By accessing or using this website and any of its tools, calculators, or document
+            generators — including the pay stub generator, paycheck calculator, hourly-to-salary
+            calculator, overtime calculator, bonus tax calculator, self-employment / 1099 tax
+            calculator, multiple pay stub generator, invoice generator, and employment verification
+            letter generator (collectively, "the Tool") — you agree to be bound by these Terms of
+            Service ("Terms").
             If you do not agree to these Terms, you must not use the Tool. These Terms apply to all
             visitors and users of the website.
           </p>
@@ -67,6 +69,13 @@ export default function TermsOfService() {
               They do not account for every credit, deduction, exemption, local tax, or individual
               circumstance, do not file or pay taxes on your behalf, and are <strong>not a substitute
               for the IRS Form 1040-ES worksheet or professional tax preparation</strong>.
+            </li>
+            <li>
+              Documents such as invoices and employment verification letters are <strong>templates
+              only</strong>. An employment verification letter is not valid unless it is completed and
+              signed by an authorized representative of the actual employer. Issuing a verification
+              letter, invoice, or pay stub that <strong>misrepresents employment, income, or job
+              title</strong> — or signing one without authority to do so — may constitute fraud.
             </li>
           </ul>
         </section>
