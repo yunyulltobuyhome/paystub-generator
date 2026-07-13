@@ -39,14 +39,19 @@ export default function PrivacyPolicy() {
           <p className="leading-relaxed mb-3">
             When you use our generators and calculators, you may enter information such as employer
             and employee names, salary or hourly rate, tax filing status and US state, deduction
-            amounts, invoice and client details, and any company logo you choose to upload.
+            amounts, invoice and client details, income figures for the income verification packet
+            builder, and any company logo you choose to upload. We deliberately do not ask for or
+            collect Social Security Numbers or bank account/routing numbers anywhere on this site —
+            no field for either exists in any of our tools.
           </p>
           <p className="leading-relaxed">
             <strong>This information is processed entirely within your browser using JavaScript.</strong>
             It is never transmitted to, stored on, or accessed by our servers or any third party. Any
             logo you add is read locally in your browser and is not uploaded. We have no technical
             ability to view or retrieve what you enter. When you close or refresh the page, that data
-            is permanently cleared from your device's memory.
+            is permanently cleared from your device's memory. The income verification packet builder
+            specifically does not use local storage either — its data exists only for your current
+            session.
           </p>
         </section>
 

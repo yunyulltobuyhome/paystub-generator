@@ -30,9 +30,9 @@ export default function TermsOfService() {
             By accessing or using this website and any of its tools, calculators, or document
             generators — including the pay stub generator, paycheck calculator, hourly-to-salary
             calculator, overtime calculator, bonus tax calculator, self-employment / 1099 tax
-            calculator, multiple pay stub generator, invoice generator, and employment verification
-            letter generator (collectively, "the Tool") — you agree to be bound by these Terms of
-            Service ("Terms").
+            calculator, multiple pay stub generator, invoice generator, employment verification
+            letter generator, and income verification packet builder (collectively, "the Tool") —
+            you agree to be bound by these Terms of Service ("Terms").
             If you do not agree to these Terms, you must not use the Tool. These Terms apply to all
             visitors and users of the website.
           </p>
@@ -76,6 +76,16 @@ export default function TermsOfService() {
               signed by an authorized representative of the actual employer. Issuing a verification
               letter, invoice, or pay stub that <strong>misrepresents employment, income, or job
               title</strong> — or signing one without authority to do so — may constitute fraud.
+            </li>
+            <li>
+              The income verification packet builder only <strong>formats income figures you
+              enter</strong> into a readable document. It does not confirm, audit, or guarantee the
+              accuracy of that information, and is <strong>not issued or verified by any government
+              agency, employer, or financial institution</strong>. It does not guarantee that any
+              landlord, lender, or other third party will accept the resulting document. Data you
+              enter is processed only in your browser for the current session — it is never sent to
+              or stored on our servers, and is not saved to your device (no local storage); closing
+              or refreshing the page clears it.
             </li>
           </ul>
         </section>

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import PayStubForm from './components/PayStubForm'
 import PaycheckCalc from './components/PaycheckCalc'
 import HourlyToSalaryCalc from './components/HourlyToSalaryCalc'
@@ -29,6 +29,9 @@ import OvertimeCalc from './components/OvertimeCalc'
 import BonusTaxCalc from './components/BonusTaxCalc'
 import StatesIndex from './components/StatesIndex'
 import StatePayStub from './components/StatePayStub'
+// Lazy-loaded: @react-pdf/renderer is large, so this route's JS only downloads
+// when a visitor actually opens the Income Verification Packet Builder.
+const IncomeVerificationPacketBuilder = lazy(() => import('./components/incomePacket/IncomeVerificationPacketBuilder'))
 
 // Shared tool list — used by the desktop "Tools" dropdown and the mobile menu.
 const TOOLS = [
@@ -41,6 +44,7 @@ const TOOLS = [
   { path: '/multiple-paystubs', label: 'Multiple Pay Stubs' },
   { path: '/invoice-generator', label: 'Invoice Generator' },
   { path: '/employment-verification-letter', label: 'Employment Verification Letter' },
+  { path: '/income-verification-packet', label: 'Income Verification Packet' },
 ]
 
 function HomePage() {
@@ -78,6 +82,7 @@ function HomePage() {
                 { path: '/bonus-tax-calculator', icon: '🎁', title: 'Bonus Tax Calculator', desc: 'How much tax comes out of your bonus' },
                 { path: '/multiple-paystubs', icon: '📄', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
                 { path: '/employment-verification-letter', icon: '📝', title: 'Employment Verification Letter', desc: 'Proof-of-employment letter for rent or loans' },
+                { path: '/income-verification-packet', icon: '📊', title: 'Income Verification Packet', desc: 'Organize gig & freelance income into a PDF packet' },
               ].map(({ path, icon, title, desc }) => (
                 <Link key={path} to={path}
                   className="flex items-start gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 transition-colors group">
@@ -323,6 +328,7 @@ function Layout({ children }) {
               <Link to="/bonus-tax-calculator" className="hover:text-blue-500 transition-colors">Bonus Tax Calculator</Link>
               <Link to="/multiple-paystubs" className="hover:text-blue-500 transition-colors">Multiple Pay Stubs</Link>
               <Link to="/employment-verification-letter" className="hover:text-blue-500 transition-colors">Verification Letter</Link>
+              <Link to="/income-verification-packet" className="hover:text-blue-500 transition-colors">Income Packet Builder</Link>
               <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
@@ -362,6 +368,13 @@ function MainApp() {
           <Route path="/1099-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SelfEmploymentTaxCalc /></SubPage>} />
           <Route path="/invoice-generator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><InvoiceGenerator /></SubPage>} />
           <Route path="/employment-verification-letter" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><EmploymentVerificationLetter /></SubPage>} />
+          <Route path="/income-verification-packet" element={
+            <SubPage backTo="/" backLabel="← Back to Pay Stub Generator">
+              <Suspense fallback={<div className="max-w-2xl mx-auto px-4 py-16 text-center text-gray-400 text-sm">Loading…</div>}>
+                <IncomeVerificationPacketBuilder />
+              </Suspense>
+            </SubPage>
+          } />
           <Route path="/overtime-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><OvertimeCalc /></SubPage>} />
           <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />
