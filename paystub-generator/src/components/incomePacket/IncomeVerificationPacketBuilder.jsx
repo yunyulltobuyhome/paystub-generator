@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import IPBProgressBar from './IPBProgressBar'
 import StepAboutYou from './StepAboutYou'
@@ -6,11 +7,15 @@ import StepIncome from './StepIncome'
 import StepExpenses from './StepExpenses'
 import StepPreview from './StepPreview'
 import { NO_PERSISTENCE_NOTICE } from '../../config/incomePacket'
+import { OCCUPATIONS } from '../../data/incomePacketPresets'
 
-const INITIAL_DATA = {
-  aboutYou: { name: '', occupation: '', occupationOther: '', businessType: 'sole-prop', period: 3 },
-  income: { monthly: [], sources: [] },
-  expenses: { skipped: false, categories: {} },
+function buildInitialData(presetOccupation) {
+  const isValidPreset = OCCUPATIONS.some(o => o.value === presetOccupation)
+  return {
+    aboutYou: { name: '', occupation: isValidPreset ? presetOccupation : '', occupationOther: '', businessType: 'sole-prop', period: 3 },
+    income: { monthly: [], sources: [] },
+    expenses: { skipped: false, categories: {} },
+  }
 }
 
 // All wizard data lives in this component's state only — never persisted to
@@ -22,12 +27,13 @@ export default function IncomeVerificationPacketBuilder() {
     canonicalPath: '/income-verification-packet',
   })
 
+  const [searchParams] = useSearchParams()
   const [step, setStep] = useState(1)
-  const [data, setData] = useState(INITIAL_DATA)
+  const [data, setData] = useState(() => buildInitialData(searchParams.get('occupation')))
 
   const goNext = () => setStep(s => Math.min(s + 1, 4))
   const goBack = () => setStep(s => Math.max(s - 1, 1))
-  const startOver = () => { setData(INITIAL_DATA); setStep(1) }
+  const startOver = () => { setData(buildInitialData(null)); setStep(1) }
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">

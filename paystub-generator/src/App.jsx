@@ -29,6 +29,13 @@ import OvertimeCalc from './components/OvertimeCalc'
 import BonusTaxCalc from './components/BonusTaxCalc'
 import StatesIndex from './components/StatesIndex'
 import StatePayStub from './components/StatePayStub'
+import IncomeProofGuideHub from './components/incomePacket/IncomeProofGuideHub'
+import NicheLanding from './components/incomePacket/NicheLanding'
+import WhatIsIncomeVerificationPacket from './components/incomePacket/guides/WhatIsIncomeVerificationPacket'
+import ProofOfIncomeForFreelancers from './components/incomePacket/guides/ProofOfIncomeForFreelancers'
+import ProofOfIncomeWithoutPayStubs from './components/incomePacket/guides/ProofOfIncomeWithoutPayStubs'
+import ProfitAndLossForGigWorkers from './components/incomePacket/guides/ProfitAndLossForGigWorkers'
+
 // Lazy-loaded: @react-pdf/renderer is large, so this route's JS only downloads
 // when a visitor actually opens the Income Verification Packet Builder.
 const IncomeVerificationPacketBuilder = lazy(() => import('./components/incomePacket/IncomeVerificationPacketBuilder'))
@@ -219,6 +226,41 @@ function HomePage() {
               ))}
             </div>
           </div>
+
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-3">Freelancer &amp; Gig Worker Guides</h2>
+            <p className="text-xs text-gray-500 mb-3">
+              Don't get a pay stub? Learn how to document your income and build a free
+              income verification packet.
+            </p>
+            <div className="space-y-2 mb-3">
+              {[
+                { path: '/how-to-prove-income/what-is-an-income-verification-packet', title: 'What Is an Income Verification Packet?' },
+                { path: '/how-to-prove-income/proof-of-income-for-freelancers', title: 'Proof of Income for Freelancers' },
+                { path: '/how-to-prove-income/proof-of-income-without-pay-stubs', title: 'How to Show Proof of Income Without Pay Stubs' },
+              ].map(({ path, title }) => (
+                <Link key={path} to={path} className="flex items-center gap-2 text-sm text-blue-600 hover:underline">
+                  <span>→</span> {title}
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { slug: 'uber-drivers', name: 'Rideshare' },
+                { slug: 'doordash', name: 'Delivery' },
+                { slug: 'upwork-freelancers', name: 'Freelancers' },
+                { slug: 'etsy-sellers', name: 'Online Sellers' },
+              ].map(({ slug, name }) => (
+                <Link key={slug} to={`/for/${slug}`}
+                  className="text-xs bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">
+                  {name}
+                </Link>
+              ))}
+              <Link to="/how-to-prove-income" className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1.5 font-semibold hover:bg-blue-700 transition-colors">
+                All guides →
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
     </>
@@ -272,6 +314,7 @@ function Layout({ children }) {
             </div>
             <Link to="/states" className="hover:text-blue-600 transition-colors">States</Link>
             <Link to="/guides" className="hover:text-blue-600 transition-colors">Guides</Link>
+            <Link to="/how-to-prove-income" className="hover:text-blue-600 transition-colors">Prove Income</Link>
             <Link to="/about" className="hover:text-blue-600 transition-colors">About</Link>
           </nav>
 
@@ -295,6 +338,7 @@ function Layout({ children }) {
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-3 pb-1">Explore</p>
               <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
               <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
+              <Link to="/how-to-prove-income" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Prove Income</Link>
               <Link to="/about" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>About</Link>
             </div>
           </nav>
@@ -330,6 +374,7 @@ function Layout({ children }) {
               <Link to="/employment-verification-letter" className="hover:text-blue-500 transition-colors">Verification Letter</Link>
               <Link to="/income-verification-packet" className="hover:text-blue-500 transition-colors">Income Packet Builder</Link>
               <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
+              <Link to="/how-to-prove-income" className="hover:text-blue-500 transition-colors">Prove Income</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
               <Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link>
@@ -375,6 +420,12 @@ function MainApp() {
               </Suspense>
             </SubPage>
           } />
+          <Route path="/how-to-prove-income" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><IncomeProofGuideHub /></SubPage>} />
+          <Route path="/how-to-prove-income/what-is-an-income-verification-packet" element={<SubPage backTo="/how-to-prove-income" backLabel="← Back to Guides"><WhatIsIncomeVerificationPacket /></SubPage>} />
+          <Route path="/how-to-prove-income/proof-of-income-for-freelancers" element={<SubPage backTo="/how-to-prove-income" backLabel="← Back to Guides"><ProofOfIncomeForFreelancers /></SubPage>} />
+          <Route path="/how-to-prove-income/proof-of-income-without-pay-stubs" element={<SubPage backTo="/how-to-prove-income" backLabel="← Back to Guides"><ProofOfIncomeWithoutPayStubs /></SubPage>} />
+          <Route path="/how-to-prove-income/profit-and-loss-statement-for-gig-workers" element={<SubPage backTo="/how-to-prove-income" backLabel="← Back to Guides"><ProfitAndLossForGigWorkers /></SubPage>} />
+          <Route path="/for/:niche" element={<SubPage backTo="/how-to-prove-income" backLabel="← Back to Guides"><NicheLanding /></SubPage>} />
           <Route path="/overtime-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><OvertimeCalc /></SubPage>} />
           <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />

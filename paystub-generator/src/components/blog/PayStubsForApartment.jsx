@@ -104,6 +104,7 @@ export default function PayStubsForApartment() {
         <RelatedGuides items={[
           { to: '/guides/pay-stub-vs-w2', label: 'Pay Stub vs W-2: What\'s the Difference?' },
           { to: '/guides/how-to-read-your-pay-stub', label: 'How to Read Your Pay Stub' },
+          { to: '/how-to-prove-income/proof-of-income-without-pay-stubs', label: 'How to Show Proof of Income Without Pay Stubs' },
           { to: '/self-employment-tax-calculator', label: 'Self-Employment Tax Calculator (1099)' },
         ]} />
 

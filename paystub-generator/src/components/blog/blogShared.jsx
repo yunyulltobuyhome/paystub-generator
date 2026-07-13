@@ -25,6 +25,8 @@ export function ArticleJsonLd({ headline, description, slug, datePublished = '20
   const crumbs = [{ name: 'Home', url: `${SITE}/` }]
   if (slug.startsWith('/guides/')) crumbs.push({ name: 'Guides', url: `${SITE}/guides` })
   else if (slug.startsWith('/pay-stub/')) crumbs.push({ name: 'States', url: `${SITE}/states` })
+  else if (slug.startsWith('/how-to-prove-income/')) crumbs.push({ name: 'How to Prove Income', url: `${SITE}/how-to-prove-income` })
+  else if (slug.startsWith('/for/')) crumbs.push({ name: 'How to Prove Income', url: `${SITE}/how-to-prove-income` })
   crumbs.push({ name: headline, url: `${SITE}${slug}` })
   const breadcrumb = {
     '@context': 'https://schema.org',

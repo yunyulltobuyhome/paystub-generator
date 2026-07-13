@@ -17,6 +17,7 @@ const ROOT = join(fileURLToPath(import.meta.url), '../..')
 const SCAN_DIRS = [
   join(ROOT, 'src/components/incomePacket'),
   join(ROOT, 'src/data/incomePacketPresets.js'),
+  join(ROOT, 'src/data/nicheContent.js'),
 ]
 
 const NEGATION = /\b(not|never|no|n't|without|isn't|aren't|wasn't|doesn't|does not|do not|did not)\b/i

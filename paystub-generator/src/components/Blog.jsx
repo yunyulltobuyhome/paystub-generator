@@ -70,9 +70,18 @@ export default function Blog() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-black text-gray-800 mb-2">Payroll & Tax Guides</h1>
-      <p className="text-sm text-gray-400 mb-8">
+      <p className="text-sm text-gray-400 mb-6">
         Free guides on pay stubs, payroll taxes, overtime, and more — updated for 2026.
       </p>
+
+      <Link to="/how-to-prove-income"
+        className="block bg-blue-50 border border-blue-200 rounded-2xl p-5 mb-8 hover:bg-blue-100 transition-colors">
+        <p className="text-sm font-bold text-blue-800">Freelancer or gig worker? →</p>
+        <p className="text-xs text-blue-700 mt-0.5">
+          See our guides on proving income without pay stubs, plus a free income verification packet builder.
+        </p>
+      </Link>
+
       <div className="space-y-4">
         {POSTS.map((post) => (
           <Link key={post.slug} to={`/guides/${post.slug}`}
