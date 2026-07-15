@@ -451,7 +451,9 @@ function MainApp() {
   )
 }
 
-function Shell() {
+// Exported for the SSG entry (src/entry-server.jsx), which wraps it in a
+// StaticRouter instead of the BrowserRouter used in the client bundle.
+export function Shell() {
   const { pathname } = useLocation()
   useAnalytics()
   // Embed pages render chrome-free (no header/footer) for use inside an iframe.
