@@ -29,6 +29,8 @@ import OvertimeCalc from './components/OvertimeCalc'
 import BonusTaxCalc from './components/BonusTaxCalc'
 import StatesIndex from './components/StatesIndex'
 import StatePayStub from './components/StatePayStub'
+import SalaryHub from './components/salary/SalaryHub'
+import SalaryAfterTax from './components/salary/SalaryAfterTax'
 import IncomeProofGuideHub from './components/incomePacket/IncomeProofGuideHub'
 import NicheLanding from './components/incomePacket/NicheLanding'
 import WhatIsIncomeVerificationPacket from './components/incomePacket/guides/WhatIsIncomeVerificationPacket'
@@ -207,6 +209,24 @@ function HomePage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-3">Salary After Tax &amp; Per Hour</h2>
+            <p className="text-xs text-gray-500 mb-3">
+              See how much a salary is per hour and your take-home pay by state.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[40000, 50000, 60000, 70000, 80000, 100000].map((a) => (
+                <Link key={a} to={`/salary/${a}-after-tax`}
+                  className="text-xs bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">
+                  ${a.toLocaleString('en-US')}/yr
+                </Link>
+              ))}
+              <Link to="/salary" className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1.5 font-semibold hover:bg-blue-700 transition-colors">
+                All salaries →
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Payroll & Tax Guides</h2>
             <div className="space-y-2">
               {[
@@ -312,6 +332,7 @@ function Layout({ children }) {
                 </div>
               </div>
             </div>
+            <Link to="/salary" className="hover:text-blue-600 transition-colors">Salary</Link>
             <Link to="/states" className="hover:text-blue-600 transition-colors">States</Link>
             <Link to="/guides" className="hover:text-blue-600 transition-colors">Guides</Link>
             <Link to="/how-to-prove-income" className="hover:text-blue-600 transition-colors">Prove Income</Link>
@@ -336,6 +357,7 @@ function Layout({ children }) {
                 <Link key={path} to={path} className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>{label}</Link>
               ))}
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-3 pb-1">Explore</p>
+              <Link to="/salary" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Salary After Tax</Link>
               <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
               <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link to="/how-to-prove-income" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Prove Income</Link>
@@ -374,6 +396,7 @@ function Layout({ children }) {
               <Link to="/employment-verification-letter" className="hover:text-blue-500 transition-colors">Verification Letter</Link>
               <Link to="/income-verification-packet" className="hover:text-blue-500 transition-colors">Income Packet Builder</Link>
               <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
+              <Link to="/salary" className="hover:text-blue-500 transition-colors">Salary After Tax</Link>
               <Link to="/how-to-prove-income" className="hover:text-blue-500 transition-colors">Prove Income</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
@@ -430,6 +453,8 @@ function MainApp() {
           <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />
           <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
+          <Route path="/salary" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SalaryHub /></SubPage>} />
+          <Route path="/salary/:salarySlug" element={<SubPage backTo="/salary" backLabel="← Back to All Salaries"><SalaryAfterTax /></SubPage>} />
           <Route path="/about" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><About /></SubPage>} />
           <Route path="/contact" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Contact /></SubPage>} />
           <Route path="/guides" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Blog /></SubPage>} />

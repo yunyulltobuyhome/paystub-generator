@@ -26,6 +26,7 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, 
 async function buildRoutes() {
   const { STATE_TAXES } = await import(pathToFileURL(path.join(ROOT, 'src/data/stateTaxRates.js')))
   const { NICHE_CONTENT } = await import(pathToFileURL(path.join(ROOT, 'src/data/nicheContent.js')))
+  const { SALARY_AMOUNTS, salarySlug } = await import(pathToFileURL(path.join(ROOT, 'src/data/salaryAmounts.js')))
 
   // route -> { title, desc, canonical? } — titles/descriptions mirror what each
   // component sets via usePageMeta so hydration doesn't change anything visible.
@@ -74,6 +75,10 @@ async function buildRoutes() {
     '/multiple-paystubs': {
       title: 'Free Paystub Generator with YTD — Create Multiple Pay Stubs at Once (2026)',
       desc: 'Generate multiple pay stubs at once with automatic year-to-date (YTD) totals. Free, no sign-up, no watermark. Weekly, bi-weekly, semi-monthly & monthly pay periods.',
+    },
+    '/salary': {
+      title: 'Salary After Tax & Hourly Conversions (2026) | MyFreePayStub',
+      desc: 'See how much common salaries are per hour and after taxes in every US state for 2026 — from $30,000 to $150,000 a year, with full monthly, weekly, and biweekly breakdowns.',
     },
     '/states': {
       title: 'Pay Stub & Paycheck Tax Guides for All 50 States (2026) | MyFreePayStub',
@@ -168,6 +173,14 @@ async function buildRoutes() {
     routes[`/for/${slug}`] = {
       title: `Proof of Income for ${n.label} (2026) | MyFreePayStub`,
       desc: `How ${n.label.toLowerCase()} can show proof of income for rental applications and loans — where to find your ${n.platforms} earnings records, and how to organize them into a free income verification packet.`,
+    }
+  }
+
+  for (const amount of SALARY_AMOUNTS) {
+    const amountStr = amount.toLocaleString('en-US')
+    routes[`/salary/${salarySlug(amount)}`] = {
+      title: `$${amountStr} a Year After Taxes & Per Hour (2026) | MyFreePayStub`,
+      desc: `$${amountStr} a year is $${(amount / 2080).toFixed(2)}/hour. See your 2026 take-home pay after federal, state, and FICA taxes in all 50 states, plus monthly, biweekly, and weekly breakdowns.`,
     }
   }
 

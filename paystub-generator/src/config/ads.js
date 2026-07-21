@@ -13,4 +13,7 @@ export const AD_CLIENT = 'ca-pub-6079116585044991'
 export const AD_SLOTS = {
   // Shown right after a result/preview is generated — the golden impression moment.
   result: '', // e.g. '1234567890'
+  // In-content unit placed mid-article on long, high-traffic pages (salary pages,
+  // long guides). High viewability = higher RPM. Also inert until a slot ID is set.
+  article: '', // e.g. '1234567890'
 }
