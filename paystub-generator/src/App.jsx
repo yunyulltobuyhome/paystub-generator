@@ -31,6 +31,8 @@ import StatesIndex from './components/StatesIndex'
 import StatePayStub from './components/StatePayStub'
 import SalaryHub from './components/salary/SalaryHub'
 import SalaryAfterTax from './components/salary/SalaryAfterTax'
+import HourlyWageHub from './components/hourly/HourlyWageHub'
+import HourlyWagePage from './components/hourly/HourlyWagePage'
 import IncomeProofGuideHub from './components/incomePacket/IncomeProofGuideHub'
 import NicheLanding from './components/incomePacket/NicheLanding'
 import WhatIsIncomeVerificationPacket from './components/incomePacket/guides/WhatIsIncomeVerificationPacket'
@@ -227,6 +229,24 @@ function HomePage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-3">$X an Hour Is How Much a Year?</h2>
+            <p className="text-xs text-gray-500 mb-3">
+              Convert an hourly wage to yearly pay — before and after taxes in your state.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[15, 18, 20, 25, 30, 40].map((r) => (
+                <Link key={r} to={`/hourly/${r}-an-hour`}
+                  className="text-xs bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">
+                  ${r}/hr
+                </Link>
+              ))}
+              <Link to="/hourly" className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1.5 font-semibold hover:bg-blue-700 transition-colors">
+                All wages →
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Payroll & Tax Guides</h2>
             <div className="space-y-2">
               {[
@@ -358,6 +378,7 @@ function Layout({ children }) {
               ))}
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-3 pb-1">Explore</p>
               <Link to="/salary" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Salary After Tax</Link>
+              <Link to="/hourly" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>$X an Hour a Year</Link>
               <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
               <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link to="/how-to-prove-income" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Prove Income</Link>
@@ -397,6 +418,7 @@ function Layout({ children }) {
               <Link to="/income-verification-packet" className="hover:text-blue-500 transition-colors">Income Packet Builder</Link>
               <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
               <Link to="/salary" className="hover:text-blue-500 transition-colors">Salary After Tax</Link>
+              <Link to="/hourly" className="hover:text-blue-500 transition-colors">$X an Hour a Year</Link>
               <Link to="/how-to-prove-income" className="hover:text-blue-500 transition-colors">Prove Income</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
@@ -455,6 +477,8 @@ function MainApp() {
           <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
           <Route path="/salary" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SalaryHub /></SubPage>} />
           <Route path="/salary/:salarySlug" element={<SubPage backTo="/salary" backLabel="← Back to All Salaries"><SalaryAfterTax /></SubPage>} />
+          <Route path="/hourly" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><HourlyWageHub /></SubPage>} />
+          <Route path="/hourly/:hourlySlug" element={<SubPage backTo="/hourly" backLabel="← Back to All Hourly Wages"><HourlyWagePage /></SubPage>} />
           <Route path="/about" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><About /></SubPage>} />
           <Route path="/contact" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Contact /></SubPage>} />
           <Route path="/guides" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Blog /></SubPage>} />
