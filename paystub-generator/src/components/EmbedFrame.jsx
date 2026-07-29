@@ -5,6 +5,14 @@ import HourlyToSalaryCalc from './HourlyToSalaryCalc'
 import OvertimeCalc from './OvertimeCalc'
 import BonusTaxCalc from './BonusTaxCalc'
 import SelfEmploymentTaxCalc from './SelfEmploymentTaxCalc'
+import TimeCardCalc from './TimeCardCalc'
+import NetToGrossCalc from './NetToGrossCalc'
+import ContractorRateCalc from './ContractorRateCalc'
+import EmployerCostCalc from './EmployerCostCalc'
+import PtoAccrualCalc from './PtoAccrualCalc'
+import PayRaiseCalc from './PayRaiseCalc'
+import Contribution401kCalc from './Contribution401kCalc'
+import MileageCalc from './MileageCalc'
 
 const EMBED_TOOLS = {
   'paycheck-calculator': { C: PaycheckCalc, title: 'Paycheck Calculator' },
@@ -12,6 +20,14 @@ const EMBED_TOOLS = {
   'overtime-calculator': { C: OvertimeCalc, title: 'Overtime Pay Calculator' },
   'bonus-tax-calculator': { C: BonusTaxCalc, title: 'Bonus Tax Calculator' },
   'self-employment-tax-calculator': { C: SelfEmploymentTaxCalc, title: 'Self-Employment Tax Calculator' },
+  'time-card-calculator': { C: TimeCardCalc, title: 'Time Card Calculator' },
+  'net-to-gross-calculator': { C: NetToGrossCalc, title: 'Net to Gross Calculator' },
+  '1099-vs-w2-calculator': { C: ContractorRateCalc, title: '1099 vs W-2 Calculator' },
+  'employee-cost-calculator': { C: EmployerCostCalc, title: 'Employee Cost Calculator' },
+  'pto-accrual-calculator': { C: PtoAccrualCalc, title: 'PTO Accrual Calculator' },
+  'pay-raise-calculator': { C: PayRaiseCalc, title: 'Pay Raise Calculator' },
+  '401k-paycheck-calculator': { C: Contribution401kCalc, title: '401(k) Paycheck Calculator' },
+  'mileage-reimbursement-calculator': { C: MileageCalc, title: 'Mileage Reimbursement Calculator' },
 }
 
 export default function EmbedFrame() {

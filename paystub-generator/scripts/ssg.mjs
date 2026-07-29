@@ -61,6 +61,38 @@ async function buildRoutes() {
       desc: 'Free 2026 self-employment tax calculator for 1099 contractors, freelancers, and gig workers. Estimate SE tax, federal & state income tax, and your quarterly estimated tax payments. No sign-up.',
       canonical: '/self-employment-tax-calculator',
     },
+    '/time-card-calculator': {
+      title: 'Free Time Card Calculator — Weekly Timesheet with Breaks & Overtime (2026)',
+      desc: 'Free online time card calculator. Add clock in/out times and breaks for each day to get daily hours, weekly totals, overtime, and total pay. Handles overnight shifts. No sign-up.',
+    },
+    '/net-to-gross-calculator': {
+      title: 'Net to Gross Salary Calculator 2026 — Reverse Paycheck / Gross-Up | MyFreePayStub',
+      desc: 'Work backwards from take-home pay to gross salary. Enter the net pay you want and your state, and see the gross salary and paycheck you need in 2026. Free reverse paycheck calculator.',
+    },
+    '/1099-vs-w2-calculator': {
+      title: '1099 vs W-2 Calculator 2026 — What Hourly Rate Should a Contractor Charge?',
+      desc: 'Free 1099 vs W-2 calculator. See the contractor hourly rate you need to match an employee salary once self-employment tax, unpaid time off, and lost benefits are covered. 2026 rates.',
+    },
+    '/employee-cost-calculator': {
+      title: 'Employee Cost Calculator 2026 — True Cost of an Employee to an Employer',
+      desc: 'Free employer payroll cost calculator. See the true annual cost of an employee: gross salary plus employer FICA, FUTA, state unemployment, workers comp, health insurance, and 401(k) match.',
+    },
+    '/pto-accrual-calculator': {
+      title: 'PTO Accrual Calculator 2026 — Vacation Time Earned Per Hour & Paycheck',
+      desc: 'Free PTO accrual calculator. Convert annual vacation days into an hourly accrual rate, see how much PTO you earn each paycheck, and project your balance. No sign-up.',
+    },
+    '/pay-raise-calculator': {
+      title: 'Pay Raise Calculator 2026 — New Salary, Percentage Increase & Take-Home',
+      desc: 'Free pay raise calculator. Enter your current pay and a raise as a percentage or dollar amount to see your new salary, the increase per paycheck, and your take-home after taxes.',
+    },
+    '/401k-paycheck-calculator': {
+      title: '401(k) Paycheck Impact Calculator 2026 — How Much Will It Reduce My Pay?',
+      desc: 'Free 401(k) calculator. See how much a traditional 401(k) contribution actually reduces your take-home pay after the tax break, plus your employer match and total annual savings.',
+    },
+    '/mileage-reimbursement-calculator': {
+      title: 'Mileage Reimbursement Calculator 2026 — IRS Standard Rate Deduction',
+      desc: 'Free mileage reimbursement calculator for business, medical, and charitable driving. Enter your miles and rate to work out your deduction or reimbursement — built for gig workers and freelancers.',
+    },
     '/invoice-generator': {
       title: 'Free Invoice Generator 2026 — Create & Download Invoices (No Sign-Up) | MyFreePayStub',
       desc: 'Free online invoice generator for freelancers, contractors & small businesses. Create professional invoices, add line items and tax, then download as PDF. No sign-up, no watermark, unlimited.',
@@ -198,7 +230,11 @@ async function buildRoutes() {
 
   // Embed pages must resolve as static files once the SPA fallback is removed.
   // They are noindex + robots-disallowed, so no meta overrides needed.
-  for (const t of ['paycheck-calculator', 'hourly-to-salary-calculator', 'overtime-calculator', 'bonus-tax-calculator', 'self-employment-tax-calculator']) {
+  for (const t of ['paycheck-calculator', 'hourly-to-salary-calculator', 'overtime-calculator',
+    'bonus-tax-calculator', 'self-employment-tax-calculator', 'time-card-calculator',
+    'net-to-gross-calculator', '1099-vs-w2-calculator', 'employee-cost-calculator',
+    'pto-accrual-calculator', 'pay-raise-calculator', '401k-paycheck-calculator',
+    'mileage-reimbursement-calculator']) {
     routes[`/embed/${t}`] = null
   }
 

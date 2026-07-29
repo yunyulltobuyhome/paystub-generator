@@ -33,6 +33,14 @@ import SalaryHub from './components/salary/SalaryHub'
 import SalaryAfterTax from './components/salary/SalaryAfterTax'
 import HourlyWageHub from './components/hourly/HourlyWageHub'
 import HourlyWagePage from './components/hourly/HourlyWagePage'
+import TimeCardCalc from './components/TimeCardCalc'
+import NetToGrossCalc from './components/NetToGrossCalc'
+import ContractorRateCalc from './components/ContractorRateCalc'
+import EmployerCostCalc from './components/EmployerCostCalc'
+import PtoAccrualCalc from './components/PtoAccrualCalc'
+import PayRaiseCalc from './components/PayRaiseCalc'
+import Contribution401kCalc from './components/Contribution401kCalc'
+import MileageCalc from './components/MileageCalc'
 import IncomeProofGuideHub from './components/incomePacket/IncomeProofGuideHub'
 import NicheLanding from './components/incomePacket/NicheLanding'
 import WhatIsIncomeVerificationPacket from './components/incomePacket/guides/WhatIsIncomeVerificationPacket'
@@ -48,10 +56,18 @@ const IncomeVerificationPacketBuilder = lazy(() => import('./components/incomePa
 const TOOLS = [
   { path: '/', label: 'Pay Stub Generator' },
   { path: '/paycheck-calculator', label: 'Paycheck Calculator' },
+  { path: '/time-card-calculator', label: 'Time Card Calculator' },
   { path: '/hourly-to-salary-calculator', label: 'Hourly to Salary' },
+  { path: '/net-to-gross-calculator', label: 'Net to Gross (Reverse)' },
   { path: '/overtime-calculator', label: 'Overtime Calculator' },
+  { path: '/pay-raise-calculator', label: 'Pay Raise Calculator' },
   { path: '/bonus-tax-calculator', label: 'Bonus Tax Calculator' },
+  { path: '/401k-paycheck-calculator', label: '401(k) Paycheck Impact' },
+  { path: '/pto-accrual-calculator', label: 'PTO Accrual Calculator' },
   { path: '/self-employment-tax-calculator', label: 'Self-Employment Tax (1099)' },
+  { path: '/1099-vs-w2-calculator', label: '1099 vs W-2 Calculator' },
+  { path: '/mileage-reimbursement-calculator', label: 'Mileage Reimbursement' },
+  { path: '/employee-cost-calculator', label: 'True Cost of an Employee' },
   { path: '/multiple-paystubs', label: 'Multiple Pay Stubs' },
   { path: '/invoice-generator', label: 'Invoice Generator' },
   { path: '/employment-verification-letter', label: 'Employment Verification Letter' },
@@ -88,8 +104,16 @@ function HomePage() {
                 { path: '/invoice-generator', icon: '📑', title: 'Invoice Generator', desc: 'Create & download invoices — free, no watermark' },
                 { path: '/self-employment-tax-calculator', icon: '🧾', title: 'Self-Employment Tax Calculator', desc: '1099 & gig tax + quarterly payments' },
                 { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
+                { path: '/time-card-calculator', icon: '⏰', title: 'Time Card Calculator', desc: 'Weekly timesheet with breaks & overtime' },
+                { path: '/net-to-gross-calculator', icon: '🔁', title: 'Net to Gross Calculator', desc: 'Work backwards from your target take-home' },
+                { path: '/1099-vs-w2-calculator', icon: '⚖️', title: '1099 vs W-2 Calculator', desc: 'The contract rate that matches a salary' },
                 { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
                 { path: '/overtime-calculator', icon: '⏱️', title: 'Overtime Pay Calculator', desc: 'Time-and-a-half & double-time pay' },
+                { path: '/pay-raise-calculator', icon: '📈', title: 'Pay Raise Calculator', desc: 'New salary & what you really keep' },
+                { path: '/401k-paycheck-calculator', icon: '🏦', title: '401(k) Paycheck Impact', desc: 'What contributing really costs per check' },
+                { path: '/pto-accrual-calculator', icon: '🏖️', title: 'PTO Accrual Calculator', desc: 'Vacation earned per hour & per paycheck' },
+                { path: '/mileage-reimbursement-calculator', icon: '🚗', title: 'Mileage Reimbursement', desc: 'Business, medical & charity mileage value' },
+                { path: '/employee-cost-calculator', icon: '🏢', title: 'True Cost of an Employee', desc: 'Employer payroll taxes, benefits & burden' },
                 { path: '/bonus-tax-calculator', icon: '🎁', title: 'Bonus Tax Calculator', desc: 'How much tax comes out of your bonus' },
                 { path: '/multiple-paystubs', icon: '📄', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
                 { path: '/employment-verification-letter', icon: '📝', title: 'Employment Verification Letter', desc: 'Proof-of-employment letter for rent or loans' },
@@ -342,7 +366,7 @@ function Layout({ children }) {
               </button>
               {/* pt-2 bridges the hover gap so the menu stays open */}
               <div className="absolute left-0 top-full pt-2 hidden group-hover:block z-30">
-                <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-2 w-60">
+                <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-2 w-64 max-h-[70vh] overflow-y-auto">
                   {TOOLS.map(({ path, label }) => (
                     <Link key={path} to={path}
                       className="block px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
@@ -475,6 +499,14 @@ function MainApp() {
           <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />
           <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
+          <Route path="/time-card-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TimeCardCalc /></SubPage>} />
+          <Route path="/net-to-gross-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><NetToGrossCalc /></SubPage>} />
+          <Route path="/1099-vs-w2-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><ContractorRateCalc /></SubPage>} />
+          <Route path="/employee-cost-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><EmployerCostCalc /></SubPage>} />
+          <Route path="/pto-accrual-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PtoAccrualCalc /></SubPage>} />
+          <Route path="/pay-raise-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PayRaiseCalc /></SubPage>} />
+          <Route path="/401k-paycheck-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Contribution401kCalc /></SubPage>} />
+          <Route path="/mileage-reimbursement-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><MileageCalc /></SubPage>} />
           <Route path="/salary" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><SalaryHub /></SubPage>} />
           <Route path="/salary/:salarySlug" element={<SubPage backTo="/salary" backLabel="← Back to All Salaries"><SalaryAfterTax /></SubPage>} />
           <Route path="/hourly" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><HourlyWageHub /></SubPage>} />
