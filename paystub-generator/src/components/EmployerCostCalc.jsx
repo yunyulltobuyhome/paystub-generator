@@ -4,6 +4,7 @@ import { FICA } from '../data/stateTaxRates'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 // Federal unemployment tax: 6.0% on the first $7,000 of wages, but employers in
 // states with compliant programs normally receive a 5.4% credit → 0.6% net.
@@ -262,6 +263,8 @@ export default function EmployerCostCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/employee-cost-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ Estimates for budgeting only — not tax, legal, accounting, or payroll advice. SUTA rates,

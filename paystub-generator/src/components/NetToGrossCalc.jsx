@@ -5,6 +5,7 @@ import { STATE_LIST } from '../utils/states'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 const PERIODS = { annual: 1, monthly: 12, semimonthly: 24, biweekly: 26, weekly: 52 }
 
@@ -230,6 +231,8 @@ export default function NetToGrossCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/net-to-gross-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ This calculator provides estimates for planning only and is not tax, legal, or financial

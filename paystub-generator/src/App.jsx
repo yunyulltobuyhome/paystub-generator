@@ -41,6 +41,10 @@ import PtoAccrualCalc from './components/PtoAccrualCalc'
 import PayRaiseCalc from './components/PayRaiseCalc'
 import Contribution401kCalc from './components/Contribution401kCalc'
 import MileageCalc from './components/MileageCalc'
+import TaxRefundCalc from './components/TaxRefundCalc'
+import W4WithholdingCalc from './components/W4WithholdingCalc'
+import MinimumWageHub from './components/minwage/MinimumWageHub'
+import MinimumWagePage from './components/minwage/MinimumWagePage'
 import IncomeProofGuideHub from './components/incomePacket/IncomeProofGuideHub'
 import NicheLanding from './components/incomePacket/NicheLanding'
 import WhatIsIncomeVerificationPacket from './components/incomePacket/guides/WhatIsIncomeVerificationPacket'
@@ -56,6 +60,8 @@ const IncomeVerificationPacketBuilder = lazy(() => import('./components/incomePa
 const TOOLS = [
   { path: '/', label: 'Pay Stub Generator' },
   { path: '/paycheck-calculator', label: 'Paycheck Calculator' },
+  { path: '/tax-refund-calculator', label: 'Tax Refund Calculator' },
+  { path: '/w4-withholding-calculator', label: 'W-4 Withholding Calculator' },
   { path: '/time-card-calculator', label: 'Time Card Calculator' },
   { path: '/hourly-to-salary-calculator', label: 'Hourly to Salary' },
   { path: '/net-to-gross-calculator', label: 'Net to Gross (Reverse)' },
@@ -104,6 +110,8 @@ function HomePage() {
                 { path: '/invoice-generator', icon: '📑', title: 'Invoice Generator', desc: 'Create & download invoices — free, no watermark' },
                 { path: '/self-employment-tax-calculator', icon: '🧾', title: 'Self-Employment Tax Calculator', desc: '1099 & gig tax + quarterly payments' },
                 { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
+                { path: '/tax-refund-calculator', icon: '💰', title: 'Tax Refund Calculator', desc: 'Estimate your federal refund or bill' },
+                { path: '/w4-withholding-calculator', icon: '📋', title: 'W-4 Withholding Calculator', desc: 'Fix over- or under-withholding' },
                 { path: '/time-card-calculator', icon: '⏰', title: 'Time Card Calculator', desc: 'Weekly timesheet with breaks & overtime' },
                 { path: '/net-to-gross-calculator', icon: '🔁', title: 'Net to Gross Calculator', desc: 'Work backwards from your target take-home' },
                 { path: '/1099-vs-w2-calculator', icon: '⚖️', title: '1099 vs W-2 Calculator', desc: 'The contract rate that matches a salary' },
@@ -377,6 +385,7 @@ function Layout({ children }) {
               </div>
             </div>
             <Link to="/salary" className="hover:text-blue-600 transition-colors">Salary</Link>
+            <Link to="/minimum-wage" className="hover:text-blue-600 transition-colors">Min Wage</Link>
             <Link to="/states" className="hover:text-blue-600 transition-colors">States</Link>
             <Link to="/guides" className="hover:text-blue-600 transition-colors">Guides</Link>
             <Link to="/how-to-prove-income" className="hover:text-blue-600 transition-colors">Prove Income</Link>
@@ -403,6 +412,7 @@ function Layout({ children }) {
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-3 pb-1">Explore</p>
               <Link to="/salary" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Salary After Tax</Link>
               <Link to="/hourly" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>$X an Hour a Year</Link>
+              <Link to="/minimum-wage" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Minimum Wage by State</Link>
               <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
               <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link to="/how-to-prove-income" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Prove Income</Link>
@@ -443,6 +453,7 @@ function Layout({ children }) {
               <Link to="/states" className="hover:text-blue-500 transition-colors">Pay Stubs by State</Link>
               <Link to="/salary" className="hover:text-blue-500 transition-colors">Salary After Tax</Link>
               <Link to="/hourly" className="hover:text-blue-500 transition-colors">$X an Hour a Year</Link>
+              <Link to="/minimum-wage" className="hover:text-blue-500 transition-colors">Minimum Wage by State</Link>
               <Link to="/how-to-prove-income" className="hover:text-blue-500 transition-colors">Prove Income</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
@@ -499,6 +510,10 @@ function MainApp() {
           <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />
           <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
+          <Route path="/tax-refund-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TaxRefundCalc /></SubPage>} />
+          <Route path="/w4-withholding-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><W4WithholdingCalc /></SubPage>} />
+          <Route path="/minimum-wage" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><MinimumWageHub /></SubPage>} />
+          <Route path="/minimum-wage/:stateSlug" element={<SubPage backTo="/minimum-wage" backLabel="← Back to All States"><MinimumWagePage /></SubPage>} />
           <Route path="/time-card-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TimeCardCalc /></SubPage>} />
           <Route path="/net-to-gross-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><NetToGrossCalc /></SubPage>} />
           <Route path="/1099-vs-w2-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><ContractorRateCalc /></SubPage>} />

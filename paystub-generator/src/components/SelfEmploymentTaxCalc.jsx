@@ -5,6 +5,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 // Self-employment tax constants (2026)
 const SE_BASE_FACTOR = 0.9235          // net earnings subject to SE tax
@@ -331,6 +332,8 @@ export default function SelfEmploymentTaxCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/self-employment-tax-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ℹ️ Need take-home pay for a W-2 job instead? Use our{' '}

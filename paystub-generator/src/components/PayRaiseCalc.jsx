@@ -5,6 +5,7 @@ import { STATE_LIST } from '../utils/states'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 function netFor(gross, stateCode) {
   const federal = calcFederalTax(gross, 'single')
@@ -265,6 +266,8 @@ export default function PayRaiseCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/pay-raise-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ Estimates for planning only — not tax or financial advice. Take-home figures assume a

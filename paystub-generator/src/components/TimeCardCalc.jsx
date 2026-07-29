@@ -3,6 +3,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -237,6 +238,8 @@ export default function TimeCardCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/time-card-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ This calculator is for estimation only and is not legal, payroll, or tax advice. Overtime

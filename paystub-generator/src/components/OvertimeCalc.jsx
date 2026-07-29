@@ -3,6 +3,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 export default function OvertimeCalc() {
   usePageMeta({
@@ -187,6 +188,8 @@ export default function OvertimeCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/overtime-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ This calculator is for estimation only and does not constitute legal or payroll advice.

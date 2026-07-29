@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { usePageMeta } from '../hooks/usePageMeta'
 import EmbedSnippet from './EmbedSnippet'
+import RelatedTools from './RelatedTools'
 
 export default function HourlyToSalaryCalc() {
   usePageMeta({
@@ -217,6 +218,8 @@ export default function HourlyToSalaryCalc() {
             </table>
           </div>
         </div>
+
+        <RelatedTools current="/hourly-to-salary-calculator" />
       </div>
     </div>
   )

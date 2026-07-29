@@ -28,6 +28,7 @@ async function buildRoutes() {
   const { NICHE_CONTENT } = await import(pathToFileURL(path.join(ROOT, 'src/data/nicheContent.js')))
   const { SALARY_AMOUNTS, salarySlug } = await import(pathToFileURL(path.join(ROOT, 'src/data/salaryAmounts.js')))
   const { HOURLY_WAGES, hourlyWageSlug } = await import(pathToFileURL(path.join(ROOT, 'src/data/hourlyWages.js')))
+  const { STATE_MIN_WAGE } = await import(pathToFileURL(path.join(ROOT, 'src/data/minimumWage.js')))
 
   // route -> { title, desc, canonical? } — titles/descriptions mirror what each
   // component sets via usePageMeta so hydration doesn't change anything visible.
@@ -60,6 +61,18 @@ async function buildRoutes() {
       title: 'Self-Employment Tax Calculator 2026 — 1099 & Quarterly Estimated Taxes | MyFreePayStub',
       desc: 'Free 2026 self-employment tax calculator for 1099 contractors, freelancers, and gig workers. Estimate SE tax, federal & state income tax, and your quarterly estimated tax payments. No sign-up.',
       canonical: '/self-employment-tax-calculator',
+    },
+    '/tax-refund-calculator': {
+      title: 'Tax Refund Calculator 2026 — Estimate Your Federal Refund Free | MyFreePayStub',
+      desc: 'Free 2026 tax refund estimator. Enter your income, federal tax withheld, filing status, and dependents to estimate your federal refund or how much you owe. No sign-up, nothing stored.',
+    },
+    '/w4-withholding-calculator': {
+      title: 'W-4 Withholding Calculator 2026 — Adjust Your Paycheck Tax | MyFreePayStub',
+      desc: 'Free W-4 withholding calculator. See whether you are withholding too much or too little federal tax, and what extra withholding to enter on line 4(c) to hit your target refund.',
+    },
+    '/minimum-wage': {
+      title: 'Minimum Wage by State 2026 — All 50 States Compared | MyFreePayStub',
+      desc: 'Minimum wage rates for all 50 states and DC in 2026, ranked highest to lowest, with hourly, weekly, and yearly pay. See how your state compares to the federal minimum wage.',
     },
     '/time-card-calculator': {
       title: 'Free Time Card Calculator — Weekly Timesheet with Breaks & Overtime (2026)',
@@ -221,6 +234,15 @@ async function buildRoutes() {
     }
   }
 
+  for (const [code, st] of Object.entries(STATE_TAXES)) {
+    const wage = STATE_MIN_WAGE[code]
+    if (wage == null) continue
+    routes[`/minimum-wage/${slugify(st.name)}`] = {
+      title: `${st.name} Minimum Wage 2026 — Hourly, Weekly & Yearly Pay | MyFreePayStub`,
+      desc: `${st.name}'s minimum wage is about $${wage.toFixed(2)} an hour in 2026 — roughly $${Math.round(wage * 2080).toLocaleString('en-US')} a year full time. See weekly, monthly, and after-tax take-home pay, plus how it compares to the federal minimum.`,
+    }
+  }
+
   for (const rate of HOURLY_WAGES) {
     routes[`/hourly/${hourlyWageSlug(rate)}`] = {
       title: `$${rate} an Hour Is How Much a Year? (After Taxes, 2026) | MyFreePayStub`,
@@ -234,7 +256,7 @@ async function buildRoutes() {
     'bonus-tax-calculator', 'self-employment-tax-calculator', 'time-card-calculator',
     'net-to-gross-calculator', '1099-vs-w2-calculator', 'employee-cost-calculator',
     'pto-accrual-calculator', 'pay-raise-calculator', '401k-paycheck-calculator',
-    'mileage-reimbursement-calculator']) {
+    'mileage-reimbursement-calculator', 'tax-refund-calculator', 'w4-withholding-calculator']) {
     routes[`/embed/${t}`] = null
   }
 

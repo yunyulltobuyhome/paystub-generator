@@ -3,6 +3,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 const FREQUENCIES = [
   { v: 'weekly', l: 'Weekly', periods: 52 },
@@ -252,6 +253,8 @@ export default function PtoAccrualCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/pto-accrual-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ For estimation only — not legal, HR, or payroll advice. PTO accrual, carryover, caps, and

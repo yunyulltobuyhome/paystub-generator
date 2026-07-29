@@ -3,6 +3,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 // Rates are user-editable because the IRS updates the standard mileage rate
 // every year (and sometimes mid-year). Defaults are starting points only —
@@ -234,6 +235,8 @@ export default function MileageCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/mileage-reimbursement-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ Estimates only — not tax or legal advice. IRS standard mileage rates change annually and

@@ -5,6 +5,7 @@ import { STATE_LIST } from '../utils/states'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 export default function Contribution401kCalc() {
   usePageMeta({
@@ -241,6 +242,8 @@ export default function Contribution401kCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/401k-paycheck-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ Estimates for planning only — not tax, investment, or financial advice. This tool does not

@@ -4,6 +4,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 // IRS supplemental wage flat rates (2026)
 const FED_SUPPLEMENTAL = 0.22       // up to $1,000,000
@@ -173,6 +174,8 @@ export default function BonusTaxCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/bonus-tax-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ℹ️ Want your full paycheck after taxes? Use our{' '}

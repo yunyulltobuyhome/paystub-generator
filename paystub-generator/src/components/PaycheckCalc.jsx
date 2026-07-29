@@ -5,6 +5,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 export default function PaycheckCalc() {
   usePageMeta({
@@ -258,6 +259,8 @@ export default function PaycheckCalc() {
             ))}
           </div>
         </div>
+      <RelatedTools current="/paycheck-calculator" />
+
       </div>
     </div>
   )

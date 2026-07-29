@@ -5,6 +5,7 @@ import { STATE_LIST } from '../utils/states'
 import AdSlot from './AdSlot'
 import EmbedSnippet from './EmbedSnippet'
 import { AD_SLOTS } from '../config/ads'
+import RelatedTools from './RelatedTools'
 
 const SE_TAX_RATE = 0.153        // 12.4% Social Security + 2.9% Medicare
 const SE_TAXABLE_PORTION = 0.9235 // net earnings subject to SE tax
@@ -304,6 +305,8 @@ export default function ContractorRateCalc() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/1099-vs-w2-calculator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ⚠️ Estimates for planning only — not tax, legal, or financial advice. Worker classification

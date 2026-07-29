@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { usePageMeta } from '../hooks/usePageMeta'
+import RelatedTools from './RelatedTools'
 
 const CURRENCIES = [
   { code: 'USD', symbol: '$' },
@@ -262,6 +263,8 @@ export default function InvoiceGenerator() {
             ))}
           </div>
         </div>
+
+        <RelatedTools current="/invoice-generator" />
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-800">
           ℹ️ Need to estimate the taxes on this income? Try our{' '}
