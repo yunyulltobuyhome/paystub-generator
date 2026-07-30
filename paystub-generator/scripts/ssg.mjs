@@ -70,6 +70,10 @@ async function buildRoutes() {
       title: 'W-4 Withholding Calculator 2026 — Adjust Your Paycheck Tax | MyFreePayStub',
       desc: 'Free W-4 withholding calculator. See whether you are withholding too much or too little federal tax, and what extra withholding to enter on line 4(c) to hit your target refund.',
     },
+    '/payroll-calendar': {
+      title: '2026 Payroll Calendar Generator — Free Biweekly Pay Period Calendar',
+      desc: 'Free payroll calendar generator. Pick your pay frequency and first payday to get every pay date for 2026, with pay periods, bank holiday warnings, and 27-pay-period detection. Printable.',
+    },
     '/minimum-wage': {
       title: 'Minimum Wage by State 2026 — All 50 States Compared | MyFreePayStub',
       desc: 'Minimum wage rates for all 50 states and DC in 2026, ranked highest to lowest, with hourly, weekly, and yearly pay. See how your state compares to the federal minimum wage.',
@@ -231,6 +235,14 @@ async function buildRoutes() {
     routes[`/salary/${salarySlug(amount)}`] = {
       title: `$${amountStr} a Year After Taxes & Per Hour (2026) | MyFreePayStub`,
       desc: `$${amountStr} a year is $${(amount / 2080).toFixed(2)}/hour. See your 2026 take-home pay after federal, state, and FICA taxes in all 50 states, plus monthly, biweekly, and weekly breakdowns.`,
+    }
+  }
+
+  for (const [, st] of Object.entries(STATE_TAXES)) {
+    const slug = slugify(st.name)
+    routes[`/paycheck-calculator/${slug}`] = {
+      title: `${st.name} Paycheck Calculator 2026 — Take-Home Pay After Taxes | MyFreePayStub`,
+      desc: `Free ${st.name} paycheck calculator for 2026. See your take-home pay after federal, ${st.name} state, Social Security, and Medicare taxes — and compare what the same salary would leave you in other states.`,
     }
   }
 

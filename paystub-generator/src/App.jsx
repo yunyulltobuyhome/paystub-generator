@@ -45,6 +45,8 @@ import TaxRefundCalc from './components/TaxRefundCalc'
 import W4WithholdingCalc from './components/W4WithholdingCalc'
 import MinimumWageHub from './components/minwage/MinimumWageHub'
 import MinimumWagePage from './components/minwage/MinimumWagePage'
+import StatePaycheckCalculator from './components/statecalc/StatePaycheckCalculator'
+import PayrollCalendarGenerator from './components/PayrollCalendarGenerator'
 import IncomeProofGuideHub from './components/incomePacket/IncomeProofGuideHub'
 import NicheLanding from './components/incomePacket/NicheLanding'
 import WhatIsIncomeVerificationPacket from './components/incomePacket/guides/WhatIsIncomeVerificationPacket'
@@ -63,6 +65,7 @@ const TOOLS = [
   { path: '/tax-refund-calculator', label: 'Tax Refund Calculator' },
   { path: '/w4-withholding-calculator', label: 'W-4 Withholding Calculator' },
   { path: '/time-card-calculator', label: 'Time Card Calculator' },
+  { path: '/payroll-calendar', label: 'Payroll Calendar Generator' },
   { path: '/hourly-to-salary-calculator', label: 'Hourly to Salary' },
   { path: '/net-to-gross-calculator', label: 'Net to Gross (Reverse)' },
   { path: '/overtime-calculator', label: 'Overtime Calculator' },
@@ -113,6 +116,7 @@ function HomePage() {
                 { path: '/tax-refund-calculator', icon: '💰', title: 'Tax Refund Calculator', desc: 'Estimate your federal refund or bill' },
                 { path: '/w4-withholding-calculator', icon: '📋', title: 'W-4 Withholding Calculator', desc: 'Fix over- or under-withholding' },
                 { path: '/time-card-calculator', icon: '⏰', title: 'Time Card Calculator', desc: 'Weekly timesheet with breaks & overtime' },
+                { path: '/payroll-calendar', icon: '📅', title: 'Payroll Calendar Generator', desc: 'Every payday, pay periods & holiday alerts' },
                 { path: '/net-to-gross-calculator', icon: '🔁', title: 'Net to Gross Calculator', desc: 'Work backwards from your target take-home' },
                 { path: '/1099-vs-w2-calculator', icon: '⚖️', title: '1099 vs W-2 Calculator', desc: 'The contract rate that matches a salary' },
                 { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
@@ -454,6 +458,7 @@ function Layout({ children }) {
               <Link to="/salary" className="hover:text-blue-500 transition-colors">Salary After Tax</Link>
               <Link to="/hourly" className="hover:text-blue-500 transition-colors">$X an Hour a Year</Link>
               <Link to="/minimum-wage" className="hover:text-blue-500 transition-colors">Minimum Wage by State</Link>
+              <Link to="/payroll-calendar" className="hover:text-blue-500 transition-colors">Payroll Calendar</Link>
               <Link to="/how-to-prove-income" className="hover:text-blue-500 transition-colors">Prove Income</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
@@ -510,6 +515,8 @@ function MainApp() {
           <Route path="/bonus-tax-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><BonusTaxCalc /></SubPage>} />
           <Route path="/states" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><StatesIndex /></SubPage>} />
           <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
+          <Route path="/paycheck-calculator/:stateSlug" element={<SubPage backTo="/paycheck-calculator" backLabel="← Back to Paycheck Calculator"><StatePaycheckCalculator /></SubPage>} />
+          <Route path="/payroll-calendar" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PayrollCalendarGenerator /></SubPage>} />
           <Route path="/tax-refund-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TaxRefundCalc /></SubPage>} />
           <Route path="/w4-withholding-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><W4WithholdingCalc /></SubPage>} />
           <Route path="/minimum-wage" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><MinimumWageHub /></SubPage>} />

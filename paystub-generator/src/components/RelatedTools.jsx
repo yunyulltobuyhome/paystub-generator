@@ -31,11 +31,12 @@ const TOOLS = {
   '/salary': { icon: '📊', title: 'Salary After Tax', desc: 'Take-home by salary and state' },
   '/hourly': { icon: '🕐', title: '$X an Hour a Year', desc: 'Hourly wage to yearly pay' },
   '/minimum-wage': { icon: '🏛️', title: 'Minimum Wage by State', desc: '2026 rates for all 50 states' },
+  '/payroll-calendar': { icon: '📅', title: 'Payroll Calendar Generator', desc: 'Paydays, periods & holiday alerts' },
 }
 
 // Hand-picked next steps per tool, most relevant first.
 const RELATED = {
-  '/paycheck-calculator': ['/time-card-calculator', '/net-to-gross-calculator', '/401k-paycheck-calculator', '/'],
+  '/paycheck-calculator': ['/time-card-calculator', '/payroll-calendar', '/net-to-gross-calculator', '/tax-refund-calculator'],
   '/time-card-calculator': ['/overtime-calculator', '/paycheck-calculator', '/hourly', '/'],
   '/hourly-to-salary-calculator': ['/hourly', '/paycheck-calculator', '/salary', '/pay-raise-calculator'],
   '/net-to-gross-calculator': ['/pay-raise-calculator', '/paycheck-calculator', '/salary', '/1099-vs-w2-calculator'],
@@ -52,6 +53,7 @@ const RELATED = {
   '/w4-withholding-calculator': ['/tax-refund-calculator', '/paycheck-calculator', '/401k-paycheck-calculator', '/'],
   '/invoice-generator': ['/self-employment-tax-calculator', '/1099-vs-w2-calculator', '/income-verification-packet', '/mileage-reimbursement-calculator'],
   '/minimum-wage': ['/hourly', '/overtime-calculator', '/paycheck-calculator', '/time-card-calculator'],
+  '/payroll-calendar': ['/paycheck-calculator', '/time-card-calculator', '/pto-accrual-calculator', '/'],
 }
 
 const DEFAULT_RELATED = ['/paycheck-calculator', '/time-card-calculator', '/salary', '/']

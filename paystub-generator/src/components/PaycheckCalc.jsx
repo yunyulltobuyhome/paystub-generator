@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { STATE_TAXES } from '../data/stateTaxRates'
+import { STATE_LIST } from '../utils/states'
+import { Link } from 'react-router-dom'
 import { calcPayStub, getPayPeriods } from '../utils/taxCalculator'
 import { usePageMeta } from '../hooks/usePageMeta'
 import AdSlot from './AdSlot'
@@ -259,6 +261,22 @@ export default function PaycheckCalc() {
             ))}
           </div>
         </div>
+      <div className="bg-white rounded-2xl border border-gray-200 p-6 mt-6">
+        <h2 className="text-base font-bold text-gray-800 mb-1">Paycheck Calculator by State</h2>
+        <p className="text-xs text-gray-500 mb-4">
+          Open a version pre-set to your state — each one also shows what the same salary would
+          leave you in every other state.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+          {[...STATE_LIST].sort((a, b) => a.name.localeCompare(b.name)).map((st) => (
+            <Link key={st.code} to={`/paycheck-calculator/${st.slug}`}
+              className="text-xs text-gray-700 hover:text-blue-600 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg px-2 py-1.5 transition-all truncate">
+              {st.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+
       <RelatedTools current="/paycheck-calculator" />
 
       </div>

@@ -1,0 +1,13 @@
+# The app lives in paystub-generator/ and has its own .gitignore. This root
+# ignore exists because running `npm install` from the repo root (rather than
+# inside the app directory) creates a node_modules tree here that would
+# otherwise be picked up by git.
+node_modules
+dist
+dist-ssr
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
