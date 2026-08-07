@@ -15,6 +15,7 @@ import Contribution401kCalc from './Contribution401kCalc'
 import MileageCalc from './MileageCalc'
 import TaxRefundCalc from './TaxRefundCalc'
 import W4WithholdingCalc from './W4WithholdingCalc'
+import RealHourlyWageCalc from './RealHourlyWageCalc'
 
 const EMBED_TOOLS = {
   'paycheck-calculator': { C: PaycheckCalc, title: 'Paycheck Calculator' },
@@ -32,6 +33,7 @@ const EMBED_TOOLS = {
   'mileage-reimbursement-calculator': { C: MileageCalc, title: 'Mileage Reimbursement Calculator' },
   'tax-refund-calculator': { C: TaxRefundCalc, title: 'Tax Refund Calculator' },
   'w4-withholding-calculator': { C: W4WithholdingCalc, title: 'W-4 Withholding Calculator' },
+  'real-hourly-wage-calculator': { C: RealHourlyWageCalc, title: 'Real Hourly Wage Calculator' },
 }
 
 export default function EmbedFrame() {

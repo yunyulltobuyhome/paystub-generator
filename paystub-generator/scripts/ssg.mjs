@@ -70,6 +70,14 @@ async function buildRoutes() {
       title: 'W-4 Withholding Calculator 2026 — Adjust Your Paycheck Tax | MyFreePayStub',
       desc: 'Free W-4 withholding calculator. See whether you are withholding too much or too little federal tax, and what extra withholding to enter on line 4(c) to hit your target refund.',
     },
+    '/paycheck-checker': {
+      title: 'Paycheck Checker — Is My Paycheck Correct? Free Pay Stub Audit (2026)',
+      desc: 'Free paycheck checker. Enter the numbers from your pay stub and instantly see whether your Social Security, Medicare, overtime, and net pay actually add up — and what to ask your employer.',
+    },
+    '/real-hourly-wage-calculator': {
+      title: 'Real Hourly Wage Calculator — What Your Job Actually Pays (2026)',
+      desc: 'Your salary divided by 2,080 is not what you earn. Add commute, unpaid overtime, work expenses, and taxes to find your real hourly wage — the number that tells you what an hour of your life is worth.',
+    },
     '/payroll-calendar': {
       title: '2026 Payroll Calendar Generator — Free Biweekly Pay Period Calendar',
       desc: 'Free payroll calendar generator. Pick your pay frequency and first payday to get every pay date for 2026, with pay periods, bank holiday warnings, and 27-pay-period detection. Printable.',
@@ -268,7 +276,8 @@ async function buildRoutes() {
     'bonus-tax-calculator', 'self-employment-tax-calculator', 'time-card-calculator',
     'net-to-gross-calculator', '1099-vs-w2-calculator', 'employee-cost-calculator',
     'pto-accrual-calculator', 'pay-raise-calculator', '401k-paycheck-calculator',
-    'mileage-reimbursement-calculator', 'tax-refund-calculator', 'w4-withholding-calculator']) {
+    'mileage-reimbursement-calculator', 'tax-refund-calculator', 'w4-withholding-calculator',
+    'real-hourly-wage-calculator']) {
     routes[`/embed/${t}`] = null
   }
 

@@ -32,11 +32,13 @@ const TOOLS = {
   '/hourly': { icon: '🕐', title: '$X an Hour a Year', desc: 'Hourly wage to yearly pay' },
   '/minimum-wage': { icon: '🏛️', title: 'Minimum Wage by State', desc: '2026 rates for all 50 states' },
   '/payroll-calendar': { icon: '📅', title: 'Payroll Calendar Generator', desc: 'Paydays, periods & holiday alerts' },
+  '/paycheck-checker': { icon: '🔍', title: 'Is My Paycheck Correct?', desc: 'Audit your stub for errors' },
+  '/real-hourly-wage-calculator': { icon: '⏳', title: 'Real Hourly Wage', desc: 'What your job actually pays' },
 }
 
 // Hand-picked next steps per tool, most relevant first.
 const RELATED = {
-  '/paycheck-calculator': ['/time-card-calculator', '/payroll-calendar', '/net-to-gross-calculator', '/tax-refund-calculator'],
+  '/paycheck-calculator': ['/paycheck-checker', '/real-hourly-wage-calculator', '/time-card-calculator', '/net-to-gross-calculator'],
   '/time-card-calculator': ['/overtime-calculator', '/paycheck-calculator', '/hourly', '/'],
   '/hourly-to-salary-calculator': ['/hourly', '/paycheck-calculator', '/salary', '/pay-raise-calculator'],
   '/net-to-gross-calculator': ['/pay-raise-calculator', '/paycheck-calculator', '/salary', '/1099-vs-w2-calculator'],
@@ -54,6 +56,8 @@ const RELATED = {
   '/invoice-generator': ['/self-employment-tax-calculator', '/1099-vs-w2-calculator', '/income-verification-packet', '/mileage-reimbursement-calculator'],
   '/minimum-wage': ['/hourly', '/overtime-calculator', '/paycheck-calculator', '/time-card-calculator'],
   '/payroll-calendar': ['/paycheck-calculator', '/time-card-calculator', '/pto-accrual-calculator', '/'],
+  '/paycheck-checker': ['/paycheck-calculator', '/real-hourly-wage-calculator', '/overtime-calculator', '/time-card-calculator'],
+  '/real-hourly-wage-calculator': ['/paycheck-checker', '/net-to-gross-calculator', '/paycheck-calculator', '/pay-raise-calculator'],
 }
 
 const DEFAULT_RELATED = ['/paycheck-calculator', '/time-card-calculator', '/salary', '/']
