@@ -70,6 +70,10 @@ async function buildRoutes() {
       title: 'W-4 Withholding Calculator 2026 — Adjust Your Paycheck Tax | MyFreePayStub',
       desc: 'Free W-4 withholding calculator. See whether you are withholding too much or too little federal tax, and what extra withholding to enter on line 4(c) to hit your target refund.',
     },
+    '/job-offer-comparison-calculator': {
+      title: 'Job Offer Comparison Calculator — Which Offer Is Actually Better? (2026)',
+      desc: 'Compare job offers side by side on what actually matters: take-home pay after state taxes, 401(k) match, health premiums, PTO, and commute. The highest salary often loses. Free, no sign-up.',
+    },
     '/paycheck-checker': {
       title: 'Paycheck Checker — Is My Paycheck Correct? Free Pay Stub Audit (2026)',
       desc: 'Free paycheck checker. Enter the numbers from your pay stub and instantly see whether your Social Security, Medicare, overtime, and net pay actually add up — and what to ask your employer.',
@@ -277,7 +281,7 @@ async function buildRoutes() {
     'net-to-gross-calculator', '1099-vs-w2-calculator', 'employee-cost-calculator',
     'pto-accrual-calculator', 'pay-raise-calculator', '401k-paycheck-calculator',
     'mileage-reimbursement-calculator', 'tax-refund-calculator', 'w4-withholding-calculator',
-    'real-hourly-wage-calculator']) {
+    'real-hourly-wage-calculator', 'job-offer-comparison-calculator']) {
     routes[`/embed/${t}`] = null
   }
 
