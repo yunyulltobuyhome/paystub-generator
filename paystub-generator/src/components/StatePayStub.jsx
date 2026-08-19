@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { INDEX_CLUSTERS, robotsFor } from '../config/indexing'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { calcFederalTax } from '../utils/taxCalculator'
 import { FICA } from '../data/stateTaxRates'
@@ -32,6 +33,7 @@ export default function StatePayStub() {
       ? `${state.name} paycheck taxes for 2026: state income tax rate, federal & FICA withholding, a sample take-home breakdown, pay stub requirements, and a free ${state.name} pay stub generator.`
       : 'Pay stub and paycheck tax guides for all 50 US states.',
     canonicalPath: state ? `/pay-stub/${state.slug}` : '/states',
+    robots: robotsFor(INDEX_CLUSTERS.statePayStubGuides),
   })
 
   if (!state) {

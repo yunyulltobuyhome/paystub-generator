@@ -50,6 +50,8 @@ import PayrollCalendarGenerator from './components/PayrollCalendarGenerator'
 import PaycheckChecker from './components/PaycheckChecker'
 import RealHourlyWageCalc from './components/RealHourlyWageCalc'
 import JobOfferCompare from './components/JobOfferCompare'
+import Methodology from './components/Methodology'
+import EditorialStandards from './components/EditorialStandards'
 import IncomeProofGuideHub from './components/incomePacket/IncomeProofGuideHub'
 import NicheLanding from './components/incomePacket/NicheLanding'
 import WhatIsIncomeVerificationPacket from './components/incomePacket/guides/WhatIsIncomeVerificationPacket'
@@ -291,6 +293,23 @@ function HomePage() {
             </div>
           </div>
 
+          <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-2">How These Calculators Work</h2>
+            <p className="text-xs text-gray-600 leading-relaxed mb-3">
+              These tools deal with your pay and your taxes, so we publish the rates, brackets, and
+              formulas behind every result — including what they deliberately leave out and where our
+              figures are approximate. You should be able to check our work.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <Link to="/methodology" className="text-xs bg-white border border-slate-300 hover:border-blue-400 hover:text-blue-600 rounded-lg px-3 py-1.5 font-semibold transition-colors">
+                📐 How we calculate (rates & sources)
+              </Link>
+              <Link to="/editorial-standards" className="text-xs bg-white border border-slate-300 hover:border-blue-400 hover:text-blue-600 rounded-lg px-3 py-1.5 font-semibold transition-colors">
+                ✓ Editorial standards
+              </Link>
+            </div>
+          </div>
+
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Payroll & Tax Guides</h2>
             <div className="space-y-2">
@@ -473,6 +492,8 @@ function Layout({ children }) {
               <Link to="/job-offer-comparison-calculator" className="hover:text-blue-500 transition-colors">Compare Job Offers</Link>
               <Link to="/how-to-prove-income" className="hover:text-blue-500 transition-colors">Prove Income</Link>
               <Link to="/about" className="hover:text-blue-500 transition-colors">About</Link>
+              <Link to="/methodology" className="hover:text-blue-500 transition-colors">How We Calculate</Link>
+              <Link to="/editorial-standards" className="hover:text-blue-500 transition-colors">Editorial Standards</Link>
               <Link to="/guides" className="hover:text-blue-500 transition-colors">Guides</Link>
               <Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link>
               <Link to="/privacy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
@@ -529,6 +550,8 @@ function MainApp() {
           <Route path="/pay-stub/:stateSlug" element={<SubPage backTo="/states" backLabel="← Back to All States"><StatePayStub /></SubPage>} />
           <Route path="/paycheck-calculator/:stateSlug" element={<SubPage backTo="/paycheck-calculator" backLabel="← Back to Paycheck Calculator"><StatePaycheckCalculator /></SubPage>} />
           <Route path="/job-offer-comparison-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><JobOfferCompare /></SubPage>} />
+          <Route path="/methodology" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><Methodology /></SubPage>} />
+          <Route path="/editorial-standards" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><EditorialStandards /></SubPage>} />
           <Route path="/paycheck-checker" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PaycheckChecker /></SubPage>} />
           <Route path="/real-hourly-wage-calculator" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><RealHourlyWageCalc /></SubPage>} />
           <Route path="/payroll-calendar" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PayrollCalendarGenerator /></SubPage>} />

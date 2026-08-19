@@ -5,6 +5,7 @@ import { takeHomeForState } from '../../utils/salaryTakeHome'
 import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from '../blog/blogShared'
 import RelatedTools from '../RelatedTools'
 import AdSlot from '../AdSlot'
+import { INDEX_CLUSTERS, robotsFor } from '../../config/indexing'
 import { AD_SLOTS } from '../../config/ads'
 
 const fmt0 = (n) => '$' + Math.round(Number(n || 0)).toLocaleString('en-US')
@@ -23,6 +24,7 @@ export default function MinimumWagePage() {
       ? `${state.name}'s minimum wage is about ${fmt2(wage)} an hour in 2026 — roughly ${fmt0(wage * 2080)} a year full time. See weekly, monthly, and after-tax take-home pay, plus how it compares to the federal minimum.`
       : 'Minimum wage rates for all 50 states.',
     canonicalPath: state ? `/minimum-wage/${state.slug}` : '/minimum-wage',
+    robots: robotsFor(INDEX_CLUSTERS.minimumWageStates),
   })
 
   if (!state || wage == null) {

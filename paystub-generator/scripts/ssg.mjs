@@ -29,6 +29,7 @@ async function buildRoutes() {
   const { SALARY_AMOUNTS, salarySlug } = await import(pathToFileURL(path.join(ROOT, 'src/data/salaryAmounts.js')))
   const { HOURLY_WAGES, hourlyWageSlug } = await import(pathToFileURL(path.join(ROOT, 'src/data/hourlyWages.js')))
   const { STATE_MIN_WAGE } = await import(pathToFileURL(path.join(ROOT, 'src/data/minimumWage.js')))
+  const { INDEX_CLUSTERS, ROBOTS_NOINDEX } = await import(pathToFileURL(path.join(ROOT, 'src/config/indexing.js')))
 
   // route -> { title, desc, canonical? } — titles/descriptions mirror what each
   // component sets via usePageMeta so hydration doesn't change anything visible.
@@ -210,6 +211,14 @@ async function buildRoutes() {
       title: 'Profit and Loss Statement for Gig Workers: What It Is (2026) | MyFreePayStub',
       desc: 'What a profit and loss (P&L) statement is, why gig workers and freelancers use one, common expense categories, and how to prepare one for income verification.',
     },
+    '/methodology': {
+      title: 'How We Calculate — Methodology, Rates & Sources | MyFreePayStub',
+      desc: 'Every rate, bracket, and formula behind our paycheck and tax calculators, published in full: 2026 federal brackets, FICA rates and wage base, standard deductions, our state tax model, its known limitations, and the official sources we work from.',
+    },
+    '/editorial-standards': {
+      title: 'Editorial Standards & Corrections Policy | MyFreePayStub',
+      desc: 'How MyFreePayStub content is written, checked, and corrected: our sourcing rules, why we publish our limitations, how we handle errors, how the site is funded, and what we will not do.',
+    },
     '/about': {
       title: 'About MyFreePayStub — Free Pay Stub & Tax Tools',
       desc: 'MyFreePayStub offers free pay stub, invoice, and tax tools for US employees, freelancers, contractors, and small businesses — no sign-up, no watermark. Learn who we are and how the site is funded.',
@@ -232,6 +241,7 @@ async function buildRoutes() {
     routes[`/pay-stub/${slugify(s.name)}`] = {
       title: `${s.name} Pay Stub & Paycheck Taxes (2026) — Free Generator | MyFreePayStub`,
       desc: `${s.name} paycheck taxes for 2026: state income tax rate, federal & FICA withholding, a sample take-home breakdown, pay stub requirements, and a free ${s.name} pay stub generator.`,
+      ...(INDEX_CLUSTERS.statePayStubGuides ? {} : { robots: ROBOTS_NOINDEX }),
     }
   }
 
@@ -255,6 +265,7 @@ async function buildRoutes() {
     routes[`/paycheck-calculator/${slug}`] = {
       title: `${st.name} Paycheck Calculator 2026 — Take-Home Pay After Taxes | MyFreePayStub`,
       desc: `Free ${st.name} paycheck calculator for 2026. See your take-home pay after federal, ${st.name} state, Social Security, and Medicare taxes — and compare what the same salary would leave you in other states.`,
+      ...(INDEX_CLUSTERS.statePaycheckCalculators ? {} : { robots: ROBOTS_NOINDEX }),
     }
   }
 
@@ -264,6 +275,7 @@ async function buildRoutes() {
     routes[`/minimum-wage/${slugify(st.name)}`] = {
       title: `${st.name} Minimum Wage 2026 — Hourly, Weekly & Yearly Pay | MyFreePayStub`,
       desc: `${st.name}'s minimum wage is about $${wage.toFixed(2)} an hour in 2026 — roughly $${Math.round(wage * 2080).toLocaleString('en-US')} a year full time. See weekly, monthly, and after-tax take-home pay, plus how it compares to the federal minimum.`,
+      ...(INDEX_CLUSTERS.minimumWageStates ? {} : { robots: ROBOTS_NOINDEX }),
     }
   }
 
@@ -297,6 +309,9 @@ function applyMeta(template, meta, routePath) {
     out = out.replace(/(<meta name="twitter:title" content=")[^"]*(")/, (_, a, b) => a + esc(meta.title) + b)
     out = out.replace(/(<meta property="og:description" content=")[^"]*(")/, (_, a, b) => a + esc(meta.desc) + b)
     out = out.replace(/(<meta name="twitter:description" content=")[^"]*(")/, (_, a, b) => a + esc(meta.desc) + b)
+  }
+  if (meta?.robots) {
+    out = out.replace(/(<meta name="robots" content=")[^"]*(")/, (_, a, b) => a + meta.robots + b)
   }
   const canonicalPath = meta?.canonical ?? routePath
   out = out.replace(/(<link rel="canonical" href=")[^"]*(")/, (_, a, b) => a + SITE + (canonicalPath === '/' ? '/' : canonicalPath) + b)

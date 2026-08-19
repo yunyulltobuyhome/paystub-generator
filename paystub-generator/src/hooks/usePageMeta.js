@@ -13,10 +13,16 @@ function setMeta(attr, key, content) {
   tag.setAttribute('content', content)
 }
 
-export function usePageMeta({ title, description, canonicalPath }) {
+export function usePageMeta({ title, description, canonicalPath, robots }) {
   useEffect(() => {
     if (title) document.title = title
     if (description) setMeta('name', 'description', description)
+
+    // Per-page robots directive. Used to keep near-duplicate programmatic
+    // pages out of the index (see src/config/indexing.js) — they stay fully
+    // usable for visitors and internal navigation, they are just not offered
+    // to search engines as separate documents.
+    setMeta('name', 'robots', robots || 'index, follow')
 
     // canonical — use an explicit canonicalPath when provided (e.g. for alias routes)
     const path = canonicalPath || window.location.pathname
@@ -43,6 +49,7 @@ export function usePageMeta({ title, description, canonicalPath }) {
     return () => {
       // 홈으로 돌아갈 때 기본값 복원
       document.title = 'Free Pay Stub Generator 2026 — No Sign-Up, Instant PDF | MyFreePayStub'
+      setMeta('name', 'robots', 'index, follow')
     }
-  }, [title, description, canonicalPath])
+  }, [title, description, canonicalPath, robots])
 }

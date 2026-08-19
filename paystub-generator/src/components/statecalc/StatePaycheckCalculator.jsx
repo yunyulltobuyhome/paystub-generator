@@ -8,6 +8,7 @@ import { SALARY_AMOUNTS, salarySlug } from '../../data/salaryAmounts'
 import RelatedTools from '../RelatedTools'
 import AdSlot from '../AdSlot'
 import { AD_SLOTS } from '../../config/ads'
+import { INDEX_CLUSTERS, robotsFor } from '../../config/indexing'
 
 const fmt0 = (n) => '$' + Math.round(Number(n || 0)).toLocaleString('en-US')
 const fmt2 = (n) => '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -36,6 +37,7 @@ export default function StatePaycheckCalculator() {
       ? `Free ${state.name} paycheck calculator for 2026. See your take-home pay after federal, ${state.name} state, Social Security, and Medicare taxes — and compare what the same salary would leave you in other states.`
       : 'Paycheck calculators for every US state.',
     canonicalPath: state ? `/paycheck-calculator/${state.slug}` : '/paycheck-calculator',
+    robots: robotsFor(INDEX_CLUSTERS.statePaycheckCalculators),
   })
 
   if (!state) {
