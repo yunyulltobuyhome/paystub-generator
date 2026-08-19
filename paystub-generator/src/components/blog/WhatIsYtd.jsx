@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import { FICA } from '../../data/stateTaxRates'
-import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+import { ArticleJsonLd, ArticleByline, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
 import AdSlot from '../AdSlot'
 import { AD_SLOTS } from '../../config/ads'
 
@@ -42,12 +42,14 @@ export default function WhatIsYtd() {
         faq={FAQ}
       />
 
+      <ArticleByline slug="/guides/what-is-ytd-on-a-paycheck" />
+
       <div className="mb-6">
         <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           What Is YTD on a Paycheck?
         </h1>
-        <p className="text-sm text-gray-400">2026 figures · Updated August 2026</p>
+        <p className="text-sm text-gray-400">2026 figures</p>
       </div>
 
       <div className="space-y-6 text-sm text-gray-600">

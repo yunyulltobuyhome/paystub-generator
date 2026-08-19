@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import { calcFICA } from '../../utils/taxCalculator'
 import { FICA } from '../../data/stateTaxRates'
-import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+import { ArticleJsonLd, ArticleByline, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
 import AdSlot from '../AdSlot'
 import { AD_SLOTS } from '../../config/ads'
 
@@ -45,12 +45,14 @@ export default function WhatIsFICA() {
         faq={FAQ}
       />
 
+      <ArticleByline slug="/guides/what-is-fica-tax" />
+
       <div className="mb-6">
         <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           What Is FICA Tax? And Why It Is Not 7.65% For Everyone
         </h1>
-        <p className="text-sm text-gray-400">2026 rates · Figures computed from our tax engine · Updated August 2026</p>
+        <p className="text-sm text-gray-400">2026 rates · Figures computed from our tax engine</p>
       </div>
 
       <div className="space-y-6 text-sm text-gray-600">

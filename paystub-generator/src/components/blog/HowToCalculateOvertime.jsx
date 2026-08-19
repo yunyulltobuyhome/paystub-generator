@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { usePageMeta } from '../../hooks/usePageMeta'
-import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+import { ArticleJsonLd, ArticleByline, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
 import AdSlot from '../AdSlot'
 import { AD_SLOTS } from '../../config/ads'
 
@@ -44,12 +44,14 @@ export default function HowToCalculateOvertime() {
         faq={FAQ}
       />
 
+      <ArticleByline slug="/guides/how-to-calculate-overtime" />
+
       <div className="mb-6">
         <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           How to Calculate Overtime Pay
         </h1>
-        <p className="text-sm text-gray-400">2026 FLSA rules · Worked examples · Updated August 2026</p>
+        <p className="text-sm text-gray-400">2026 FLSA rules · Worked examples</p>
       </div>
 
       <div className="space-y-6 text-sm text-gray-600">

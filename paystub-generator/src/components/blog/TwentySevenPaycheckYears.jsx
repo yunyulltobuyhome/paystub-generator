@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import { buildPayDates } from '../../utils/payrollCalendar'
-import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+import { ArticleJsonLd, ArticleByline, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
 import AdSlot from '../AdSlot'
 import { AD_SLOTS } from '../../config/ads'
 
@@ -108,13 +108,15 @@ export default function TwentySevenPaycheckYears() {
         faq={FAQ}
       />
 
+      <ArticleByline slug="/guides/27-paycheck-years" />
+
       <div className="mb-6">
         <span className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full font-semibold">Original analysis</span>
         <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           Which Years Have 27 Paychecks? Every Year Through 2040
         </h1>
         <p className="text-sm text-gray-400">
-          Computed from our payroll date engine · {FIRST_YEAR}–{LAST_YEAR} · Updated August 2026
+          Computed from our payroll date engine · {FIRST_YEAR}–{LAST_YEAR}
         </p>
       </div>
 

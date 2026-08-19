@@ -1,17 +1,23 @@
 import { Link } from 'react-router-dom'
+import { guideMeta, formatDate } from '../../data/guideMeta'
 
 const SITE = 'https://myfreepaystub.com'
 
 // Injects Article + (optional) FAQPage structured data so Google can index
 // the guide as rich content. Call once near the top of each article.
-export function ArticleJsonLd({ headline, description, slug, datePublished = '2026-06-30', dateModified = '2026-06-30', faq }) {
+export function ArticleJsonLd({ headline, description, slug, datePublished, dateModified, faq }) {
+  // Dates come from the shared guide register unless a caller overrides them,
+  // so the structured data always matches the byline rendered on the page.
+  const meta = guideMeta(slug)
+  const published = datePublished || meta.published
+  const modified = dateModified || meta.modified
   const article = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline,
     description,
-    datePublished,
-    dateModified,
+    datePublished: published,
+    dateModified: modified,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}${slug}` },
     author: { '@type': 'Organization', name: 'MyFreePayStub', url: SITE },
     publisher: {
@@ -56,6 +62,32 @@ export function ArticleJsonLd({ headline, description, slug, datePublished = '20
 }
 
 // Funnel CTA — converts a reader into a tool user (the core revenue lever).
+// Visible attribution and dates. Search quality guidance expects a reader to be
+// able to see who published a page and when it was last revised — not only a
+// crawler parsing JSON-LD. The organisation is named rather than inventing a
+// person, which matches what /editorial-standards says about who we are.
+export function ArticleByline({ slug }) {
+  const meta = guideMeta(slug)
+  const revised = meta.modified !== meta.published
+  return (
+    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500 border-y border-gray-200/80 py-2.5 my-5">
+      <Link to="/editorial-standards" className="font-semibold text-gray-700 hover:text-blue-600 transition-colors">
+        MyFreePayStub Editorial Team
+      </Link>
+      <span className="text-gray-300">·</span>
+      <span>{revised ? 'Updated' : 'Published'} <time dateTime={meta.modified}>{formatDate(meta.modified)}</time></span>
+      {revised && (
+        <>
+          <span className="text-gray-300">·</span>
+          <span className="text-gray-400">First published <time dateTime={meta.published}>{formatDate(meta.published)}</time></span>
+        </>
+      )}
+      <span className="text-gray-300">·</span>
+      <span>{meta.readTime} min read</span>
+    </div>
+  )
+}
+
 export function ToolCTA({ to = '/', title, desc, label = 'Try the Free Tool →' }) {
   return (
     <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mt-6">

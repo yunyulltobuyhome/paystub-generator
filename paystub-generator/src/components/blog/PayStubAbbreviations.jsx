@@ -1,5 +1,5 @@
 import { usePageMeta } from '../../hooks/usePageMeta'
-import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+import { ArticleJsonLd, ArticleByline, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
 
 const FAQ = [
   { q: 'What does YTD mean on a pay stub?', a: 'YTD means year-to-date — the running total of an amount (gross, taxes, deductions, or net) from January 1st through the current pay period.' },
@@ -42,12 +42,14 @@ export default function PayStubAbbreviations() {
         faq={FAQ}
       />
 
+      <ArticleByline slug="/guides/pay-stub-abbreviations" />
+
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           Pay Stub Abbreviations Explained (Cheat Sheet)
         </h1>
-        <p className="text-sm text-gray-400">Updated June 2026 · 3 min read</p>
+        <p className="text-sm text-gray-400">3 min read</p>
       </div>
 
       <div className="space-y-6 text-sm text-gray-600">

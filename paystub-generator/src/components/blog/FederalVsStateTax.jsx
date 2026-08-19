@@ -1,5 +1,5 @@
 import { usePageMeta } from '../../hooks/usePageMeta'
-import { ArticleJsonLd, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
+import { ArticleJsonLd, ArticleByline, ToolCTA, RelatedGuides, ArticleDisclaimer } from './blogShared'
 
 const FAQ = [
   { q: 'What is the difference between federal and state income tax?', a: 'Federal income tax is set by the IRS and applies nationwide using progressive brackets (10%–37%). State income tax is set by each state — some have no income tax, others use flat or progressive rates up to about 13.3%.' },
@@ -20,12 +20,14 @@ export default function FederalVsStateTax() {
         slug="/guides/federal-vs-state-income-tax"
         faq={FAQ}
       />
+
+      <ArticleByline slug="/guides/federal-vs-state-income-tax" />
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
         <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           Federal vs State Income Tax: What's the Difference? (2026)
         </h1>
-        <p className="text-sm text-gray-400">Updated June 2026 · 4 min read</p>
+        <p className="text-sm text-gray-400">4 min read</p>
       </div>
 
       <div className="space-y-6 text-sm text-gray-600">
