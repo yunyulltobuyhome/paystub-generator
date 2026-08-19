@@ -383,25 +383,53 @@ function SubPage({ backTo = '/', backLabel = '← Back', children }) {
   )
 }
 
+// Top-level nav. Kept short deliberately — everything else lives in the Tools
+// dropdown or the footer, because seven competing links is what pushed labels
+// onto two lines before.
+const NAV_LINKS = [
+  { path: '/salary', label: 'Salary' },
+  { path: '/minimum-wage', label: 'Min Wage' },
+  { path: '/states', label: 'States' },
+  { path: '/guides', label: 'Guides' },
+  { path: '/how-to-prove-income', label: 'Prove Income' },
+  { path: '/about', label: 'About' },
+]
+
 function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { pathname } = useLocation()
+
+  // A link is current when it is the exact page or a page beneath it, so
+  // /salary/60000-after-tax still highlights "Salary".
+  const isCurrent = (path) => pathname === path || pathname.startsWith(path + '/')
+  const toolsCurrent = TOOLS.some(({ path }) => path !== '/' && isCurrent(path))
+
+  const linkClass = (active) =>
+    `px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+      active ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+    }`
 
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-1">
-            <span className="text-xl font-black text-blue-600">MyFree</span>
-            <span className="text-xl font-black text-gray-700">PayStub</span>
-            <span className="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full font-semibold">100% Free</span>
+        {/* Wider than the article column on purpose: the bar has to hold a
+            wordmark plus the whole nav, and max-w-3xl was what made it wrap. */}
+        <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
+          <Link to="/" className="flex items-center gap-1.5 shrink-0">
+            <span className="text-lg font-black text-blue-600">MyFree</span>
+            <span className="text-lg font-black text-gray-700">PayStub</span>
+            {/* Dropped first when space is tight — it is decoration, not navigation. */}
+            <span className="hidden xl:inline-block ml-1 text-[10px] bg-blue-50 text-blue-600 border border-blue-100 px-1.5 py-0.5 rounded-md font-bold tracking-wide uppercase">
+              Free
+            </span>
           </Link>
 
           {/* 데스크톱 메뉴 */}
-          <nav className="hidden sm:flex items-center gap-6 text-sm text-gray-700 font-medium">
+          <nav className="hidden md:flex items-center gap-0.5 text-sm font-medium">
             <div className="relative group">
-              <button className="flex items-center gap-1 hover:text-blue-600 transition-colors py-2">
+              <button className={`flex items-center gap-1 ${linkClass(toolsCurrent)}`}>
                 Tools
-                <svg className="w-3 h-3 mt-0.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <svg className="w-3 h-3 opacity-60" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
                   <path d="M3 4.5L6 7.5L9 4.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
@@ -410,46 +438,53 @@ function Layout({ children }) {
                 <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-2 w-64 max-h-[70vh] overflow-y-auto">
                   {TOOLS.map(({ path, label }) => (
                     <Link key={path} to={path}
-                      className="block px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                      className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
+                        isCurrent(path) && path !== '/'
+                          ? 'text-blue-600 bg-blue-50 font-semibold'
+                          : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                      }`}>
                       {label}
                     </Link>
                   ))}
                 </div>
               </div>
             </div>
-            <Link to="/salary" className="hover:text-blue-600 transition-colors">Salary</Link>
-            <Link to="/minimum-wage" className="hover:text-blue-600 transition-colors">Min Wage</Link>
-            <Link to="/states" className="hover:text-blue-600 transition-colors">States</Link>
-            <Link to="/guides" className="hover:text-blue-600 transition-colors">Guides</Link>
-            <Link to="/how-to-prove-income" className="hover:text-blue-600 transition-colors">Prove Income</Link>
-            <Link to="/about" className="hover:text-blue-600 transition-colors">About</Link>
+            {NAV_LINKS.map(({ path, label }) => (
+              <Link key={path} to={path} className={linkClass(isCurrent(path))}>{label}</Link>
+            ))}
           </nav>
 
           {/* 모바일 햄버거 버튼 */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="sm:hidden text-2xl text-gray-700"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+            className="md:hidden w-9 h-9 -mr-1 flex items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
           >
-            {mobileMenuOpen ? '✕' : '☰'}
+            <svg className="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              {mobileMenuOpen
+                ? <path d="M5 5l10 10M15 5L5 15" />
+                : <><path d="M3 6h14" /><path d="M3 10h14" /><path d="M3 14h14" /></>}
+            </svg>
           </button>
         </div>
 
         {/* 모바일 메뉴 */}
         {mobileMenuOpen && (
-          <nav className="sm:hidden border-t border-gray-200">
-            <div className="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
+          <nav className="md:hidden border-t border-gray-200 max-h-[calc(100vh-3.5rem)] overflow-y-auto">
+            <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-0.5">
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-1 pb-1">Tools</p>
               {TOOLS.map(({ path, label }) => (
-                <Link key={path} to={path} className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>{label}</Link>
+                <Link key={path} to={path} className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{label}</Link>
               ))}
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wide px-3 pt-3 pb-1">Explore</p>
-              <Link to="/salary" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Salary After Tax</Link>
-              <Link to="/hourly" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>$X an Hour a Year</Link>
-              <Link to="/minimum-wage" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Minimum Wage by State</Link>
-              <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
-              <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
-              <Link to="/how-to-prove-income" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>Prove Income</Link>
-              <Link to="/about" className="text-sm text-gray-700 hover:text-blue-600 px-3 py-2 rounded" onClick={() => setMobileMenuOpen(false)}>About</Link>
+              <Link to="/salary" className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>Salary After Tax</Link>
+              <Link to="/hourly" className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>$X an Hour a Year</Link>
+              <Link to="/minimum-wage" className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>Minimum Wage by State</Link>
+              <Link to="/states" className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>Pay Stubs by State</Link>
+              <Link to="/guides" className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>Guides</Link>
+              <Link to="/how-to-prove-income" className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>Prove Income</Link>
+              <Link to="/about" className="text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>About</Link>
             </div>
           </nav>
         )}
