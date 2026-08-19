@@ -26,7 +26,7 @@ export default function HourlyWagePage() {
   if (!rate) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-black text-gray-800 mb-3">Wage not found</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-3">Wage not found</h1>
         <p className="text-sm text-gray-500 mb-6">We don't have a page for that hourly wage yet.</p>
         <Link to="/hourly" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700">
           Browse all hourly wages →
@@ -74,7 +74,7 @@ export default function HourlyWagePage() {
 
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Wage Guide</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           ${rate} an Hour Is How Much a Year? (After Taxes, 2026)
         </h1>
         <p className="text-sm text-gray-400">Updated July 2026 · Single filer estimate</p>
@@ -83,12 +83,12 @@ export default function HourlyWagePage() {
       <div className="grid grid-cols-2 gap-3 mb-6">
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
           <p className="text-xs text-blue-500 font-semibold uppercase">Per Year</p>
-          <p className="text-2xl font-black text-blue-700">{fmt0(annual)}</p>
+          <p className="text-2xl font-extrabold text-blue-700">{fmt0(annual)}</p>
           <p className="text-xs text-gray-400 mt-0.5">40 hrs/week, before tax</p>
         </div>
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
           <p className="text-xs text-emerald-600 font-semibold uppercase">Take-Home</p>
-          <p className="text-2xl font-black text-emerald-700">{fmt0(worst.net)}–{fmt0(best.net)}</p>
+          <p className="text-2xl font-extrabold text-emerald-700">{fmt0(worst.net)}–{fmt0(best.net)}</p>
           <p className="text-xs text-gray-400 mt-0.5">/yr, varies by state</p>
         </div>
       </div>

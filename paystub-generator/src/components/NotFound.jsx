@@ -17,8 +17,8 @@ export default function NotFound() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-16 text-center">
-      <p className="text-5xl font-black text-blue-600 mb-2">404</p>
-      <h1 className="text-2xl font-black text-gray-800 mb-2">Page Not Found</h1>
+      <p className="text-5xl font-extrabold text-blue-600 mb-2">404</p>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">Page Not Found</h1>
       <p className="text-sm text-gray-500 mb-8">
         The page you're looking for doesn't exist or may have moved. Try one of our free tools instead:
       </p>

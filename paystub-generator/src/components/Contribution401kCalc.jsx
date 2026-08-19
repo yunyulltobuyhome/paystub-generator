@@ -81,14 +81,14 @@ export default function Contribution401kCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">401(k) Paycheck Impact Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">401(k) Paycheck Impact Calculator</h1>
         <p className="text-sm text-gray-500">
           Contributing to a traditional 401(k) costs you less than you think, because it lowers your
           taxable income. See the real hit to your paycheck.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Annual Salary</label>
           <div className="relative">
@@ -154,7 +154,7 @@ export default function Contribution401kCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Real Cost Per Paycheck</p>
-            <p className="text-4xl font-black text-blue-700">{fmt2(result.perPeriodPayCut)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt2(result.perPeriodPayCut)}</p>
             <p className="text-xs text-gray-500 mt-1">
               to save {fmt2(result.perPeriodContribution)} per paycheck
             </p>
@@ -178,7 +178,7 @@ export default function Contribution401kCalc() {
                   <span className="font-semibold text-gray-800">{fmt0(val)}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-emerald-700">
+              <div className="flex justify-between pt-2 font-extrabold text-emerald-700">
                 <span>Total into retirement</span>
                 <span>{fmt0(result.totalSaved)}</span>
               </div>
@@ -201,7 +201,7 @@ export default function Contribution401kCalc() {
       <div className="mt-8"><EmbedSnippet tool="401k-paycheck-calculator" title="401(k) Paycheck Impact Calculator" height="880" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Why a 401(k) Costs Less Than You Contribute</h2>
           <p className="leading-relaxed">
             Traditional 401(k) contributions come out of your pay <strong>before federal and state
@@ -216,7 +216,7 @@ export default function Contribution401kCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Traditional vs Roth 401(k)</h2>
           <p className="leading-relaxed">
             This calculator models a <strong>traditional</strong> 401(k), where you get the tax break
@@ -226,7 +226,7 @@ export default function Contribution401kCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

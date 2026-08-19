@@ -8,7 +8,7 @@ export default function About() {
   })
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-black text-gray-800 mb-2">About MyFreePayStub</h1>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">About MyFreePayStub</h1>
       <p className="text-sm text-gray-400 mb-8">Free pay stub generator for US employees, contractors & small businesses</p>
 
       <div className="space-y-8 text-sm text-gray-600">

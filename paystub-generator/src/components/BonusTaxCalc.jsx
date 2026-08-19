@@ -70,14 +70,14 @@ export default function BonusTaxCalc() {
       })}} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Bonus Tax Calculator 2026</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Bonus Tax Calculator 2026</h1>
         <p className="text-sm text-gray-500">
           See how much tax comes out of your bonus and what you actually take home, using the IRS
           22% supplemental wage method.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Bonus Amount</label>
           <div className="relative">
@@ -102,7 +102,7 @@ export default function BonusTaxCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Bonus Take-Home</p>
-            <p className="text-4xl font-black text-blue-700">{fmt(result.takeHome)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt(result.takeHome)}</p>
             <p className="text-xs text-gray-400 mt-1">
               from {fmt(result.amt)} · {pct(result.effectiveRate)} withheld
             </p>
@@ -124,7 +124,7 @@ export default function BonusTaxCalc() {
                 <span>Total withheld</span>
                 <span className="text-red-500">({fmt(result.totalTax)})</span>
               </div>
-              <div className="flex justify-between py-1.5 text-emerald-700 font-black">
+              <div className="flex justify-between py-1.5 text-emerald-700 font-extrabold">
                 <span>Take-home</span>
                 <span>{fmt(result.takeHome)}</span>
               </div>
@@ -143,7 +143,7 @@ export default function BonusTaxCalc() {
       <div className="mt-8"><EmbedSnippet tool="bonus-tax-calculator" title="Bonus Tax Calculator" height="640" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How Are Bonuses Taxed?</h2>
           <p className="leading-relaxed mb-3">
             The IRS treats bonuses as <strong>supplemental wages</strong>. Employers can withhold federal
@@ -159,7 +159,7 @@ export default function BonusTaxCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

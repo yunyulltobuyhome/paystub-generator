@@ -1,3 +1,4 @@
+import Icon from './Icon'
 import { useState } from 'react'
 import { STATE_TAXES } from '../data/stateTaxRates'
 import { calcPayStub, getPayPeriods } from '../utils/taxCalculator'
@@ -123,8 +124,8 @@ export default function PayStubForm() {
       {/* Step 1 */}
       {step === 1 && (
         <div className="space-y-6">
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h2 className="text-base font-bold text-gray-800 mb-4">🏢 Employer Information</h2>
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-4">Employer Information</h2>
             <div className="space-y-4">
               <div>
                 <label className={labelClass}>Company Name *</label>
@@ -139,8 +140,8 @@ export default function PayStubForm() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h2 className="text-base font-bold text-gray-800 mb-4">👤 Employee Information</h2>
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-4">Employee Information</h2>
             <div className="space-y-4">
               <div>
                 <label className={labelClass}>Employee Name *</label>
@@ -173,14 +174,14 @@ export default function PayStubForm() {
       {step === 2 && (
         <div className="space-y-6">
           {/* Pay Info */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h2 className="text-base font-bold text-gray-800 mb-4">💰 Pay Information</h2>
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-4">Pay Information</h2>
             <div className="space-y-4">
               {/* Pay type */}
               <div>
                 <label className={labelClass}>Pay Type</label>
                 <div className="grid grid-cols-2 gap-2">
-                  {[{ value: 'salary', label: '💼 Salary' }, { value: 'hourly', label: '⏰ Hourly' }].map(opt => (
+                  {[{ value: 'salary', label: 'Salary' }, { value: 'hourly', label: '⏰ Hourly' }].map(opt => (
                     <button key={opt.value} onClick={() => set('payType', opt.value)}
                       className={`py-2 px-3 rounded-lg text-sm font-medium border transition-all ${
                         form.payType === opt.value ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
@@ -266,16 +267,16 @@ export default function PayStubForm() {
           </div>
 
           {/* Tax Info */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h2 className="text-base font-bold text-gray-800 mb-4">🏛️ Tax Information</h2>
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-4">Tax Information</h2>
             <div className="space-y-4">
               <div>
                 <label className={labelClass}>Filing Status</label>
                 <div className="grid grid-cols-3 gap-2">
                   {[
-                    { value: 'single', label: '👤 Single' },
-                    { value: 'married', label: '👫 Married' },
-                    { value: 'head', label: '🏠 Head of Household' },
+                    { value: 'single', label: 'Single' },
+                    { value: 'married', label: 'Married' },
+                    { value: 'head', label: 'Head of Household' },
                   ].map(opt => (
                     <button key={opt.value} onClick={() => set('filingStatus', opt.value)}
                       className={`py-2 px-2 rounded-lg text-xs font-medium border transition-all ${
@@ -313,8 +314,8 @@ export default function PayStubForm() {
           </div>
 
           {/* Pre-tax deductions */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h2 className="text-base font-bold text-gray-800 mb-1">📋 Pre-Tax Deductions</h2>
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
+            <h2 className="text-base font-bold text-gray-800 mb-1">Pre-Tax Deductions</h2>
             <p className="text-xs text-gray-400 mb-4">(optional — leave blank if not applicable)</p>
             <div className="grid grid-cols-2 gap-3">
               {[
@@ -369,7 +370,7 @@ export default function PayStubForm() {
       {step === 3 && result && (
         <div>
           {/* Template + Logo — free here, premium on most competitor sites */}
-          <div className="mb-4 bg-white rounded-2xl border border-gray-200 p-4 print:hidden">
+          <div className="mb-4 bg-white rounded-xl border border-gray-200/80 p-4 print:hidden">
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-bold text-gray-700">Choose a Template</p>
               <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Free · No Watermark</span>

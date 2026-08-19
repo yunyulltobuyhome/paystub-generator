@@ -83,14 +83,14 @@ export default function PtoAccrualCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">PTO Accrual Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">PTO Accrual Calculator</h1>
         <p className="text-sm text-gray-500">
           Turn your annual vacation allowance into an accrual rate per hour worked and per paycheck,
           then project your balance.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className={labelClass}>PTO Days Per Year</label>
@@ -151,7 +151,7 @@ export default function PtoAccrualCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Accrual Rate</p>
-            <p className="text-4xl font-black text-blue-700">{result.perHourWorked.toFixed(4)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{result.perHourWorked.toFixed(4)}</p>
             <p className="text-xs text-gray-500 mt-1">PTO hours earned per hour worked</p>
           </div>
 
@@ -174,7 +174,7 @@ export default function PtoAccrualCalc() {
           {result.hasProjection && (
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
               <p className="text-xs font-bold text-emerald-600 uppercase tracking-wide mb-2">Projected Balance</p>
-              <p className="text-3xl font-black text-emerald-700">{fmtH(result.projected)} hrs</p>
+              <p className="text-3xl font-extrabold text-emerald-700">{fmtH(result.projected)} hrs</p>
               <p className="text-sm text-emerald-800 mt-1">
                 ≈ {result.projectedDays.toFixed(1)} days off
                 {result.rate > 0 && <> · worth <strong>{fmt(result.cashValue)}</strong> at {fmt(result.rate)}/hr</>}
@@ -193,7 +193,7 @@ export default function PtoAccrualCalc() {
       <div className="mt-8"><EmbedSnippet tool="pto-accrual-calculator" title="PTO Accrual Calculator" height="880" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How PTO Accrual Works</h2>
           <p className="leading-relaxed">
             Most US employers grant paid time off in one of two ways. With a <strong>lump-sum grant</strong>,
@@ -208,7 +208,7 @@ export default function PtoAccrualCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Common PTO Accrual Rates (Full Time)</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
@@ -237,7 +237,7 @@ export default function PtoAccrualCalc() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

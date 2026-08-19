@@ -20,7 +20,7 @@ export default function EmbedSnippet({ tool, title, height = 720 }) {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6 print:hidden">
+    <div className="bg-white rounded-xl border border-gray-200/80 p-6 print:hidden">
       <h2 className="text-base font-bold text-gray-800 mb-1">Embed This Calculator (Free)</h2>
       <p className="text-xs text-gray-500 mb-3">
         Add this free {title.toLowerCase()} to your own website — just copy and paste the code below.

@@ -13,7 +13,7 @@ export default function HourlyWageHub() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-black text-gray-800 mb-2">$X an Hour Is How Much a Year?</h1>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">$X an Hour Is How Much a Year?</h1>
       <p className="text-sm text-gray-400 mb-8">
         Pick an hourly wage to see its yearly, monthly, and weekly pay — plus 2026 take-home
         after taxes in all 50 states, and what it comes to at part-time hours.

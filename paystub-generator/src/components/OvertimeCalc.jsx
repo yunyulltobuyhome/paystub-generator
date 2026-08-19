@@ -54,13 +54,13 @@ export default function OvertimeCalc() {
       })}} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Overtime Pay Calculator 2026</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Overtime Pay Calculator 2026</h1>
         <p className="text-sm text-gray-500">
           Calculate your time-and-a-half (1.5×) or double-time (2×) overtime pay, plus weekly and annual totals.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Hourly Rate</label>
           <div className="relative">
@@ -100,7 +100,7 @@ export default function OvertimeCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Total Weekly Pay</p>
-            <p className="text-4xl font-black text-blue-700">{fmt(result.weekly)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt(result.weekly)}</p>
             <p className="text-xs text-gray-400 mt-1">≈ {fmt(result.annual)} per year (× 52 weeks)</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-xl p-5">
@@ -115,7 +115,7 @@ export default function OvertimeCalc() {
                   <span className="font-semibold">{fmt(val)}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-gray-800">
+              <div className="flex justify-between pt-2 font-extrabold text-gray-800">
                 <span>Total weekly pay</span>
                 <span>{fmt(result.weekly)}</span>
               </div>
@@ -133,7 +133,7 @@ export default function OvertimeCalc() {
       <div className="mt-8"><EmbedSnippet tool="overtime-calculator" title="Overtime Pay Calculator" height="640" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How Is Overtime Pay Calculated?</h2>
           <p className="leading-relaxed">
             Under the federal Fair Labor Standards Act (FLSA), most non-exempt employees must be paid
@@ -143,7 +143,7 @@ export default function OvertimeCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Overtime Pay Examples (Time-and-a-Half)</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
@@ -173,7 +173,7 @@ export default function OvertimeCalc() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

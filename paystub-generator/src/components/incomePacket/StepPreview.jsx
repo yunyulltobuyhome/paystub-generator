@@ -45,17 +45,17 @@ export default function StepPreview({ data, onBack, onStartOver }) {
     }
   }
 
-  const sectionClass = "bg-white rounded-2xl border border-gray-200 p-6"
+  const sectionClass = "bg-white rounded-xl border border-gray-200/80 p-6"
 
   return (
     <div className="space-y-6">
       <div className={sectionClass}>
         <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Page 1 · Cover Summary</p>
-        <h2 className="text-xl font-black text-gray-800">{aboutYou.name || 'Your Name'}</h2>
+        <h2 className="text-xl font-extrabold text-gray-800">{aboutYou.name || 'Your Name'}</h2>
         <p className="text-sm text-gray-500 mb-4">{dateRange}</p>
         <div className="bg-blue-50 rounded-xl p-4 mb-4">
           <p className="text-xs text-blue-500 font-semibold uppercase">Average Monthly Income</p>
-          <p className="text-2xl font-black text-blue-700">{fmt(monthlyAverage)}</p>
+          <p className="text-2xl font-extrabold text-blue-700">{fmt(monthlyAverage)}</p>
         </div>
         <div className="space-y-1 text-sm">
           <div className="flex justify-between"><span className="text-gray-500">Occupation</span><span className="font-semibold">{occupationLabel}</span></div>
@@ -73,7 +73,7 @@ export default function StepPreview({ data, onBack, onStartOver }) {
               <span className="font-semibold">{fmt(m.amount)}</span>
             </div>
           ))}
-          <div className="flex justify-between pt-2 font-black text-gray-800">
+          <div className="flex justify-between pt-2 font-extrabold text-gray-800">
             <span>Total</span><span>{fmt(monthlyTotal)}</span>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function StepPreview({ data, onBack, onStartOver }) {
                 <span className="text-red-500">({fmt(r.amount)})</span>
               </div>
             ))}
-            <div className="flex justify-between pt-2 font-black text-gray-800">
+            <div className="flex justify-between pt-2 font-extrabold text-gray-800">
               <span>Net Income</span><span>{fmt(netIncome)}</span>
             </div>
           </div>

@@ -20,7 +20,7 @@ export default function NicheLanding() {
   if (!data) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-black text-gray-800 mb-3">Page not found</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-3">Page not found</h1>
         <p className="text-sm text-gray-500 mb-6">We couldn't find a guide for that occupation.</p>
         <Link to="/how-to-prove-income" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700">
           Browse all guides →
@@ -44,7 +44,7 @@ export default function NicheLanding() {
 
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           <span className="mr-1">{data.icon}</span> Proof of Income for {data.label}
         </h1>
         <p className="text-sm text-gray-400">Updated July 2026 · 4 min read</p>

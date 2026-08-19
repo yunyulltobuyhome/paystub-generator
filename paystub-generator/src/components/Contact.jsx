@@ -24,14 +24,14 @@ export default function Contact() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-black text-gray-800 mb-2">Contact Us</h1>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">Contact Us</h1>
       <p className="text-sm text-gray-400 mb-8">
         We're a small team and we read every message. Get in touch with the MyFreePayStub team below.
       </p>
 
       <div className="space-y-6">
         {/* Reasons to contact */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What can we help with?</h2>
           <div className="grid sm:grid-cols-2 gap-3 text-sm">
             {[
@@ -59,7 +59,7 @@ export default function Contact() {
         </div>
 
         {/* Compose form (opens your email client — no data leaves your browser) */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-1">Send Us a Message</h2>
           <p className="text-xs text-gray-400 mb-4">
             This form opens your own email app with the details filled in — nothing is submitted to or stored on our servers.

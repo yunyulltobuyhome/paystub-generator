@@ -63,7 +63,7 @@ export default function InvoiceGenerator() {
       })}} />
 
       <div className="mb-6 print:hidden">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Free Invoice Generator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Free Invoice Generator</h1>
         <p className="text-sm text-gray-500">
           Create a professional invoice in minutes — add line items, tax, and notes, then download as PDF.
           Free, unlimited, no sign-up, no watermark.
@@ -72,7 +72,7 @@ export default function InvoiceGenerator() {
 
       {/* Editor */}
       <div className="space-y-4 print:hidden">
-        <div className="bg-white rounded-2xl border border-gray-200 p-5">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-5">
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
               <p className="text-sm font-bold text-gray-700 mb-3">From (Your Business)</p>
@@ -106,7 +106,7 @@ export default function InvoiceGenerator() {
         </div>
 
         {/* Line items */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-5">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-5">
           <p className="text-sm font-bold text-gray-700 mb-3">Line Items</p>
           <div className="space-y-2">
             <div className="hidden sm:grid grid-cols-12 gap-2 text-xs font-semibold text-gray-400 px-1">
@@ -139,7 +139,7 @@ export default function InvoiceGenerator() {
               </div>
               <div className="flex justify-between text-sm text-gray-600"><span>Subtotal</span><span>{fmt(subtotal)}</span></div>
               <div className="flex justify-between text-sm text-gray-600"><span>Tax ({parseFloat(taxRate) || 0}%)</span><span>{fmt(taxAmount)}</span></div>
-              <div className="flex justify-between text-base font-black text-gray-800 border-t border-gray-200 pt-2"><span>Total</span><span>{fmt(total)}</span></div>
+              <div className="flex justify-between text-base font-extrabold text-gray-800 border-t border-gray-200 pt-2"><span>Total</span><span>{fmt(total)}</span></div>
             </div>
           </div>
         </div>
@@ -162,12 +162,12 @@ export default function InvoiceGenerator() {
         <div id="invoice-preview" className="mt-8 bg-white border-2 border-gray-300 rounded-2xl overflow-hidden print:border-gray-400 print:mt-0">
           <div className="bg-blue-600 text-white px-6 py-5 flex justify-between items-start">
             <div>
-              <h2 className="text-2xl font-black">{biz.name || 'Your Business'}</h2>
+              <h2 className="text-2xl font-extrabold">{biz.name || 'Your Business'}</h2>
               {biz.email && <p className="text-blue-200 text-sm mt-0.5">{biz.email}</p>}
               {biz.address && <p className="text-blue-200 text-sm">{biz.address}</p>}
             </div>
             <div className="text-right">
-              <p className="text-3xl font-black tracking-wide">INVOICE</p>
+              <p className="text-3xl font-extrabold tracking-wide">INVOICE</p>
               <p className="text-blue-200 text-sm mt-1">#{meta.number}</p>
             </div>
           </div>
@@ -211,7 +211,7 @@ export default function InvoiceGenerator() {
               <div className="w-full sm:w-64 space-y-1.5 text-sm">
                 <div className="flex justify-between text-gray-600"><span>Subtotal</span><span>{fmt(subtotal)}</span></div>
                 <div className="flex justify-between text-gray-600"><span>Tax ({parseFloat(taxRate) || 0}%)</span><span>{fmt(taxAmount)}</span></div>
-                <div className="flex justify-between text-lg font-black text-blue-700 border-t border-gray-200 pt-2"><span>Total Due</span><span>{fmt(total)}</span></div>
+                <div className="flex justify-between text-lg font-extrabold text-blue-700 border-t border-gray-200 pt-2"><span>Total Due</span><span>{fmt(total)}</span></div>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function InvoiceGenerator() {
 
       {/* SEO content */}
       <div className="mt-10 space-y-6 text-sm text-gray-600 print:hidden">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How to Create an Invoice for Free</h2>
           <ol className="space-y-2 list-decimal list-inside text-gray-600">
             {[
@@ -246,7 +246,7 @@ export default function InvoiceGenerator() {
           </ol>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Who Uses This Invoice Generator?</h2>
           <div className="grid grid-cols-2 gap-3">
             {[

@@ -100,14 +100,14 @@ export default function W4WithholdingCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">W-4 Withholding Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">W-4 Withholding Calculator</h1>
         <p className="text-sm text-gray-500">
           Find out whether you're withholding too much or too little federal tax — and exactly what
           to put on line 4(c) to fix it.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Annual Salary</label>
           <div className="relative">
@@ -187,7 +187,7 @@ export default function W4WithholdingCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Ideal Withholding Per Paycheck</p>
-            <p className="text-4xl font-black text-blue-700">{fmt2(result.idealPerPeriod)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt2(result.idealPerPeriod)}</p>
             <p className="text-xs text-gray-500 mt-1">
               To break even on {fmt0(result.annualTax)} of estimated annual federal tax
             </p>
@@ -212,7 +212,7 @@ export default function W4WithholdingCalc() {
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">W-4 Line 4(c) — Extra Withholding</p>
               {result.extraPerPeriod > 0 ? (
                 <>
-                  <p className="text-3xl font-black text-gray-800">{fmt2(result.extraPerPeriod)}</p>
+                  <p className="text-3xl font-extrabold text-gray-800">{fmt2(result.extraPerPeriod)}</p>
                   <p className="text-sm text-gray-600 mt-1">
                     Enter this on line 4(c) of a new W-4 and give it to your employer. Across your
                     remaining {result.remaining} paychecks it closes the gap to your{' '}
@@ -262,7 +262,7 @@ export default function W4WithholdingCalc() {
       <div className="mt-8"><EmbedSnippet tool="w4-withholding-calculator" title="W-4 Withholding Calculator" height="900" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How to Fill Out a W-4</h2>
           <ol className="space-y-3 list-decimal list-inside leading-relaxed">
             <li><strong>Step 1 — Personal information.</strong> Your name, address, Social Security number, and filing status. Everyone completes this.</li>
@@ -275,7 +275,7 @@ export default function W4WithholdingCalc() {
 
         <AdSlot slot={AD_SLOTS.article} />
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Owed Money Last Year? Got a Huge Refund?</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
@@ -304,7 +304,7 @@ export default function W4WithholdingCalc() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (

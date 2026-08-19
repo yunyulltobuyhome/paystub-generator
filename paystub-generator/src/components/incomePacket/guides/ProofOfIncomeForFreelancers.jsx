@@ -25,7 +25,7 @@ export default function ProofOfIncomeForFreelancers() {
 
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           Proof of Income for Freelancers: A Complete Guide (2026)
         </h1>
         <p className="text-sm text-gray-400">Updated July 2026 · 5 min read</p>

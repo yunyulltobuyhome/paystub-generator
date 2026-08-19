@@ -13,7 +13,7 @@ export default function SalaryHub() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-black text-gray-800 mb-2">Salary After Tax &amp; Per Hour</h1>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">Salary After Tax &amp; Per Hour</h1>
       <p className="text-sm text-gray-400 mb-8">
         Pick a salary to see its hourly rate and 2026 take-home pay in all 50 states — plus weekly,
         biweekly, and monthly breakdowns.

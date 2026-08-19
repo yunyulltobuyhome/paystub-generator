@@ -62,7 +62,7 @@ export default function Methodology() {
 
       <div className="mb-6">
         <span className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full font-semibold">Transparency</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">How We Calculate</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">How We Calculate</h1>
         <p className="text-sm text-gray-500">
           Our tools deal with your pay and your taxes, so you should be able to check our work.
           This page publishes every rate, bracket, and formula the calculators use — along with what
@@ -94,7 +94,7 @@ export default function Methodology() {
             <div className="grid grid-cols-3 gap-3 text-center">
               {[['Single', STANDARD_DEDUCTIONS.single], ['Married', STANDARD_DEDUCTIONS.married], ['Head of household', STANDARD_DEDUCTIONS.head]].map(([l, v]) => (
                 <div key={l}>
-                  <p className="text-lg font-black text-gray-800">{usd(v)}</p>
+                  <p className="text-lg font-extrabold text-gray-800">{usd(v)}</p>
                   <p className="text-xs text-gray-500">{l}</p>
                 </div>
               ))}
@@ -156,15 +156,15 @@ export default function Methodology() {
           <div className="bg-white border border-gray-200 rounded-xl p-4 mt-4">
             <div className="grid grid-cols-3 gap-3 text-center">
               <div>
-                <p className="text-2xl font-black text-gray-800">{NO_INCOME_TAX_CODES.length}</p>
+                <p className="text-2xl font-extrabold text-gray-800">{NO_INCOME_TAX_CODES.length}</p>
                 <p className="text-xs text-gray-500">states with no wage income tax</p>
               </div>
               <div>
-                <p className="text-2xl font-black text-gray-800">{taxedStates.length}</p>
+                <p className="text-2xl font-extrabold text-gray-800">{taxedStates.length}</p>
                 <p className="text-xs text-gray-500">jurisdictions we apply a rate to</p>
               </div>
               <div>
-                <p className="text-2xl font-black text-gray-800">{pct(highest.rate)}</p>
+                <p className="text-2xl font-extrabold text-gray-800">{pct(highest.rate)}</p>
                 <p className="text-xs text-gray-500">highest rate we model ({highest.name})</p>
               </div>
             </div>

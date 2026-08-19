@@ -81,7 +81,7 @@ export default function MultiPayStub() {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-4 print:hidden">
-          <h1 className="text-xl font-black text-gray-800">{results.stubs.length} Pay Stubs Generated</h1>
+          <h1 className="text-xl font-extrabold text-gray-800">{results.stubs.length} Pay Stubs Generated</h1>
           <div className="flex gap-2">
             <button onClick={() => setResults(null)} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-bold rounded-lg">← Edit</button>
             <button onClick={() => window.print()} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-lg">🖨️ Print / Save PDF</button>
@@ -125,9 +125,9 @@ export default function MultiPayStub() {
                     </tr>
                   ))}
                   <tr className="border-t-2 border-gray-300">
-                    <td className="py-2 font-black text-emerald-700">Net Pay</td>
-                    <td className="py-2 text-right font-black text-emerald-700">{fmt(s.net)}</td>
-                    <td className="py-2 text-right font-black text-emerald-700">{fmt(s.ytdNet)}</td>
+                    <td className="py-2 font-extrabold text-emerald-700">Net Pay</td>
+                    <td className="py-2 text-right font-extrabold text-emerald-700">{fmt(s.net)}</td>
+                    <td className="py-2 text-right font-extrabold text-emerald-700">{fmt(s.ytdNet)}</td>
                   </tr>
                 </tbody>
               </table>
@@ -162,11 +162,11 @@ export default function MultiPayStub() {
       })}} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Multiple Pay Stubs Generator with YTD</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Multiple Pay Stubs Generator with YTD</h1>
         <p className="text-sm text-gray-500">Generate several consecutive pay stubs at once with automatic year-to-date totals. Free, no sign-up.</p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div className="grid sm:grid-cols-2 gap-4">
           <div><label className={labelClass}>Company Name</label><input value={company} onChange={e => setCompany(e.target.value)} className={inputClass} placeholder="Acme Inc." /></div>
           <div><label className={labelClass}>Employee Name</label><input value={employee} onChange={e => setEmployee(e.target.value)} className={inputClass} placeholder="John Smith" /></div>
@@ -206,11 +206,11 @@ export default function MultiPayStub() {
       </div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What is YTD on a Pay Stub?</h2>
           <p className="leading-relaxed">YTD (Year-to-Date) shows the total amount earned and deducted from the start of the calendar year up to the current pay date. Lenders, landlords, and accountants often look at YTD figures to verify income. This tool calculates YTD automatically across multiple pay periods, so each stub correctly accumulates totals.</p>
         </div>
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

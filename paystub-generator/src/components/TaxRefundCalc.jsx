@@ -102,14 +102,14 @@ export default function TaxRefundCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Tax Refund Calculator 2026</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Tax Refund Calculator 2026</h1>
         <p className="text-sm text-gray-500">
           Estimate your federal refund — or what you'll owe — from your income, the tax already
           withheld, and your dependents. Free, and nothing you type leaves your browser.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Annual Wages (W-2 Box 1)</label>
           <div className="relative">
@@ -179,7 +179,7 @@ export default function TaxRefundCalc() {
             <p className={`text-sm font-semibold mb-1 ${result.isRefund ? 'text-emerald-600' : 'text-red-600'}`}>
               {result.isRefund ? 'Estimated Refund' : 'Estimated Amount You Owe'}
             </p>
-            <p className={`text-4xl font-black ${result.isRefund ? 'text-emerald-700' : 'text-red-700'}`}>
+            <p className={`text-4xl font-extrabold ${result.isRefund ? 'text-emerald-700' : 'text-red-700'}`}>
               {fmt0(Math.abs(result.balance))}
             </p>
             <p className="text-xs text-gray-500 mt-1">
@@ -207,7 +207,7 @@ export default function TaxRefundCalc() {
                   <span className={sub ? 'text-red-500' : 'font-semibold'}>{val < 0 ? `(${fmt0(-val)})` : fmt0(val)}</span>
                 </div>
               ))}
-              <div className={`flex justify-between pt-2 font-black ${result.isRefund ? 'text-emerald-700' : 'text-red-700'}`}>
+              <div className={`flex justify-between pt-2 font-extrabold ${result.isRefund ? 'text-emerald-700' : 'text-red-700'}`}>
                 <span>{result.isRefund ? 'Refund' : 'Balance due'}</span>
                 <span>{fmt0(Math.abs(result.balance))}</span>
               </div>
@@ -231,7 +231,7 @@ export default function TaxRefundCalc() {
       <div className="mt-8"><EmbedSnippet tool="tax-refund-calculator" title="Tax Refund Calculator" height="860" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How a Federal Refund Actually Works</h2>
           <p className="leading-relaxed">
             A refund is not a bonus from the government — it is your own money coming back. Throughout
@@ -248,7 +248,7 @@ export default function TaxRefundCalc() {
 
         <AdSlot slot={AD_SLOTS.article} />
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What This Estimator Includes — and What It Doesn't</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -278,7 +278,7 @@ export default function TaxRefundCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (

@@ -82,14 +82,14 @@ export default function PayRaiseCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Pay Raise Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Pay Raise Calculator</h1>
         <p className="text-sm text-gray-500">
           See your new salary after a raise — and, more importantly, how much of it you actually
           keep once taxes and inflation take their share.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Current Annual Salary</label>
           <div className="relative">
@@ -147,7 +147,7 @@ export default function PayRaiseCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">New Annual Salary</p>
-            <p className="text-4xl font-black text-blue-700">{fmt0(result.newSalary)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt0(result.newSalary)}</p>
             <p className="text-xs text-gray-500 mt-1">
               +{fmt0(result.raiseAmount)} ({result.pct.toFixed(2)}% increase)
             </p>
@@ -155,7 +155,7 @@ export default function PayRaiseCalc() {
 
           <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-center">
             <p className="text-sm text-emerald-600 font-semibold mb-1">What You Actually Take Home</p>
-            <p className="text-3xl font-black text-emerald-700">+{fmt0(result.netGain)}/yr</p>
+            <p className="text-3xl font-extrabold text-emerald-700">+{fmt0(result.netGain)}/yr</p>
             <p className="text-xs text-emerald-800 mt-1">
               {fmt2(result.netPerBiweekly)} more per bi-weekly paycheck ·
               you keep {result.keptPct.toFixed(0)}% of the raise
@@ -211,7 +211,7 @@ export default function PayRaiseCalc() {
       <div className="mt-8"><EmbedSnippet tool="pay-raise-calculator" title="Pay Raise Calculator" height="800" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How to Calculate a Pay Raise</h2>
           <p className="leading-relaxed">
             To find a raise percentage, divide the increase by your old salary and multiply by 100.
@@ -224,7 +224,7 @@ export default function PayRaiseCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Raise Percentage Quick Reference</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
@@ -250,7 +250,7 @@ export default function PayRaiseCalc() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

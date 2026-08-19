@@ -70,7 +70,7 @@ export default function HourlyToSalaryCalc() {
       })}} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">
           Hourly to Salary Calculator
         </h1>
         <p className="text-sm text-gray-500">
@@ -78,7 +78,7 @@ export default function HourlyToSalaryCalc() {
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Conversion</label>
           <div className="grid grid-cols-2 gap-2">
@@ -141,7 +141,7 @@ export default function HourlyToSalaryCalc() {
             <p className="text-sm text-blue-600 font-semibold mb-1">
               {result.mode === 'hourlyToSalary' ? 'Equivalent Annual Salary' : 'Equivalent Hourly Rate'}
             </p>
-            <p className="text-4xl font-black text-blue-700">
+            <p className="text-4xl font-extrabold text-blue-700">
               {result.mode === 'hourlyToSalary' ? fmt(result.annual) : fmt(result.hourly)}
             </p>
             <p className="text-xs text-gray-400 mt-1">
@@ -178,7 +178,7 @@ export default function HourlyToSalaryCalc() {
       <div className="mt-8"><EmbedSnippet tool="hourly-to-salary-calculator" title="Hourly to Salary Calculator" height="640" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How to Convert Hourly to Salary</h2>
           <p className="leading-relaxed">
             To convert an hourly wage to an annual salary, multiply your hourly rate by the number of
@@ -188,7 +188,7 @@ export default function HourlyToSalaryCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Common Hourly to Salary Conversions</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">

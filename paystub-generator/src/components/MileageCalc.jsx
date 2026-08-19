@@ -73,14 +73,14 @@ export default function MileageCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Mileage Reimbursement Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Mileage Reimbursement Calculator</h1>
         <p className="text-sm text-gray-500">
           Work out what your driving is worth — for expense reimbursement or a business mileage
           deduction. Built with rideshare, delivery, and freelance drivers in mind.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Purpose of Driving</label>
           <div className="grid grid-cols-3 gap-2">
@@ -141,7 +141,7 @@ export default function MileageCalc() {
             <p className="text-sm text-blue-600 font-semibold mb-1">
               {result.isBusiness ? 'Deduction / Reimbursement' : 'Total Value'}
             </p>
-            <p className="text-4xl font-black text-blue-700">{fmt2(result.total)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt2(result.total)}</p>
             <p className="text-xs text-gray-500 mt-1">
               {result.miles.toLocaleString('en-US')} miles × {fmt2(result.rate)}/mile
             </p>
@@ -188,7 +188,7 @@ export default function MileageCalc() {
       <div className="mt-8"><EmbedSnippet tool="mileage-reimbursement-calculator" title="Mileage Reimbursement Calculator" height="860" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How Mileage Reimbursement Works</h2>
           <p className="leading-relaxed">
             The IRS publishes a <strong>standard mileage rate</strong> each year that represents the
@@ -203,7 +203,7 @@ export default function MileageCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What Counts as Business Mileage?</h2>
           <ul className="space-y-2 leading-relaxed">
             <li>✅ Driving between job sites, clients, or offices</li>
@@ -219,7 +219,7 @@ export default function MileageCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

@@ -21,7 +21,7 @@ export default function EditorialStandards() {
 
       <div className="mb-6">
         <span className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full font-semibold">Trust</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">Editorial Standards</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">Editorial Standards</h1>
         <p className="text-sm text-gray-500">
           We publish tools about people's pay and taxes. That is a subject where being confidently
           wrong causes real harm, so these are the rules we hold ourselves to.

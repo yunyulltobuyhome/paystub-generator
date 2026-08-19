@@ -26,7 +26,7 @@ export default function SalaryAfterTax() {
   if (!amount) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-black text-gray-800 mb-3">Salary not found</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-3">Salary not found</h1>
         <p className="text-sm text-gray-500 mb-6">We don't have a page for that salary amount yet.</p>
         <Link to="/salary" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700">
           Browse all salaries →
@@ -74,7 +74,7 @@ export default function SalaryAfterTax() {
 
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Salary Guide</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           ${amountStr} a Year Is How Much an Hour &amp; After Taxes? (2026)
         </h1>
         <p className="text-sm text-gray-400">Updated July 2026 · Single filer estimate</p>
@@ -83,12 +83,12 @@ export default function SalaryAfterTax() {
       <div className="grid grid-cols-2 gap-3 mb-6">
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
           <p className="text-xs text-blue-500 font-semibold uppercase">Per Hour</p>
-          <p className="text-2xl font-black text-blue-700">{fmt2(c.hourly)}</p>
+          <p className="text-2xl font-extrabold text-blue-700">{fmt2(c.hourly)}</p>
           <p className="text-xs text-gray-400 mt-0.5">40 hrs/week</p>
         </div>
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
           <p className="text-xs text-emerald-600 font-semibold uppercase">Take-Home</p>
-          <p className="text-2xl font-black text-emerald-700">{fmt0(worst.net)}–{fmt0(best.net)}</p>
+          <p className="text-2xl font-extrabold text-emerald-700">{fmt0(worst.net)}–{fmt0(best.net)}</p>
           <p className="text-xs text-gray-400 mt-0.5">/yr, varies by state</p>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default function SalaryAfterTax() {
                   <span className={sub ? 'text-red-500' : 'font-semibold'}>{val < 0 ? `(${fmt0(-val)})` : fmt0(val)}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-emerald-700">
+              <div className="flex justify-between pt-2 font-extrabold text-emerald-700">
                 <span>Take-home (before state tax)</span>
                 <span>{fmt0(fed.net)}</span>
               </div>

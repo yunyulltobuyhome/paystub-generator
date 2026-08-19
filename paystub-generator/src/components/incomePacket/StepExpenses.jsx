@@ -24,7 +24,7 @@ export default function StepExpenses({ value, onChange, onNext, onBack }) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-2xl border border-gray-200 p-6">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6">
         <div className="flex items-center justify-between mb-1">
           <h2 className="text-base font-bold text-gray-800">🧾 Business Expenses</h2>
           <span className="text-xs text-gray-400 font-normal">Optional</span>
@@ -49,7 +49,7 @@ export default function StepExpenses({ value, onChange, onNext, onBack }) {
 
         <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
           <span className="text-sm font-semibold text-gray-700">Total Expenses</span>
-          <span className="text-lg font-black text-gray-800">{fmt(total)}</span>
+          <span className="text-lg font-extrabold text-gray-800">{fmt(total)}</span>
         </div>
       </div>
 

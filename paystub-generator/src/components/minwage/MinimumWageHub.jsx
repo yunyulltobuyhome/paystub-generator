@@ -42,7 +42,7 @@ export default function MinimumWageHub() {
         })),
       }) }} />
 
-      <h1 className="text-2xl font-black text-gray-800 mb-2">Minimum Wage by State (2026)</h1>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">Minimum Wage by State (2026)</h1>
       <p className="text-sm text-gray-400 mb-6">
         Minimum wage rates for all 50 states and DC, ranked highest to lowest. Tap a state for its
         weekly, monthly, yearly, and after-tax breakdown.
@@ -50,15 +50,15 @@ export default function MinimumWageHub() {
 
       <div className="grid grid-cols-3 gap-3 mb-6">
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
-          <p className="text-xl font-black text-blue-700">{fmt2(FEDERAL_MIN_WAGE)}</p>
+          <p className="text-xl font-extrabold text-blue-700">{fmt2(FEDERAL_MIN_WAGE)}</p>
           <p className="text-xs text-gray-500 mt-0.5">Federal floor</p>
         </div>
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-center">
-          <p className="text-xl font-black text-emerald-700">{aboveFederal}</p>
+          <p className="text-xl font-extrabold text-emerald-700">{aboveFederal}</p>
           <p className="text-xs text-gray-500 mt-0.5">Above federal</p>
         </div>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 text-center">
-          <p className="text-xl font-black text-gray-700">{atFederal}</p>
+          <p className="text-xl font-extrabold text-gray-700">{atFederal}</p>
           <p className="text-xs text-gray-500 mt-0.5">At federal rate</p>
         </div>
       </div>
@@ -99,7 +99,7 @@ export default function MinimumWageHub() {
       </div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (

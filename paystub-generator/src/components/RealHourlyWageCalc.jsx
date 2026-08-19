@@ -107,14 +107,14 @@ export default function RealHourlyWageCalc() {
 
       <div className="mb-6">
         <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-semibold">Eye-opener</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-1">Real Hourly Wage Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-1">Real Hourly Wage Calculator</h1>
         <p className="text-sm text-gray-500">
           Your salary ÷ 2,080 is a fiction. Once taxes, the commute, unpaid overtime, and what the job
           costs you are counted, most people earn far less per hour than they think. Here's your real number.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-5">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-5">
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className={labelClass}>Annual Salary *</label>
@@ -194,12 +194,12 @@ export default function RealHourlyWageCalc() {
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-500 font-semibold uppercase">What You Think</p>
-              <p className="text-2xl font-black text-gray-500 line-through">{fmt2(result.nominalHourly)}</p>
+              <p className="text-2xl font-extrabold text-gray-500 line-through">{fmt2(result.nominalHourly)}</p>
               <p className="text-xs text-gray-400 mt-0.5">salary ÷ paid hours</p>
             </div>
             <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 text-center">
               <p className="text-xs text-purple-600 font-semibold uppercase">What You Earn</p>
-              <p className="text-3xl font-black text-purple-700">{fmt2(result.realHourly)}</p>
+              <p className="text-3xl font-extrabold text-purple-700">{fmt2(result.realHourly)}</p>
               <p className="text-xs text-gray-400 mt-0.5">real hourly wage</p>
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function RealHourlyWageCalc() {
                   <span className={sub ? 'text-red-500' : 'font-semibold'}>{val < 0 ? `(${fmt0(-val)})` : fmt0(val)}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-purple-700">
+              <div className="flex justify-between pt-2 font-extrabold text-purple-700">
                 <span>What the job actually leaves you</span>
                 <span>{fmt0(result.realIncome)}</span>
               </div>
@@ -255,7 +255,7 @@ export default function RealHourlyWageCalc() {
                   <span className="font-semibold text-gray-800">{v.toFixed(1)} hrs/wk</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-gray-800">
+              <div className="flex justify-between pt-2 font-extrabold text-gray-800">
                 <span>Real weekly commitment</span>
                 <span>{result.realHoursPerWeek.toFixed(1)} hrs</span>
               </div>
@@ -278,7 +278,7 @@ export default function RealHourlyWageCalc() {
       <div className="mt-8"><EmbedSnippet tool="real-hourly-wage-calculator" title="Real Hourly Wage Calculator" height="900" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Why Salary ÷ 2,080 Lies to You</h2>
           <p className="leading-relaxed">
             The standard conversion assumes you are paid for every hour the job takes and that the money
@@ -295,7 +295,7 @@ export default function RealHourlyWageCalc() {
 
         <AdSlot slot={AD_SLOTS.article} />
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How a Commute Eats a Salary</h2>
           <p className="leading-relaxed mb-3">
             Time lost per year to commuting alone, at five days a week for 50 weeks:
@@ -329,7 +329,7 @@ export default function RealHourlyWageCalc() {
           <p className="text-xs text-gray-400 mt-2">*Equivalent 8-hour working days spent travelling, unpaid.</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (
@@ -341,7 +341,7 @@ export default function RealHourlyWageCalc() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Next Steps</h2>
           <p className="leading-relaxed">
             If the gap surprised you, the useful follow-ups are working out{' '}

@@ -11,7 +11,7 @@ export default function StatesIndex() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-black text-gray-800 mb-2">Pay Stub Guides by State (2026)</h1>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">Pay Stub Guides by State (2026)</h1>
       <p className="text-sm text-gray-400 mb-8">
         Pick your state to see its income tax rate, a take-home pay example, and pay stub
         requirements — then generate a free pay stub with the right taxes applied.

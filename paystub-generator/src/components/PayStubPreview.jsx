@@ -69,7 +69,7 @@ export default function PayStubPreview({ result, template = 'classic', logo = nu
               <img src={logo} alt="Company logo" className="h-12 w-12 object-contain rounded bg-white/90 p-1 shrink-0" />
             )}
             <div className="min-w-0">
-              <h1 className="text-xl font-black truncate">{form.companyName || 'Company Name'}</h1>
+              <h1 className="text-xl font-extrabold truncate">{form.companyName || 'Company Name'}</h1>
               <p className={`${t.headerSub} text-sm mt-0.5`}>{form.companyAddress}</p>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function PayStubPreview({ result, template = 'classic', logo = nu
         <div className="flex justify-between items-center">
           <div>
             <p className={`text-xs ${t.netLabel} uppercase tracking-wide font-bold`}>Net Pay</p>
-            <p className={`text-3xl font-black ${t.netValue}`}>{fmt(result.netPay)}</p>
+            <p className={`text-3xl font-extrabold ${t.netValue}`}>{fmt(result.netPay)}</p>
           </div>
           <div className="text-right text-xs text-gray-500">
             <p>Gross: {fmt(result.grossPay)}</p>

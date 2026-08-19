@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useState, lazy, Suspense } from 'react'
 import PayStubForm from './components/PayStubForm'
+import Icon from './components/Icon'
 import PaycheckCalc from './components/PaycheckCalc'
 import HourlyToSalaryCalc from './components/HourlyToSalaryCalc'
 import SelfEmploymentTaxCalc from './components/SelfEmploymentTaxCalc'
@@ -95,16 +96,16 @@ const TOOLS = [
 function HomePage() {
   return (
     <>
-      <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-10 px-4">
+      <div className="bg-blue-800 text-white py-12 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl font-black mb-3">Free Pay Stub Generator 2026</h1>
+          <h1 className="text-3xl font-extrabold mb-3">Free Pay Stub Generator 2026</h1>
           <p className="text-blue-200 text-base mb-6">
             Create professional pay stubs in minutes. Auto-calculates federal & state taxes
             for all 50 states. No sign-up, no watermark, no fees.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
-            {['✅ 2026 Tax Tables', '✅ All 50 States', '✅ No Sign-Up', '✅ Instant PDF', '✅ 4 Free Templates', '✅ Logo Upload'].map(t => (
-              <span key={t} className="bg-blue-500/50 px-3 py-1 rounded-full">{t}</span>
+            {['2026 tax tables', 'All 50 states', 'No sign-up', 'Instant PDF', '4 templates', 'Logo upload'].map(t => (
+              <span key={t} className="text-blue-100/90 after:content-['·'] after:mx-3 after:text-blue-300/50 last:after:content-['']">{t}</span>
             ))}
           </div>
         </div>
@@ -115,37 +116,37 @@ function HomePage() {
 
         <div className="mt-12 space-y-6 text-sm text-gray-600">
           {/* Free Tools cross-links */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">More Free Tools</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
-                { path: '/invoice-generator', icon: '📑', title: 'Invoice Generator', desc: 'Create & download invoices — free, no watermark' },
-                { path: '/self-employment-tax-calculator', icon: '🧾', title: 'Self-Employment Tax Calculator', desc: '1099 & gig tax + quarterly payments' },
-                { path: '/job-offer-comparison-calculator', icon: '⚖️', title: 'Compare Job Offers', desc: 'Which offer is actually better? Often not the big one' },
-                { path: '/paycheck-checker', icon: '🔍', title: 'Is My Paycheck Correct?', desc: 'Audit your pay stub — FICA, overtime & net pay' },
-                { path: '/real-hourly-wage-calculator', icon: '⏳', title: 'Real Hourly Wage', desc: 'What your job actually pays per hour' },
-                { path: '/paycheck-calculator', icon: '💵', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
-                { path: '/tax-refund-calculator', icon: '💰', title: 'Tax Refund Calculator', desc: 'Estimate your federal refund or bill' },
-                { path: '/w4-withholding-calculator', icon: '📋', title: 'W-4 Withholding Calculator', desc: 'Fix over- or under-withholding' },
-                { path: '/time-card-calculator', icon: '⏰', title: 'Time Card Calculator', desc: 'Weekly timesheet with breaks & overtime' },
-                { path: '/payroll-calendar', icon: '📅', title: 'Payroll Calendar Generator', desc: 'Every payday, pay periods & holiday alerts' },
-                { path: '/net-to-gross-calculator', icon: '🔁', title: 'Net to Gross Calculator', desc: 'Work backwards from your target take-home' },
-                { path: '/1099-vs-w2-calculator', icon: '⚖️', title: '1099 vs W-2 Calculator', desc: 'The contract rate that matches a salary' },
-                { path: '/hourly-to-salary-calculator', icon: '🔄', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
-                { path: '/overtime-calculator', icon: '⏱️', title: 'Overtime Pay Calculator', desc: 'Time-and-a-half & double-time pay' },
-                { path: '/pay-raise-calculator', icon: '📈', title: 'Pay Raise Calculator', desc: 'New salary & what you really keep' },
-                { path: '/401k-paycheck-calculator', icon: '🏦', title: '401(k) Paycheck Impact', desc: 'What contributing really costs per check' },
-                { path: '/pto-accrual-calculator', icon: '🏖️', title: 'PTO Accrual Calculator', desc: 'Vacation earned per hour & per paycheck' },
-                { path: '/mileage-reimbursement-calculator', icon: '🚗', title: 'Mileage Reimbursement', desc: 'Business, medical & charity mileage value' },
-                { path: '/employee-cost-calculator', icon: '🏢', title: 'True Cost of an Employee', desc: 'Employer payroll taxes, benefits & burden' },
-                { path: '/bonus-tax-calculator', icon: '🎁', title: 'Bonus Tax Calculator', desc: 'How much tax comes out of your bonus' },
-                { path: '/multiple-paystubs', icon: '📄', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
-                { path: '/employment-verification-letter', icon: '📝', title: 'Employment Verification Letter', desc: 'Proof-of-employment letter for rent or loans' },
-                { path: '/income-verification-packet', icon: '📊', title: 'Income Verification Packet', desc: 'Organize gig & freelance income into a PDF packet' },
+                { path: '/invoice-generator', icon: 'receipt', title: 'Invoice Generator', desc: 'Create & download invoices — free, no watermark' },
+                { path: '/self-employment-tax-calculator', icon: 'receipt', title: 'Self-Employment Tax Calculator', desc: '1099 & gig tax + quarterly payments' },
+                { path: '/job-offer-comparison-calculator', icon: 'scale', title: 'Compare Job Offers', desc: 'Which offer is actually better? Often not the big one' },
+                { path: '/paycheck-checker', icon: 'search', title: 'Is My Paycheck Correct?', desc: 'Audit your pay stub — FICA, overtime & net pay' },
+                { path: '/real-hourly-wage-calculator', icon: 'hourglass', title: 'Real Hourly Wage', desc: 'What your job actually pays per hour' },
+                { path: '/paycheck-calculator', icon: 'banknote', title: 'Paycheck Calculator', desc: 'Take-home pay after taxes — all 50 states' },
+                { path: '/tax-refund-calculator', icon: 'wallet', title: 'Tax Refund Calculator', desc: 'Estimate your federal refund or bill' },
+                { path: '/w4-withholding-calculator', icon: 'clipboard', title: 'W-4 Withholding Calculator', desc: 'Fix over- or under-withholding' },
+                { path: '/time-card-calculator', icon: 'clock', title: 'Time Card Calculator', desc: 'Weekly timesheet with breaks & overtime' },
+                { path: '/payroll-calendar', icon: 'calendar', title: 'Payroll Calendar Generator', desc: 'Every payday, pay periods & holiday alerts' },
+                { path: '/net-to-gross-calculator', icon: 'reverse', title: 'Net to Gross Calculator', desc: 'Work backwards from your target take-home' },
+                { path: '/1099-vs-w2-calculator', icon: 'scale', title: '1099 vs W-2 Calculator', desc: 'The contract rate that matches a salary' },
+                { path: '/hourly-to-salary-calculator', icon: 'swap', title: 'Hourly to Salary Calculator', desc: 'Convert hourly wage to annual salary' },
+                { path: '/overtime-calculator', icon: 'timer', title: 'Overtime Pay Calculator', desc: 'Time-and-a-half & double-time pay' },
+                { path: '/pay-raise-calculator', icon: 'trendUp', title: 'Pay Raise Calculator', desc: 'New salary & what you really keep' },
+                { path: '/401k-paycheck-calculator', icon: 'bank', title: '401(k) Paycheck Impact', desc: 'What contributing really costs per check' },
+                { path: '/pto-accrual-calculator', icon: 'palm', title: 'PTO Accrual Calculator', desc: 'Vacation earned per hour & per paycheck' },
+                { path: '/mileage-reimbursement-calculator', icon: 'car', title: 'Mileage Reimbursement', desc: 'Business, medical & charity mileage value' },
+                { path: '/employee-cost-calculator', icon: 'building', title: 'True Cost of an Employee', desc: 'Employer payroll taxes, benefits & burden' },
+                { path: '/bonus-tax-calculator', icon: 'gift', title: 'Bonus Tax Calculator', desc: 'How much tax comes out of your bonus' },
+                { path: '/multiple-paystubs', icon: 'files', title: 'Multiple Pay Stubs Generator', desc: 'Several stubs at once with YTD totals' },
+                { path: '/employment-verification-letter', icon: 'mail', title: 'Employment Verification Letter', desc: 'Proof-of-employment letter for rent or loans' },
+                { path: '/income-verification-packet', icon: 'chart', title: 'Income Verification Packet', desc: 'Organize gig & freelance income into a PDF packet' },
               ].map(({ path, icon, title, desc }) => (
                 <Link key={path} to={path}
                   className="flex items-start gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 transition-colors group">
-                  <span className="text-2xl">{icon}</span>
+                  <span className="shrink-0 mt-0.5 text-gray-400 group-hover:text-blue-600 transition-colors"><Icon name={icon} className="w-5 h-5" /></span>
                   <div>
                     <p className="text-sm font-bold text-gray-800 group-hover:text-blue-600">{title}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{desc}</p>
@@ -155,7 +156,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">How to Generate a Free Pay Stub</h2>
             <ol className="space-y-2 list-decimal list-inside text-gray-600">
               {[
@@ -168,17 +169,17 @@ function HomePage() {
             </ol>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Who Needs a Pay Stub?</h2>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: '👔', title: 'Employees', desc: 'Proof of income for loans, rentals, or mortgages' },
-                { icon: '🏗️', title: 'Contractors & 1099', desc: 'Document income for tax filing and verification' },
-                { icon: '💼', title: 'Small Business Owners', desc: 'Generate pay stubs for your team without payroll software' },
-                { icon: '🚗', title: 'Gig Workers', desc: 'Track earnings from Uber, DoorDash, Upwork, and more' },
+                { icon: 'file', title: 'Employees', desc: 'Proof of income for loans, rentals, or mortgages' },
+                { icon: 'receipt', title: 'Contractors & 1099', desc: 'Document income for tax filing and verification' },
+                { icon: 'building', title: 'Small Business Owners', desc: 'Generate pay stubs for your team without payroll software' },
+                { icon: 'car', title: 'Gig Workers', desc: 'Track earnings from Uber, DoorDash, Upwork, and more' },
               ].map(({ icon, title, desc }) => (
                 <div key={title} className="bg-gray-50 rounded-xl p-3">
-                  <p className="text-lg mb-1">{icon}</p>
+                  <p className="mb-1.5 text-blue-600"><Icon name={icon} className="w-5 h-5" /></p>
                   <p className="font-semibold text-gray-800 text-sm">{title}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{desc}</p>
                 </div>
@@ -186,7 +187,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">2026 Payroll Tax Rates</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-xs border-collapse">
@@ -215,7 +216,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
             <div className="space-y-3">
               {[
@@ -233,7 +234,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Pay Stub Guides by State</h2>
             <p className="text-xs text-gray-500 mb-3">
               See your state's income tax rate, a take-home pay example, and pay stub requirements.
@@ -258,7 +259,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Salary After Tax &amp; Per Hour</h2>
             <p className="text-xs text-gray-500 mb-3">
               See how much a salary is per hour and your take-home pay by state.
@@ -276,7 +277,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">$X an Hour Is How Much a Year?</h2>
             <p className="text-xs text-gray-500 mb-3">
               Convert an hourly wage to yearly pay — before and after taxes in your state.
@@ -303,15 +304,15 @@ function HomePage() {
             </p>
             <div className="flex flex-wrap gap-2">
               <Link to="/methodology" className="text-xs bg-white border border-slate-300 hover:border-blue-400 hover:text-blue-600 rounded-lg px-3 py-1.5 font-semibold transition-colors">
-                📐 How we calculate (rates & sources)
+                How we calculate (rates &amp; sources)
               </Link>
               <Link to="/editorial-standards" className="text-xs bg-white border border-slate-300 hover:border-blue-400 hover:text-blue-600 rounded-lg px-3 py-1.5 font-semibold transition-colors">
-                ✓ Editorial standards
+                Editorial standards
               </Link>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Payroll & Tax Guides</h2>
             <div className="space-y-2">
               {[
@@ -332,7 +333,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6">
             <h2 className="text-base font-bold text-gray-800 mb-3">Freelancer &amp; Gig Worker Guides</h2>
             <p className="text-xs text-gray-500 mb-3">
               Don't get a pay stub? Learn how to document your income and build a free
@@ -416,8 +417,8 @@ function Layout({ children }) {
             wordmark plus the whole nav, and max-w-3xl was what made it wrap. */}
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-1.5 shrink-0">
-            <span className="text-lg font-black text-blue-600">MyFree</span>
-            <span className="text-lg font-black text-gray-700">PayStub</span>
+            <span className="text-lg font-extrabold text-blue-600">MyFree</span>
+            <span className="text-lg font-extrabold text-gray-700">PayStub</span>
             {/* Dropped first when space is tight — it is decoration, not navigation. */}
             <span className="hidden xl:inline-block ml-1 text-[10px] bg-blue-50 text-blue-600 border border-blue-100 px-1.5 py-0.5 rounded-md font-bold tracking-wide uppercase">
               Free
@@ -435,7 +436,7 @@ function Layout({ children }) {
               </button>
               {/* pt-2 bridges the hover gap so the menu stays open */}
               <div className="absolute left-0 top-full pt-2 hidden group-hover:block z-30">
-                <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-2 w-64 max-h-[70vh] overflow-y-auto">
+                <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-2 w-64 max-h-[70vh] overflow-y-auto">
                   {TOOLS.map(({ path, label }) => (
                     <Link key={path} to={path}
                       className={`block px-3 py-2 rounded-lg text-sm transition-colors ${

@@ -110,7 +110,7 @@ export default function JobOfferCompare() {
 
       <div className="mb-6">
         <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full font-semibold">Decision tool</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-1">Job Offer Comparison Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-1">Job Offer Comparison Calculator</h1>
         <p className="text-sm text-gray-500">
           The bigger salary is not always the better offer. Compare what each one actually leaves you
           after state taxes, benefits, and the commute — the numbers recruiters never put side by side.
@@ -120,7 +120,7 @@ export default function JobOfferCompare() {
       {hasData && result.winner && (
         <div className="bg-gradient-to-br from-indigo-600 to-blue-700 text-white rounded-2xl p-6 mb-6">
           <p className="text-xs uppercase tracking-wide text-blue-200 font-semibold mb-1">Better offer</p>
-          <p className="text-3xl font-black mb-1">{result.winner.label}</p>
+          <p className="text-3xl font-extrabold mb-1">{result.winner.label}</p>
           <p className="text-blue-100 text-sm">
             Worth <strong className="text-white">{fmt0(result.gap)} more a year</strong> than the next
             best, once taxes, benefits, and job costs are counted.
@@ -135,17 +135,17 @@ export default function JobOfferCompare() {
           <div className="grid grid-cols-2 gap-3 mt-4">
             <div className="bg-white/10 rounded-xl p-3">
               <p className="text-xs text-blue-200">Annual value</p>
-              <p className="text-xl font-black">{fmt0(result.winner.totalValue)}</p>
+              <p className="text-xl font-extrabold">{fmt0(result.winner.totalValue)}</p>
             </div>
             <div className="bg-white/10 rounded-xl p-3">
               <p className="text-xs text-blue-200">Real hourly</p>
-              <p className="text-xl font-black">{fmt2(result.winner.realHourly)}</p>
+              <p className="text-xl font-extrabold">{fmt2(result.winner.realHourly)}</p>
             </div>
           </div>
         </div>
       )}
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 mb-6">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-4 sm:p-6 mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-base font-bold text-gray-800">The Offers</h2>
           <div className="flex items-center gap-2">
@@ -214,7 +214,7 @@ export default function JobOfferCompare() {
 
       {hasData && (
         <>
-          <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 mb-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-4 sm:p-6 mb-6">
             <h2 className="text-base font-bold text-gray-800 mb-4">Side by Side</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-xs border-collapse">
@@ -256,7 +256,7 @@ export default function JobOfferCompare() {
                           (label === 'Total annual value' && result.winner?.label === v.label))
                         return (
                           <td key={v.label} className={`p-2 border border-gray-200 text-right whitespace-nowrap ${
-                            best ? 'font-black text-emerald-700' : emphasis ? 'font-bold text-gray-800' : 'text-gray-600'
+                            best ? 'font-extrabold text-emerald-700' : emphasis ? 'font-bold text-gray-800' : 'text-gray-600'
                           }`}>{fn(v)}</td>
                         )
                       })}
@@ -273,7 +273,7 @@ export default function JobOfferCompare() {
             )}
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
+          <div className="bg-white rounded-xl border border-gray-200/80 p-6 mb-6">
             <h2 className="text-base font-bold text-gray-800 mb-4">Ranked</h2>
             <div className="space-y-3">
               {result.ranked.map((v, i) => (
@@ -288,7 +288,7 @@ export default function JobOfferCompare() {
                     </p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="font-black text-gray-800">{fmt0(v.totalValue)}</p>
+                    <p className="font-extrabold text-gray-800">{fmt0(v.totalValue)}</p>
                     {i > 0 && <p className="text-xs text-red-500">−{fmt0(result.winner.totalValue - v.totalValue)}</p>}
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export default function JobOfferCompare() {
       <div className="mt-8"><EmbedSnippet tool="job-offer-comparison-calculator" title="Job Offer Comparison Calculator" height="1100" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Why the Bigger Salary Often Loses</h2>
           <p className="leading-relaxed">
             Recruiters compare offers on one number because it is the only one they control. Four
@@ -318,7 +318,7 @@ export default function JobOfferCompare() {
 
         <AdSlot slot={AD_SLOTS.article} />
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What to Ask Before You Accept</h2>
           <ul className="space-y-2 leading-relaxed">
             <li><strong>What is the exact 401(k) match formula and vesting schedule?</strong> A match you lose by leaving in under three years is worth less than it looks.</li>
@@ -329,7 +329,7 @@ export default function JobOfferCompare() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (
@@ -341,7 +341,7 @@ export default function JobOfferCompare() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Next Steps</h2>
           <p className="leading-relaxed">
             Decided which offer you want? Work out{' '}

@@ -76,7 +76,7 @@ const POSTS = [
 export default function Blog() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-black text-gray-800 mb-2">Payroll & Tax Guides</h1>
+      <h1 className="text-2xl font-extrabold text-gray-800 mb-2">Payroll & Tax Guides</h1>
       <p className="text-sm text-gray-400 mb-6">
         Free guides on pay stubs, payroll taxes, overtime, and more — updated for 2026.
       </p>

@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Money columns only line up if the digits are the same width. Every table on
+     this site is a column of currency, so tabular figures are applied there and
+     to the large result numbers rather than site-wide (proportional figures
+     read better in prose). */
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* Large bold type set at default tracking looks loose. Pull it in as the size
+     goes up — this is most of the difference between "template" and "designed"
+     at a glance. */
+  h1, .text-4xl, .text-3xl {
+    letter-spacing: -0.025em;
+  }
+  h2, .text-2xl, .text-xl {
+    letter-spacing: -0.015em;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}

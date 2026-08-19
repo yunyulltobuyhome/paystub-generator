@@ -125,7 +125,7 @@ export default function SelfEmploymentTaxCalc() {
       })}} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">
           Self-Employment Tax Calculator 2026
         </h1>
         <p className="text-sm text-gray-500">
@@ -134,7 +134,7 @@ export default function SelfEmploymentTaxCalc() {
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>1099 / Self-Employment Income (annual)</label>
           <div className="relative">
@@ -195,7 +195,7 @@ export default function SelfEmploymentTaxCalc() {
           {/* Quarterly highlight — the differentiator */}
           <div className="bg-blue-600 rounded-2xl p-5 text-center text-white">
             <p className="text-sm font-semibold text-blue-100 mb-1">Set aside each quarter</p>
-            <p className="text-4xl font-black">{fmt0(result.quarterly)}</p>
+            <p className="text-4xl font-extrabold">{fmt0(result.quarterly)}</p>
             <p className="text-xs text-blue-100 mt-1">
               ≈ {fmt0(result.totalTax)} total estimated tax · {pct(result.effectiveRate)} effective rate
             </p>
@@ -281,7 +281,7 @@ export default function SelfEmploymentTaxCalc() {
       <div className="mt-8"><EmbedSnippet tool="self-employment-tax-calculator" title="Self-Employment Tax Calculator" height="820" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What Is Self-Employment Tax?</h2>
           <p className="leading-relaxed">
             When you work for an employer, you and the employer split Social Security and Medicare
@@ -293,7 +293,7 @@ export default function SelfEmploymentTaxCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Who Needs to Pay Quarterly Estimated Taxes?</h2>
           <p className="leading-relaxed mb-3">
             The IRS generally requires quarterly estimated payments if you expect to owe
@@ -316,7 +316,7 @@ export default function SelfEmploymentTaxCalc() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

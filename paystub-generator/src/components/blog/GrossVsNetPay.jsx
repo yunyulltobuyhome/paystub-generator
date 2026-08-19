@@ -25,7 +25,7 @@ export default function GrossVsNetPay() {
 
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">Guide</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           Gross Pay vs Net Pay: What's the Difference?
         </h1>
         <p className="text-sm text-gray-400">Updated June 2026 · 4 min read</p>
@@ -75,7 +75,7 @@ export default function GrossVsNetPay() {
                   <span>{label}</span><span className={sub ? 'text-red-500' : 'font-semibold'}>{val}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-emerald-700">
+              <div className="flex justify-between pt-2 font-extrabold text-emerald-700">
                 <span>Net pay (approx.)</span><span>≈ $3,547</span>
               </div>
             </div>

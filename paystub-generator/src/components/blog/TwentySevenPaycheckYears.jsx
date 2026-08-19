@@ -84,7 +84,7 @@ export default function TwentySevenPaycheckYears() {
             <tr key={r.year} className={r.hits.length > 0 ? 'bg-amber-50' : i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               <td className="p-2 border border-gray-200 font-semibold text-gray-800">{r.year}</td>
               {WEEKDAYS.map((w) => (
-                <td key={w.dow} className={`p-2 border border-gray-200 text-center ${r.hits.includes(w.label) ? 'font-black text-amber-700' : 'text-gray-400'}`}>
+                <td key={w.dow} className={`p-2 border border-gray-200 text-center ${r.hits.includes(w.label) ? 'font-extrabold text-amber-700' : 'text-gray-400'}`}>
                   {r.hits.includes(w.label) ? extra : normal}
                 </td>
               ))}
@@ -110,7 +110,7 @@ export default function TwentySevenPaycheckYears() {
 
       <div className="mb-6">
         <span className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full font-semibold">Original analysis</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           Which Years Have 27 Paychecks? Every Year Through 2040
         </h1>
         <p className="text-sm text-gray-400">
@@ -134,15 +134,15 @@ export default function TwentySevenPaycheckYears() {
 
         <div className="grid grid-cols-3 gap-3">
           <div className="bg-white border border-gray-200 rounded-xl p-3 text-center">
-            <p className="text-2xl font-black text-gray-800">{noneYears.length}</p>
+            <p className="text-2xl font-extrabold text-gray-800">{noneYears.length}</p>
             <p className="text-xs text-gray-500 mt-0.5">years where no weekday is affected</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-xl p-3 text-center">
-            <p className="text-2xl font-black text-amber-700">{doubleYears.length}</p>
+            <p className="text-2xl font-extrabold text-amber-700">{doubleYears.length}</p>
             <p className="text-xs text-gray-500 mt-0.5">years where two weekdays are hit</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-xl p-3 text-center">
-            <p className="text-2xl font-black text-gray-800">2–3</p>
+            <p className="text-2xl font-extrabold text-gray-800">2–3</p>
             <p className="text-xs text-gray-500 mt-0.5">times each weekday is hit in 15 years</p>
           </div>
         </div>

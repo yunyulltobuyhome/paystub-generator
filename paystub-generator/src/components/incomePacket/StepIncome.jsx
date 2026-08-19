@@ -58,7 +58,7 @@ export default function StepIncome({ value, period, onChange, onNext, onBack }) 
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-2xl border border-gray-200 p-6">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-base font-bold text-gray-800">💵 Monthly Income</h2>
           <span className="text-xs text-gray-400">{value.monthly.length} months</span>
@@ -88,14 +88,14 @@ export default function StepIncome({ value, period, onChange, onNext, onBack }) 
         </div>
         <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
           <span className="text-sm font-semibold text-gray-700">Total ({value.monthly.length} months)</span>
-          <span className="text-lg font-black text-blue-700">{fmt(monthlyTotal)}</span>
+          <span className="text-lg font-extrabold text-blue-700">{fmt(monthlyTotal)}</span>
         </div>
         {touched && !isValid && (
           <p className="text-xs text-red-500 mt-2">Enter at least one month of income to continue.</p>
         )}
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6">
         <div className="flex items-center justify-between mb-1">
           <h2 className="text-base font-bold text-gray-800">📋 Income Sources</h2>
           <span className="text-xs text-gray-400 font-normal">Optional</span>

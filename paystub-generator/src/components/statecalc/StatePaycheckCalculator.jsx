@@ -43,7 +43,7 @@ export default function StatePaycheckCalculator() {
   if (!state) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-black text-gray-800 mb-3">State not found</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-3">State not found</h1>
         <p className="text-sm text-gray-500 mb-6">We don't have a paycheck calculator page for that state.</p>
         <Link to="/paycheck-calculator" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700">
           Open the paycheck calculator →
@@ -122,14 +122,14 @@ export default function StatePaycheckCalculator() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">{state.name} Paycheck Calculator 2026</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">{state.name} Paycheck Calculator 2026</h1>
         <p className="text-sm text-gray-500">
           Work out your {state.name} take-home pay after federal, state, and FICA taxes — then see
           what the same salary would leave you in every other state.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div className="flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-xs text-blue-800">
           <span>📍</span>
           <span>Pre-set to <strong>{state.name}</strong>{hasIncomeTax ? ` — state income tax applied at about ${(state.rate * 100).toFixed(2)}%` : ' — no state income tax'}.</span>
@@ -204,7 +204,7 @@ export default function StatePaycheckCalculator() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Take-Home Per Paycheck</p>
-            <p className="text-4xl font-black text-blue-700">{fmt2(result.netPay)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt2(result.netPay)}</p>
             <p className="text-xs text-gray-500 mt-1">{fmt0(result.annualNet)} a year · {fmt0(result.annualGross)} gross</p>
           </div>
 
@@ -223,7 +223,7 @@ export default function StatePaycheckCalculator() {
                   <span className={sub ? 'text-red-500' : 'font-semibold'}>{val < 0 ? `(${fmt2(-val)})` : fmt2(val)}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-emerald-700">
+              <div className="flex justify-between pt-2 font-extrabold text-emerald-700">
                 <span>Net pay</span>
                 <span>{fmt2(result.netPay)}</span>
               </div>
@@ -235,7 +235,7 @@ export default function StatePaycheckCalculator() {
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
         {/* The advantage other calculators don't offer: instant relocation comparison. */}
-        <section className="bg-white rounded-2xl border border-gray-200 p-6">
+        <section className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-1">
             The Same Salary in Other States
           </h2>
@@ -293,7 +293,7 @@ export default function StatePaycheckCalculator() {
 
         <AdSlot slot={AD_SLOTS.article} />
 
-        <section className="bg-white rounded-2xl border border-gray-200 p-6">
+        <section className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">{state.name} Take-Home Pay by Salary</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
@@ -322,7 +322,7 @@ export default function StatePaycheckCalculator() {
           <p className="text-xs text-gray-400 mt-2">Single filer estimate, standard deduction, no pre-tax benefits.</p>
         </section>
 
-        <section className="bg-white rounded-2xl border border-gray-200 p-6">
+        <section className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What Comes Out of a {state.name} Paycheck</h2>
           <ul className="space-y-2 leading-relaxed">
             <li><strong>Federal income tax</strong> — based on your W-4, filing status, and the 2026 brackets.</li>
@@ -347,7 +347,7 @@ export default function StatePaycheckCalculator() {
           )}
         </section>
 
-        <section className="bg-white rounded-2xl border border-gray-200 p-6">
+        <section className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (
@@ -359,7 +359,7 @@ export default function StatePaycheckCalculator() {
           </div>
         </section>
 
-        <section className="bg-white rounded-2xl border border-gray-200 p-6">
+        <section className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">More for {state.name}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[

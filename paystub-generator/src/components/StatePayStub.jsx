@@ -39,7 +39,7 @@ export default function StatePayStub() {
   if (!state) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-black text-gray-800 mb-3">State not found</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-3">State not found</h1>
         <p className="text-sm text-gray-500 mb-6">We couldn't find that state page.</p>
         <Link to="/states" className="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-blue-700">
           Browse all states →
@@ -87,7 +87,7 @@ export default function StatePayStub() {
 
       <div className="mb-6">
         <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full font-semibold">State Guide</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-2">
           {state.name} Pay Stub & Paycheck Taxes (2026)
         </h1>
         <p className="text-sm text-gray-400">Updated June 2026 · State paycheck guide</p>
@@ -159,7 +159,7 @@ export default function StatePayStub() {
                   <span className={val < 0 ? 'text-red-500' : 'font-semibold'}>{val < 0 ? `(${fmt(-val)})` : fmt(val)}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-emerald-700">
+              <div className="flex justify-between pt-2 font-extrabold text-emerald-700">
                 <span>Estimated annual take-home</span>
                 <span>{fmt(s.net)}</span>
               </div>
@@ -175,7 +175,7 @@ export default function StatePayStub() {
           <h2 className="text-base font-bold text-gray-800 mb-3">Minimum Wage in {state.name} (2026)</h2>
           <div className="rounded-xl border border-gray-200 p-4 flex items-center justify-between">
             <div>
-              <p className="text-2xl font-black text-gray-800">${minWage.toFixed(2)}<span className="text-sm font-medium text-gray-400">/hour</span></p>
+              <p className="text-2xl font-extrabold text-gray-800">${minWage.toFixed(2)}<span className="text-sm font-medium text-gray-400">/hour</span></p>
               <p className="text-xs text-gray-500 mt-0.5">
                 {aboveFederal
                   ? `Higher than the federal minimum of $${FEDERAL_MIN_WAGE.toFixed(2)}/hour.`

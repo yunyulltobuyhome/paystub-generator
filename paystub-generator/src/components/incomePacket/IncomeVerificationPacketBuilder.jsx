@@ -58,7 +58,7 @@ export default function IncomeVerificationPacketBuilder() {
       })}} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Income Verification Packet Builder</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Income Verification Packet Builder</h1>
         <p className="text-sm text-gray-500">
           Organize your self-reported income into a clean, professional PDF packet — built for
           freelancers, rideshare and delivery drivers, and gig workers.
@@ -104,7 +104,7 @@ export default function IncomeVerificationPacketBuilder() {
       )}
 
       <div className="mt-10 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What's in the Packet?</h2>
           <ul className="space-y-2 list-disc list-inside">
             <li>Cover summary — your income snapshot and what's included</li>
@@ -114,7 +114,7 @@ export default function IncomeVerificationPacketBuilder() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Who It's For</h2>
           <div className="grid grid-cols-2 gap-3">
             {[
@@ -132,7 +132,7 @@ export default function IncomeVerificationPacketBuilder() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

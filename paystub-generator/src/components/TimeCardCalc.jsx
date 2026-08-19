@@ -73,14 +73,14 @@ export default function TimeCardCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Time Card Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Time Card Calculator</h1>
         <p className="text-sm text-gray-500">
           Enter clock in/out times and break minutes for each day. Totals update as you type —
           overnight shifts and overtime are handled automatically.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-4 sm:p-6">
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse">
             <thead>
@@ -145,7 +145,7 @@ export default function TimeCardCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Total Hours This Week</p>
-            <p className="text-4xl font-black text-blue-700">{fmtH(totalHours)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmtH(totalHours)}</p>
             {r > 0 && <p className="text-xs text-gray-500 mt-1">Total pay: <strong>{fmt(totalPay)}</strong> (gross, before taxes)</p>}
           </div>
 
@@ -159,7 +159,7 @@ export default function TimeCardCalc() {
                 <span className="text-gray-600">Overtime hours ({mult}×)</span>
                 <span className="font-semibold">{fmtH(overtimeHours)}{r > 0 && <span className="text-gray-400 font-normal"> · {fmt(overtimePay)}</span>}</span>
               </div>
-              <div className="flex justify-between pt-2 font-black text-gray-800">
+              <div className="flex justify-between pt-2 font-extrabold text-gray-800">
                 <span>Total</span>
                 <span>{fmtH(totalHours)} hrs{r > 0 && ` · ${fmt(totalPay)}`}</span>
               </div>
@@ -178,7 +178,7 @@ export default function TimeCardCalc() {
       <div className="mt-8"><EmbedSnippet tool="time-card-calculator" title="Time Card Calculator" height="900" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How to Use This Time Card Calculator</h2>
           <ol className="space-y-2 list-decimal list-inside leading-relaxed">
             <li>Enter the time you clocked in and out for each day you worked.</li>
@@ -192,7 +192,7 @@ export default function TimeCardCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Converting Minutes to Decimal Hours</h2>
           <p className="leading-relaxed mb-3">
             Payroll systems use decimal hours, not minutes. This calculator converts for you, but here's
@@ -222,7 +222,7 @@ export default function TimeCardCalc() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

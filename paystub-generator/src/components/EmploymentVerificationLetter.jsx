@@ -53,7 +53,7 @@ export default function EmploymentVerificationLetter() {
       })}} />
 
       <div className="mb-6 print:hidden">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Employment Verification Letter Generator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Employment Verification Letter Generator</h1>
         <p className="text-sm text-gray-500">
           Create a professional employment verification letter template for rental, loan, or general
           verification. Free, no sign-up, no watermark.
@@ -72,7 +72,7 @@ export default function EmploymentVerificationLetter() {
 
       {/* Editor */}
       <div className="space-y-4 print:hidden">
-        <div className="bg-white rounded-2xl border border-gray-200 p-5">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-5">
           <p className="text-sm font-bold text-gray-700 mb-3">Employer (Issuing Company)</p>
           <div className="grid sm:grid-cols-2 gap-3">
             <div><label className={labelClass}>Company Name</label><input value={company.name} onChange={e => setCompany({ ...company, name: e.target.value })} className={inputClass} placeholder="Acme Corporation" /></div>
@@ -82,7 +82,7 @@ export default function EmploymentVerificationLetter() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-5">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-5">
           <p className="text-sm font-bold text-gray-700 mb-3">Employee</p>
           <div className="grid sm:grid-cols-2 gap-3">
             <div><label className={labelClass}>Employee Name</label><input value={employee.name} onChange={e => setEmployee({ ...employee, name: e.target.value })} className={inputClass} placeholder="John Smith" /></div>
@@ -127,7 +127,7 @@ export default function EmploymentVerificationLetter() {
           )}
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-5">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-5">
           <p className="text-sm font-bold text-gray-700 mb-3">Letter Details</p>
           <div className="grid sm:grid-cols-2 gap-3">
             <div><label className={labelClass}>Letter Date</label><input type="date" value={letterDate} onChange={e => setLetterDate(e.target.value)} className={inputClass} /></div>
@@ -154,7 +154,7 @@ export default function EmploymentVerificationLetter() {
       {hasContent && (
         <div id="letter-preview" className="mt-8 bg-white border-2 border-gray-300 rounded-2xl p-8 sm:p-10 print:border-0 print:p-0 print:mt-0 text-sm text-gray-800 leading-relaxed">
           <div className="mb-6">
-            <p className="font-black text-lg">{company.name || 'Company Name'}</p>
+            <p className="font-extrabold text-lg">{company.name || 'Company Name'}</p>
             {company.address && <p className="text-gray-600">{company.address}</p>}
             {(company.phone || company.email) && (
               <p className="text-gray-600">{[company.phone, company.email].filter(Boolean).join(' · ')}</p>
@@ -200,7 +200,7 @@ export default function EmploymentVerificationLetter() {
 
       {/* SEO content */}
       <div className="mt-10 space-y-6 text-sm text-gray-600 print:hidden">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What Is an Employment Verification Letter?</h2>
           <p className="leading-relaxed">
             An employment verification letter (also called a proof-of-employment letter) is a document in
@@ -210,7 +210,7 @@ export default function EmploymentVerificationLetter() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What to Include</h2>
           <ul className="space-y-2 list-disc list-inside">
             <li>Employer name, address, and contact details</li>
@@ -222,7 +222,7 @@ export default function EmploymentVerificationLetter() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

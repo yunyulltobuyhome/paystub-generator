@@ -85,14 +85,14 @@ export default function PayrollCalendarGenerator() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">{year} Payroll Calendar Generator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">{year} Payroll Calendar Generator</h1>
         <p className="text-sm text-gray-500">
           Every payday for the year, built from your own schedule — with pay periods, bank holiday
           warnings, and a heads-up if you land in a 27-pay-period year.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4 print:hidden">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4 print:hidden">
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className={labelClass}>Year</label>
@@ -145,15 +145,15 @@ export default function PayrollCalendarGenerator() {
 
       <div className="mt-6 grid grid-cols-3 gap-3">
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
-          <p className="text-2xl font-black text-blue-700">{rows.length}</p>
+          <p className="text-2xl font-extrabold text-blue-700">{rows.length}</p>
           <p className="text-xs text-gray-500 mt-0.5">Paydays in {year}</p>
         </div>
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-center">
-          <p className="text-2xl font-black text-emerald-700">{freqMeta.perYear}</p>
+          <p className="text-2xl font-extrabold text-emerald-700">{freqMeta.perYear}</p>
           <p className="text-xs text-gray-500 mt-0.5">Typical year</p>
         </div>
         <div className={`border rounded-xl p-3 text-center ${conflicts.length > 0 ? 'bg-amber-50 border-amber-200' : 'bg-gray-50 border-gray-200'}`}>
-          <p className={`text-2xl font-black ${conflicts.length > 0 ? 'text-amber-700' : 'text-gray-700'}`}>{conflicts.length}</p>
+          <p className={`text-2xl font-extrabold ${conflicts.length > 0 ? 'text-amber-700' : 'text-gray-700'}`}>{conflicts.length}</p>
           <p className="text-xs text-gray-500 mt-0.5">Need adjusting</p>
         </div>
       </div>
@@ -169,7 +169,7 @@ export default function PayrollCalendarGenerator() {
 
       <AdSlot slot={AD_SLOTS.result} />
 
-      <div className="mt-6 bg-white rounded-2xl border border-gray-200 p-4 sm:p-6">
+      <div className="mt-6 bg-white rounded-xl border border-gray-200/80 p-4 sm:p-6">
         <h2 className="text-base font-bold text-gray-800 mb-4">{year} Pay Schedule</h2>
         <div className="space-y-5">
           {byMonth.map((monthRows, m) => (
@@ -212,7 +212,7 @@ export default function PayrollCalendarGenerator() {
         </div>
       </div>
 
-      <div className="mt-6 bg-white rounded-2xl border border-gray-200 p-6">
+      <div className="mt-6 bg-white rounded-xl border border-gray-200/80 p-6">
         <h2 className="text-base font-bold text-gray-800 mb-3">{year} Federal Holidays (Banks Closed)</h2>
         <div className="overflow-x-auto">
           <table className="w-full text-xs border-collapse">
@@ -249,7 +249,7 @@ export default function PayrollCalendarGenerator() {
       <AdSlot slot={AD_SLOTS.article} />
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Pay Frequencies Compared</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
@@ -278,7 +278,7 @@ export default function PayrollCalendarGenerator() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (

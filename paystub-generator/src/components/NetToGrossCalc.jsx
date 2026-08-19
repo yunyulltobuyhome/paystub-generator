@@ -84,14 +84,14 @@ export default function NetToGrossCalc() {
       }) }} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">Net to Gross Salary Calculator</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">Net to Gross Salary Calculator</h1>
         <p className="text-sm text-gray-500">
           Know what you want to take home? Work backwards to the gross salary you need to ask for,
           after 2026 federal, state, and FICA taxes.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Take-Home Pay You Want</label>
           <div className="relative">
@@ -146,7 +146,7 @@ export default function NetToGrossCalc() {
         <div className="mt-6 space-y-4">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center">
             <p className="text-sm text-blue-600 font-semibold mb-1">Gross Salary You Need</p>
-            <p className="text-4xl font-black text-blue-700">{fmt0(result.annualGross)}</p>
+            <p className="text-4xl font-extrabold text-blue-700">{fmt0(result.annualGross)}</p>
             <p className="text-xs text-gray-500 mt-1">
               per year · {fmt0(result.annualGross / result.periodsPerYear)} per {result.periodLabel === 'annual' ? 'year' : result.periodLabel.replace('semimonthly', 'semi-month').replace('biweekly', '2 weeks').replace('monthly', 'month').replace('weekly', 'week')} gross
             </p>
@@ -167,7 +167,7 @@ export default function NetToGrossCalc() {
                   <span className={sub ? 'text-red-500' : 'font-semibold'}>{val < 0 ? `(${fmt0(-val)})` : fmt0(val)}</span>
                 </div>
               ))}
-              <div className="flex justify-between pt-2 font-black text-emerald-700">
+              <div className="flex justify-between pt-2 font-extrabold text-emerald-700">
                 <span>Take-home pay</span>
                 <span>{fmt0(result.annualNet)}</span>
               </div>
@@ -190,7 +190,7 @@ export default function NetToGrossCalc() {
       <div className="mt-8"><EmbedSnippet tool="net-to-gross-calculator" title="Net to Gross Salary Calculator" height="760" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What Is a Net to Gross Calculation?</h2>
           <p className="leading-relaxed">
             Most calculators go one way: you enter a salary and see what's left after taxes. A
@@ -205,7 +205,7 @@ export default function NetToGrossCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">When to Use It</h2>
           <ul className="space-y-2 leading-relaxed">
             <li><strong>Salary negotiation</strong> — turn your target monthly budget into the number you ask for.</li>
@@ -215,7 +215,7 @@ export default function NetToGrossCalc() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[

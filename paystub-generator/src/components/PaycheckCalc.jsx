@@ -71,7 +71,7 @@ export default function PaycheckCalc() {
       })}} />
 
       <div className="mb-6">
-        <h1 className="text-2xl font-black text-gray-800 mb-1">
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-1">
           Free Paycheck Calculator 2026
         </h1>
         <p className="text-sm text-gray-500">
@@ -79,7 +79,7 @@ export default function PaycheckCalc() {
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-4">
         <div>
           <label className={labelClass}>Pay Type</label>
           <div className="grid grid-cols-2 gap-2">
@@ -173,7 +173,7 @@ export default function PaycheckCalc() {
                 <p className="text-sm text-blue-600 font-semibold mb-1">
                   Take-Home Pay ({result.frequency})
                 </p>
-                <p className="text-4xl font-black text-blue-700">{fmt(result.netPay)}</p>
+                <p className="text-4xl font-extrabold text-blue-700">{fmt(result.netPay)}</p>
                 <p className="text-xs text-gray-400 mt-1">{fmt(result.annualNet)}/year</p>
               </div>
               <div className="text-right">
@@ -236,7 +236,7 @@ export default function PaycheckCalc() {
       <div className="mt-8"><EmbedSnippet tool="paycheck-calculator" title="Paycheck Calculator" height="760" /></div>
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">How Is Take-Home Pay Calculated?</h2>
           <p className="leading-relaxed">
             Your take-home pay (net pay) is your gross pay minus federal income tax, state income tax,
@@ -246,7 +246,7 @@ export default function PaycheckCalc() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[
@@ -261,7 +261,7 @@ export default function PaycheckCalc() {
             ))}
           </div>
         </div>
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 mt-6">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 mt-6">
         <h2 className="text-base font-bold text-gray-800 mb-1">Paycheck Calculator by State</h2>
         <p className="text-xs text-gray-500 mb-4">
           Open a version pre-set to your state — each one also shows what the same salary would

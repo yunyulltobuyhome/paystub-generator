@@ -104,14 +104,14 @@ export default function PaycheckChecker() {
 
       <div className="mb-6">
         <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full font-semibold">Free · Nothing leaves your browser</span>
-        <h1 className="text-2xl font-black text-gray-800 mt-3 mb-1">Is My Paycheck Correct?</h1>
+        <h1 className="text-2xl font-extrabold text-gray-800 mt-3 mb-1">Is My Paycheck Correct?</h1>
         <p className="text-sm text-gray-500">
           Most people never check. Type the numbers off your pay stub and this will tell you whether
           the math holds — and exactly what to ask your employer if it doesn't.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-5">
+      <div className="bg-white rounded-xl border border-gray-200/80 p-6 space-y-5">
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className={labelClass}>Pay Type</label>
@@ -201,7 +201,7 @@ export default function PaycheckChecker() {
             : 'bg-emerald-50 border-emerald-200'
           }`}>
             <p className="text-4xl mb-1">{result.errors > 0 ? '🚩' : result.checks > 0 ? '⚠️' : '✅'}</p>
-            <p className={`text-xl font-black ${
+            <p className={`text-xl font-extrabold ${
               result.errors > 0 ? 'text-red-700' : result.checks > 0 ? 'text-amber-700' : 'text-emerald-700'
             }`}>
               {result.errors > 0
@@ -271,7 +271,7 @@ export default function PaycheckChecker() {
       )}
 
       <div className="mt-8 space-y-6 text-sm text-gray-600">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">What Can Actually Be Verified on a Pay Stub</h2>
           <p className="leading-relaxed mb-3">
             Some payroll numbers follow fixed rules, so they can be checked exactly. Others depend on
@@ -308,7 +308,7 @@ export default function PaycheckChecker() {
 
         <AdSlot slot={AD_SLOTS.article} />
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">The Most Common Paycheck Mistakes</h2>
           <ul className="space-y-2 leading-relaxed">
             <li><strong>Overtime at the wrong rate</strong> — paid straight time instead of 1.5×, or overtime calculated per pay period instead of per workweek.</li>
@@ -326,7 +326,7 @@ export default function PaycheckChecker() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200/80 p-6">
           <h2 className="text-base font-bold text-gray-800 mb-3">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ.map((item, i) => (
