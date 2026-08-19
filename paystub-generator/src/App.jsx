@@ -19,6 +19,7 @@ import WhatIsYtd from './components/blog/WhatIsYtd'
 import PayStubsForApartment from './components/blog/PayStubsForApartment'
 import GrossVsNetPay from './components/blog/GrossVsNetPay'
 import PayStubAbbreviations from './components/blog/PayStubAbbreviations'
+import TwentySevenPaycheckYears from './components/blog/TwentySevenPaycheckYears'
 import MultiPayStub from './components/MultiPayStub'
 import EmbedFrame from './components/EmbedFrame'
 import EmploymentVerificationLetter from './components/EmploymentVerificationLetter'
@@ -583,6 +584,7 @@ function MainApp() {
           <Route path="/guides/how-many-pay-stubs-for-apartment" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><PayStubsForApartment /></SubPage>} />
           <Route path="/guides/gross-vs-net-pay" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><GrossVsNetPay /></SubPage>} />
           <Route path="/guides/pay-stub-abbreviations" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><PayStubAbbreviations /></SubPage>} />
+          <Route path="/guides/27-paycheck-years" element={<SubPage backTo="/guides" backLabel="← Back to Guides"><TwentySevenPaycheckYears /></SubPage>} />
           <Route path="/privacy" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><PrivacyPolicy /></SubPage>} />
           <Route path="/terms" element={<SubPage backTo="/" backLabel="← Back to Pay Stub Generator"><TermsOfService /></SubPage>} />
           <Route path="/multiple-paystubs" element={<MultiPayStub />} />

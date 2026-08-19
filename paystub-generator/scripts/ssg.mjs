@@ -187,6 +187,10 @@ async function buildRoutes() {
       title: "Gross Pay vs Net Pay: What's the Difference? (2026) | MyFreePayStub",
       desc: 'Gross pay is before deductions; net pay is your take-home. Learn how taxes and deductions turn gross into net, with a worked 2026 example.',
     },
+    '/guides/27-paycheck-years': {
+      title: 'Which Years Have 27 Paychecks? Every Year Through 2040, By Payday',
+      desc: 'We computed 27-paycheck (and 53-paycheck) years for every payday weekday from 2026 to 2040. Find your own payday in the table, see what the extra payroll run costs, and how employers handle it.',
+    },
     '/guides/pay-stub-abbreviations': {
       title: 'Pay Stub Abbreviations Explained (2026 Cheat Sheet) | MyFreePayStub',
       desc: 'Confused by the codes on your pay stub? A plain-English cheat sheet for YTD, FICA, OASDI, FED, SIT, 401(k), and every common pay stub abbreviation.',

@@ -23,6 +23,13 @@ const POSTS = [
     category: 'Guide',
   },
   {
+    slug: '27-paycheck-years',
+    title: 'Which Years Have 27 Paychecks? Every Year Through 2040',
+    desc: 'Original analysis: we ran every payday weekday against every year to 2040. The answer differs by weekday, and four of those years affect nobody.',
+    readTime: '6 min read',
+    category: 'Original analysis',
+  },
+  {
     slug: 'gross-vs-net-pay',
     title: 'Gross Pay vs Net Pay: What\'s the Difference?',
     desc: 'Gross is before deductions, net is your take-home. How taxes and deductions turn one into the other, with a 2026 example.',
